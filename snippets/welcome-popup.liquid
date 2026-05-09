@@ -1,0 +1,135 @@
+{% doc %}
+  Welcome popup — fires 8s after first visit (per session+30 days), captures
+  email for 15% off first order. Hidden if user previously dismissed or
+  subscribed. Hidden in design mode to avoid editor noise.
+{% enddoc %}
+
+{%- unless request.design_mode or request.path contains '/cart' or request.path contains '/checkout' -%}
+<div
+  id="welcome-popup-backdrop"
+  style="
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(15, 15, 15, 0.55);
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; transition: opacity 280ms ease;
+  "
+  role="dialog" aria-modal="true" aria-labelledby="welcome-popup-title"
+>
+  <div
+    id="welcome-popup-card"
+    style="
+      background: #F8F4EE; color: #1F3A2E;
+      max-width: 460px; width: 100%;
+      padding: 40px 32px 32px;
+      border-radius: 4px;
+      position: relative;
+      font-family: var(--font-body--family);
+      transform: scale(0.96); transition: transform 280ms ease;
+    "
+  >
+    <button
+      type="button"
+      onclick="window.__welcomePopupDismiss()"
+      aria-label="Close"
+      style="
+        position: absolute; top: 8px; right: 12px;
+        background: transparent; border: none; cursor: pointer;
+        font-size: 28px; line-height: 1; color: inherit; padding: 4px 10px;
+      "
+    >×</button>
+
+    <p style="font-family: var(--font-accent--family); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; margin: 0 0 12px; opacity: 0.7;">Welcome to Primavera</p>
+    <h2 id="welcome-popup-title" style="font-family: var(--font-heading--family); font-size: 1.85rem; line-height: 1.15; margin: 0 0 12px;">15% off your first order.</h2>
+    <p style="margin: 0 0 22px; font-size: 0.95rem; line-height: 1.5;">Hand-delivered in Washington Heights, Inwood, and the South Bronx. Same-day before 2pm. Photo-confirmed before it leaves the shop.</p>
+
+    <form
+      method="POST"
+      action="/contact#welcome-popup"
+      id="welcome-popup-form"
+      onsubmit="return window.__welcomePopupSubmit(event)"
+    >
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="contact[tags]" value="newsletter, welcome-popup">
+      <label for="welcome-popup-email" style="display: block; font-size: 0.85rem; margin-bottom: 6px;">Your email</label>
+      <input
+        type="email" required name="contact[email]" id="welcome-popup-email"
+        placeholder="you@email.com"
+        style="
+          width: 100%; padding: 12px 14px;
+          border: 1px solid #1F3A2E; background: #fff; color: #1F3A2E;
+          font-size: 1rem; border-radius: 0; box-sizing: border-box;
+        "
+      >
+      <button
+        type="submit"
+        style="
+          width: 100%; margin-top: 12px; padding: 14px 16px;
+          background: #a42325; color: #fff; border: none;
+          font-family: var(--font-accent--family); text-transform: uppercase; letter-spacing: 0.12em;
+          font-size: 0.85rem; cursor: pointer;
+        "
+      >Send me the code</button>
+    </form>
+
+    <p style="font-size: 0.75rem; opacity: 0.6; margin: 14px 0 0; line-height: 1.4;">No spam — just occasion reminders, seasonal drops, and the occasional sympathy guide. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var KEY = 'pfwh_welcome_popup_v1';
+    var DELAY_MS = 8000;
+    var SUPPRESS_DAYS = 30;
+
+    function isSuppressed() {
+      try {
+        var raw = localStorage.getItem(KEY);
+        if (!raw) return false;
+        var until = parseInt(raw, 10);
+        return Date.now() < until;
+      } catch (e) { return false; }
+    }
+    function suppress(days) {
+      try { localStorage.setItem(KEY, String(Date.now() + days * 86400000)); } catch (e) {}
+    }
+    window.__welcomePopupDismiss = function () {
+      var bd = document.getElementById('welcome-popup-backdrop');
+      if (!bd) return;
+      bd.style.opacity = '0';
+      setTimeout(function () { bd.style.display = 'none'; }, 280);
+      suppress(SUPPRESS_DAYS);
+    };
+    window.__welcomePopupSubmit = function (e) {
+      // Klaviyo / Shopify customer form will handle submission;
+      // we just hide the popup for the rest of the year on success path.
+      suppress(365);
+      return true;
+    };
+
+    if (isSuppressed()) return;
+
+    setTimeout(function () {
+      var bd = document.getElementById('welcome-popup-backdrop');
+      var card = document.getElementById('welcome-popup-card');
+      if (!bd || !card) return;
+      bd.style.display = 'flex';
+      requestAnimationFrame(function () {
+        bd.style.opacity = '1';
+        card.style.transform = 'scale(1)';
+      });
+      bd.addEventListener('click', function (e) {
+        if (e.target === bd) window.__welcomePopupDismiss();
+      });
+      document.addEventListener('keydown', function escHandler(e) {
+        if (e.key === 'Escape') {
+          window.__welcomePopupDismiss();
+          document.removeEventListener('keydown', escHandler);
+        }
+      });
+    }, DELAY_MS);
+  })();
+</script>
+{%- endunless -%}
