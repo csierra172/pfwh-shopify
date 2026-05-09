@@ -1,0 +1,93 @@
+/*
+ * Primavera — Our Story page template
+ */{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "g": {
+          "type": "group",
+          "blocks": {
+            "kicker": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Our story</p>",
+                "type_preset": "paragraph",
+                "font": "var(--font-accent--family)",
+                "case": "uppercase",
+                "letter_spacing": "0.16em",
+                "alignment": "center"
+              }
+            },
+            "headline": {
+              "type": "text",
+              "settings": {
+                "text": "<h1>The neighborhood florist of Washington Heights.</h1>",
+                "type_preset": "h1",
+                "font": "var(--font-heading--family)",
+                "case": "none",
+                "alignment": "center",
+                "wrap": "balance"
+              }
+            }
+          },
+          "block_order": ["kicker", "headline"],
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment": "center",
+            "gap": 16,
+            "width": "custom",
+            "custom_width": 70,
+            "padding-block-start": 80,
+            "padding-block-end": 80
+          }
+        }
+      },
+      "block_order": ["g"],
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "scheme-3",
+        "horizontal_alignment": "center"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "page-content": { "type": "page-content", "settings": {} }
+      },
+      "block_order": ["page-content"],
+      "settings": { "gap": 32, "padding-block-start": 40, "padding-block-end": 80 }
+    },
+    "values": {
+      "type": "media-with-content",
+      "blocks": {
+        "h": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Locally designed. Hand-delivered. Photo-confirmed.</h2>",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We're not a wire service. Every arrangement is built by a designer at our shop on Fort Washington Avenue, photographed before it leaves, and hand-delivered the same day. When you order from Primavera, you're talking to the people making your flowers — not a 1-800 number routing your order three states away.</p>",
+            "type_preset": "paragraph"
+          }
+        }
+      },
+      "block_order": ["h", "body"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "full-width",
+        "media_position": "left",
+        "media_width": 50,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": ["hero", "main", "values"]
+}

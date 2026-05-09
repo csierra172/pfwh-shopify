@@ -1,0 +1,118 @@
+/*
+ * Primavera — Delivery page template
+ */{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Delivery</h1>",
+            "type_preset": "h1",
+            "alignment": "center",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {}
+        }
+      },
+      "block_order": ["heading", "page-content"],
+      "settings": { "gap": 32, "padding-block-start": 40, "padding-block-end": 32 }
+    },
+    "zones": {
+      "type": "media-with-content",
+      "blocks": {
+        "h": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Same-day zones</h2>",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Order by 2pm ET</strong> for same-day delivery to:</p><ul><li>Washington Heights — 10032, 10033, 10040</li><li>Inwood — 10034</li><li>South Bronx — 10463, 10468, 10469 (delivery fee +$10)</li><li>Hamilton Heights / West Harlem — 10031, 10039</li></ul><p>Outside these zones, choose Next-Day at checkout (order by 9pm ET).</p>",
+            "type_preset": "paragraph"
+          }
+        }
+      },
+      "block_order": ["h", "body"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "media_position": "right",
+        "media_width": 40,
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    },
+    "fees": {
+      "type": "media-with-content",
+      "blocks": {
+        "h": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Fees & cutoffs</h2>",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>Same-day Manhattan — $15 (free over $125)</li><li>Same-day Bronx — $25</li><li>Sympathy / funeral home delivery — included on orders over $150</li><li>Saturday delivery — same hours, order by noon</li><li>Sunday — limited; call (917) 770-1684</li></ul>",
+            "type_preset": "paragraph"
+          }
+        }
+      },
+      "block_order": ["h", "body"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "section_width": "page-width",
+        "media_position": "left",
+        "media_width": 40,
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    },
+    "promise": {
+      "type": "media-with-content",
+      "blocks": {
+        "h": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Photo-confirmed before it leaves</h2>",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every arrangement is photographed by the designer who built it. We email the photo to you the moment your bouquet leaves the shop — so you know exactly what's arriving and when.</p>",
+            "type_preset": "paragraph"
+          }
+        }
+      },
+      "block_order": ["h", "body"],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "section_width": "full-width",
+        "media_position": "right",
+        "media_width": 50,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    }
+  },
+  "order": ["main", "zones", "fees", "promise"]
+}

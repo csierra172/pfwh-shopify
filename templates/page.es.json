@@ -1,0 +1,127 @@
+/*
+ * Primavera — Spanish landing page (florista-washington-heights)
+ */{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "g": {
+          "type": "group",
+          "blocks": {
+            "kicker": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Tu florista en Washington Heights</p>",
+                "type_preset": "paragraph",
+                "font": "var(--font-accent--family)",
+                "case": "uppercase",
+                "letter_spacing": "0.16em",
+                "alignment": "left"
+              }
+            },
+            "headline": {
+              "type": "text",
+              "settings": {
+                "text": "<h1>Flores frescas, entregadas el mismo día.</h1>",
+                "type_preset": "h1",
+                "font": "var(--font-heading--family)",
+                "case": "none",
+                "wrap": "balance"
+              }
+            },
+            "sub": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Pide antes de las 2pm y entregamos hoy en 10032, 10033, 10034 y 10040. Te enviamos una foto de tu ramo antes de que salga de la tienda.</p>",
+                "type_preset": "paragraph",
+                "max_width": "narrow"
+              }
+            },
+            "cta": {
+              "type": "button",
+              "settings": {
+                "label": "Comprar ahora",
+                "link": "shopify://collections/all",
+                "style_class": "primary"
+              }
+            }
+          },
+          "block_order": ["kicker", "headline", "sub", "cta"],
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment": "flex-start",
+            "gap": 16,
+            "width": "custom",
+            "custom_width": 55,
+            "padding-block-start": 80,
+            "padding-block-end": 80,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          }
+        }
+      },
+      "block_order": ["g"],
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "section_height": "large"
+      }
+    },
+    "ocasiones": {
+      "type": "collection-links",
+      "blocks": {
+        "h": {
+          "type": "_inline-collection-title",
+          "settings": {
+            "text": "<h2>Comprar por ocasión</h2>",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)"
+          }
+        },
+        "cumple": { "type": "_collection-link", "settings": { "collection": "birthday", "label": "Cumpleaños" } },
+        "aniv": { "type": "_collection-link", "settings": { "collection": "anniversary", "label": "Aniversario" } },
+        "simpatia": { "type": "_collection-link", "settings": { "collection": "sympathy", "label": "Condolencias" } },
+        "porque": { "type": "_collection-link", "settings": { "collection": "just-because", "label": "Solo porque sí" } },
+        "quince": { "type": "_collection-link", "settings": { "collection": "quinceanera", "label": "Quinceañera" } },
+        "madres": { "type": "_collection-link", "settings": { "collection": "dia-de-las-madres", "label": "Día de las Madres" } }
+      },
+      "block_order": ["h", "cumple", "aniv", "simpatia", "porque", "quince", "madres"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "padding-block-start": 64,
+        "padding-block-end": 32
+      }
+    },
+    "promesa": {
+      "type": "media-with-content",
+      "blocks": {
+        "h": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Te enviamos una foto antes de salir.</h2>",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Cada arreglo lo fotografiamos antes de que salga de la tienda. Sabes exactamente qué llega — sin sorpresas, sin sustitutos, sin promesas vacías.</p>",
+            "type_preset": "paragraph"
+          }
+        }
+      },
+      "block_order": ["h", "body"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "section_width": "full-width",
+        "media_position": "left",
+        "media_width": 50
+      }
+    }
+  },
+  "order": ["hero", "ocasiones", "promesa"]
+}

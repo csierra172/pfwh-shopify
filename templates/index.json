@@ -1,592 +1,338 @@
 /*
  * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
+ * Primavera Flowers — Homepage
+ * Hero -> same-day promise marquee -> shop by occasion ->
+ * bestsellers -> photo-confirmation USP -> story -> care guides
  * ------------------------------------------------------------
  */{
   "sections": {
-    "hero_RkimKJ": {
+    "hero": {
       "type": "hero",
       "blocks": {
-        "group_3cB4GW": {
+        "group_hero": {
           "type": "group",
-          "settings": {
-            "open_in_new_tab": false,
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "custom",
-            "custom_width": 34,
-            "width_mobile": "custom",
-            "custom_width_mobile": 53,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
           "blocks": {
-            "text_KxeJ6r": {
+            "kicker": {
               "type": "text",
               "settings": {
-                "text": "<p>Savor every. last. bite. </p>",
-                "width": "100%",
-                "max_width": "normal",
+                "text": "<p>The Washington Heights florist.</p>",
                 "alignment": "left",
-                "type_preset": "h2",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+                "type_preset": "paragraph",
+                "font": "var(--font-accent--family)",
+                "case": "uppercase",
+                "letter_spacing": "0.12em",
+                "color": ""
+              }
             },
-            "button_nazDaa": {
+            "headline": {
+              "type": "text",
+              "settings": {
+                "text": "<h1>Hand-delivered flowers, designed by neighbors.</h1>",
+                "alignment": "left",
+                "type_preset": "h1",
+                "font": "var(--font-heading--family)",
+                "case": "none",
+                "wrap": "balance",
+                "color": ""
+              }
+            },
+            "subhead": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Order by 2pm and we deliver the same day across 10032, 10033, 10034, 10040 and the South Bronx. We send you a photo of your bouquet before it leaves the shop.</p>",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "max_width": "narrow"
+              }
+            },
+            "cta_primary": {
               "type": "button",
               "settings": {
-                "label": "Shop all →",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
+                "label": "Shop bestsellers",
+                "link": "shopify://collections/bestsellers",
+                "style_class": "primary"
+              }
+            },
+            "cta_secondary": {
+              "type": "button",
+              "settings": {
+                "label": "Same-day delivery →",
+                "link": "shopify://collections/same-day",
+                "style_class": "link"
+              }
             }
           },
-          "block_order": [
-            "text_KxeJ6r",
-            "button_nazDaa"
-          ]
+          "block_order": ["kicker", "headline", "subhead", "cta_primary", "cta_secondary"],
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "gap": 16,
+            "width": "custom",
+            "custom_width": 50,
+            "custom_width_mobile": 90,
+            "padding-block-start": 80,
+            "padding-block-end": 80,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          }
         }
       },
-      "block_order": [
-        "group_3cB4GW"
-      ],
+      "block_order": ["group_hero"],
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
         "section_width": "page-width",
         "section_height": "large",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-4",
-        "toggle_overlay": false,
-        "overlay_color": "#000000",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
+        "color_scheme": "scheme-1",
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
     },
-    "product_list_X8Q7bi": {
+    "promise_marquee": {
+      "type": "marquee",
+      "blocks": {
+        "p1": { "type": "_announcement", "settings": { "text": "Same-day delivery before 2pm" } },
+        "p2": { "type": "_announcement", "settings": { "text": "Photo-confirmed before it leaves the shop" } },
+        "p3": { "type": "_announcement", "settings": { "text": "Locally designed in Washington Heights since 1995" } },
+        "p4": { "type": "_announcement", "settings": { "text": "Flores frescas entregadas hoy en 10032" } },
+        "p5": { "type": "_announcement", "settings": { "text": "Sympathy arrangements with care" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5"],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "speed": 30,
+        "section_width": "full-width",
+        "padding-block-start": 16,
+        "padding-block-end": 16
+      }
+    },
+    "shop_by_occasion": {
+      "type": "collection-links",
+      "blocks": {
+        "h": {
+          "type": "_inline-collection-title",
+          "settings": {
+            "text": "<h2>Shop by occasion</h2>",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)"
+          }
+        },
+        "birthday": { "type": "_collection-link", "settings": { "collection": "birthday", "label": "Birthday" } },
+        "anniversary": { "type": "_collection-link", "settings": { "collection": "anniversary", "label": "Anniversary" } },
+        "sympathy": { "type": "_collection-link", "settings": { "collection": "sympathy", "label": "Sympathy" } },
+        "just-because": { "type": "_collection-link", "settings": { "collection": "just-because", "label": "Just Because" } },
+        "get-well": { "type": "_collection-link", "settings": { "collection": "get-well", "label": "Get Well" } },
+        "new-baby": { "type": "_collection-link", "settings": { "collection": "new-baby", "label": "New Baby" } },
+        "quinceanera": { "type": "_collection-link", "settings": { "collection": "quinceanera", "label": "Quinceañera" } },
+        "madres": { "type": "_collection-link", "settings": { "collection": "dia-de-las-madres", "label": "Día de las Madres" } }
+      },
+      "block_order": ["h", "birthday", "anniversary", "sympathy", "just-because", "get-well", "new-baby", "quinceanera", "madres"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "padding-block-start": 64,
+        "padding-block-end": 32
+      }
+    },
+    "bestsellers": {
       "type": "product-list",
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
           "static": true,
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+          "blocks": {
+            "title": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Bestsellers this week</h2>",
+                "alignment": "center",
+                "type_preset": "h2",
+                "font": "var(--font-heading--family)"
+              }
+            }
           },
-          "blocks": {}
+          "block_order": ["title"]
         },
         "static-product-card": {
           "type": "_product-card",
-          "name": "t:names.product_card",
           "static": true,
-          "settings": {
-            "product_card_gap": 0,
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-2",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
           "blocks": {
-            "product_card_gallery_Gn6P7T": {
+            "gallery": {
               "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "square",
-                "border": "solid",
-                "border_width": 0,
-                "border_opacity": 0,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+              "settings": { "image_ratio": "portrait" }
             },
-            "group_AUJmQt": {
+            "info": {
               "type": "_product-card-group",
-              "name": "t:names.group",
-              "settings": {
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "space-between",
-                "vertical_alignment": "flex-start",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "space-between",
-                "gap": 4,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "scheme-2",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 12,
-                "padding-block-end": 12,
-                "padding-inline-start": 12,
-                "padding-inline-end": 12
-              },
               "blocks": {
-                "group_pLH7Cd": {
-                  "type": "_product-card-group",
-                  "name": "t:names.group",
+                "title": {
+                  "type": "product-title",
                   "settings": {
-                    "open_in_new_tab": false,
-                    "content_direction": "row",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "space-between",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "flex-start",
-                    "gap": 8,
-                    "width": "fill",
-                    "custom_width": 75,
-                    "width_mobile": "custom",
-                    "custom_width_mobile": 75,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "product_title_gtg38q": {
-                      "type": "product-title",
-                      "name": "t:names.product_title",
-                      "settings": {
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "h5",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    },
-                    "price_Vz3EzL": {
-                      "type": "price",
-                      "name": "t:names.product_price",
-                      "settings": {
-                        "show_sale_price_first": true,
-                        "show_installments": false,
-                        "show_tax_info": false,
-                        "type_preset": "paragraph",
-                        "width": "fit-content",
-                        "alignment": "right",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "color": "var(--color-foreground)",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "product_title_gtg38q",
-                    "price_Vz3EzL"
-                  ]
+                    "alignment": "left",
+                    "type_preset": "h5",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "1.25rem",
+                    "case": "none"
+                  }
                 },
-                "group_3Fwdtp": {
-                  "type": "_product-card-group",
-                  "name": "t:names.group",
+                "price": {
+                  "type": "price",
                   "settings": {
-                    "open_in_new_tab": false,
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "flex-start",
-                    "gap": 12,
-                    "width": "fit-content",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 25,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "text_JHMjjF": {
-                      "type": "text",
-                      "name": "t:names.text",
-                      "settings": {
-                        "text": "<p>{{ closest.product.metafields.descriptors.subtitle.value }}</p>",
-                        "width": "100%",
-                        "max_width": "none",
-                        "alignment": "left",
-                        "type_preset": "paragraph",
-                        "font": "var(--font-primary--family)",
-                        "font_size": "var(--font-size--body-md)",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_JHMjjF"
-                  ]
+                    "alignment": "left",
+                    "type_preset": "paragraph",
+                    "font": "var(--font-body--family)"
+                  }
                 }
               },
-              "block_order": [
-                "group_pLH7Cd",
-                "group_3Fwdtp"
-              ]
+              "block_order": ["title", "price"]
             }
           },
-          "block_order": [
-            "product_card_gallery_Gn6P7T",
-            "group_AUJmQt"
-          ]
+          "block_order": ["gallery", "info"]
         }
       },
-      "name": "Featured collection",
+      "name": "Bestsellers",
       "settings": {
-        "collection": "all",
+        "collection": "bestsellers",
         "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 6,
-        "columns": 3,
-        "mobile_columns": "1",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 1,
-        "rows_gap": 1,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "full-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 0,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "section_width": "page-width",
         "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 64
+      }
+    },
+    "photo_confirmation": {
+      "type": "media-with-content",
+      "blocks": {
+        "kicker": {
+          "type": "text",
+          "settings": {
+            "text": "<p>What you see is what arrives.</p>",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "font": "var(--font-accent--family)",
+            "case": "uppercase",
+            "letter_spacing": "0.14em"
+          }
+        },
+        "headline": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>We photograph every bouquet before it leaves the shop.</h2>",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>No surprises, no stand-ins, no \"designer's choice\" left to chance. The arrangement you see in the photo is the one being driven to your door — and we email it to you the moment it goes out.</p>",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "max_width": "narrow"
+          }
+        }
+      },
+      "block_order": ["kicker", "headline", "body"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "section_width": "full-width",
+        "media_position": "left",
+        "media_width": 50,
         "padding-block-start": 0,
         "padding-block-end": 0
       }
     },
-    "section_RhpYRt": {
-      "type": "section",
+    "neighborhood_story": {
+      "type": "media-with-content",
       "blocks": {
-        "video_NqWNaD": {
-          "type": "video",
-          "name": "t:names.video",
+        "kicker": {
+          "type": "text",
           "settings": {
-            "source": "url",
-            "video_url": "",
-            "video_autoplay": false,
-            "video_loop": true,
-            "alt": "",
-            "custom_width": 67,
-            "custom_width_mobile": 100,
-            "aspect_ratio": "16/9",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "text": "<p>463 Fort Washington Ave · 10033</p>",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "font": "var(--font-accent--family)",
+            "case": "uppercase",
+            "letter_spacing": "0.14em"
+          }
         },
-        "group_TEanyT": {
-          "type": "group",
-          "name": "Caption",
+        "headline": {
+          "type": "text",
           "settings": {
-            "open_in_new_tab": false,
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "custom",
-            "custom_width": 33,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 40,
-            "padding-block-end": 40,
-            "padding-inline-start": 40,
-            "padding-inline-end": 40
-          },
-          "blocks": {
-            "text_BRFzjN": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h3>A Family Tradition of Bold, Fresh Flavor</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_tKxhbY": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p>Food has the power to connect generations. Whether it’s learning family recipes or the intense memories triggered by the flavors and aromas of our childhood.</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_BRFzjN",
-            "text_tKxhbY"
-          ]
+            "text": "<h2>Three blocks from the A train. A florist for the Heights since 1995.</h2>",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Primavera is a family-run shop, designing arrangements for births, weddings, sympathy, and every Sunday brunch in between. We're proud to be your neighborhood florist — and grateful for two decades of trust from Washington Heights, Inwood, and the Bronx.</p>",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "max_width": "narrow"
+          }
+        },
+        "cta": {
+          "type": "button",
+          "settings": {
+            "label": "Our story",
+            "link": "shopify://pages/our-story",
+            "style_class": "secondary"
+          }
         }
       },
-      "block_order": [
-        "video_NqWNaD",
-        "group_TEanyT"
-      ],
-      "name": "t:names.video_section",
+      "block_order": ["kicker", "headline", "body", "cta"],
       "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 6,
+        "color_scheme": "scheme-1",
         "section_width": "full-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-3",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
+        "media_position": "right",
+        "media_width": 50,
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "care_guides": {
+      "type": "featured-blog-posts",
+      "blocks": {
+        "title": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>From the workroom</h2>",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        }
+      },
+      "block_order": ["title"],
+      "settings": {
+        "blog": "care-and-stories",
+        "max_posts": 3,
+        "columns": 3,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 64,
+        "padding-block-end": 64
       }
     }
   },
   "order": [
-    "hero_RkimKJ",
-    "product_list_X8Q7bi",
-    "section_RhpYRt"
+    "hero",
+    "promise_marquee",
+    "shop_by_occasion",
+    "bestsellers",
+    "photo_confirmation",
+    "neighborhood_story",
+    "care_guides"
   ]
 }

@@ -1,0 +1,132 @@
+/*
+ * Primavera — Sympathy concierge page template
+ */{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "g": {
+          "type": "group",
+          "blocks": {
+            "kicker": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Sympathy concierge</p>",
+                "type_preset": "paragraph",
+                "font": "var(--font-accent--family)",
+                "case": "uppercase",
+                "letter_spacing": "0.16em",
+                "alignment": "center"
+              }
+            },
+            "headline": {
+              "type": "text",
+              "settings": {
+                "text": "<h1>Quiet care, when it matters most.</h1>",
+                "type_preset": "h1",
+                "font": "var(--font-heading--family)",
+                "case": "none",
+                "alignment": "center",
+                "wrap": "balance"
+              }
+            },
+            "sub": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Standing sprays, casket sprays, wreaths, and home arrangements — designed and delivered the same day to funeral homes across upper Manhattan and the Bronx.</p>",
+                "type_preset": "paragraph",
+                "alignment": "center",
+                "max_width": "narrow"
+              }
+            },
+            "cta": {
+              "type": "button",
+              "settings": {
+                "label": "Call (917) 770-1684",
+                "link": "tel:+19177701684",
+                "style_class": "primary"
+              }
+            }
+          },
+          "block_order": ["kicker", "headline", "sub", "cta"],
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment": "center",
+            "gap": 20,
+            "width": "custom",
+            "custom_width": 70,
+            "padding-block-start": 80,
+            "padding-block-end": 80
+          }
+        }
+      },
+      "block_order": ["g"],
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "scheme-3",
+        "horizontal_alignment": "center"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "page-content": { "type": "page-content", "settings": {} }
+      },
+      "block_order": ["page-content"],
+      "settings": { "gap": 32, "padding-block-start": 40, "padding-block-end": 40 }
+    },
+    "options": {
+      "type": "collection-list",
+      "blocks": {
+        "h": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Sympathy arrangements</h2>",
+            "type_preset": "h2",
+            "alignment": "center",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        }
+      },
+      "block_order": ["h"],
+      "settings": {
+        "collection_list": ["sympathy"],
+        "columns": 3,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 64
+      }
+    },
+    "funeral_home_partners": {
+      "type": "media-with-content",
+      "blocks": {
+        "h": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Funeral home partners</h2>",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "case": "none"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We have same-day fulfillment relationships with Ortiz Funeral Home, Schwartz Brothers, and others throughout upper Manhattan and the Bronx. Tell us which home and we'll coordinate timing and placement directly with the staff. No need to manage logistics during a hard week.</p>",
+            "type_preset": "paragraph"
+          }
+        }
+      },
+      "block_order": ["h", "body"],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "section_width": "full-width",
+        "media_position": "right",
+        "media_width": 50
+      }
+    }
+  },
+  "order": ["hero", "main", "options", "funeral_home_partners"]
+}
