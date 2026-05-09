@@ -1,0 +1,75 @@
+{% doc %}
+  Sticky same-day cutoff countdown banner.
+  Shows "Order in HH:MM:SS for same-day delivery" before 2pm ET, then
+  switches to "Same-day cutoff passed — order now for tomorrow" after.
+  Hides on Sundays after 4pm and Mondays before 9am (closed window).
+  Auto-dismissible per session.
+{% enddoc %}
+
+<div
+  id="sameday-countdown"
+  data-cutoff-hour="14"
+  data-tz-offset="-5"
+  style="
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: #1F3A2E;
+    color: #F8F4EE;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 13px;
+    font-family: var(--font-accent--family);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: none;
+  "
+>
+  <span id="sameday-countdown-text">Loading…</span>
+  <button
+    type="button"
+    onclick="document.getElementById('sameday-countdown').style.display='none';sessionStorage.setItem('sameday-dismissed','1')"
+    aria-label="Dismiss"
+    style="background:transparent;border:none;color:inherit;margin-left:12px;cursor:pointer;font-size:16px;line-height:1"
+  >×</button>
+</div>
+
+<script>
+  (function () {
+    if (sessionStorage.getItem('sameday-dismissed') === '1') return;
+    var el = document.getElementById('sameday-countdown');
+    var txt = document.getElementById('sameday-countdown-text');
+    if (!el || !txt) return;
+    el.style.display = 'block';
+
+    function tick() {
+      var now = new Date();
+      // Convert to ET (handles DST roughly via system tz; for production use a tz lib)
+      var nyOpts = { timeZone: 'America/New_York', hour12: false };
+      var hourET = parseInt(now.toLocaleString('en-US', Object.assign({}, nyOpts, { hour: 'numeric' })));
+      var minET = parseInt(now.toLocaleString('en-US', Object.assign({}, nyOpts, { minute: 'numeric' })));
+      var secET = parseInt(now.toLocaleString('en-US', Object.assign({}, nyOpts, { second: 'numeric' })));
+      var dayET = now.toLocaleString('en-US', Object.assign({}, nyOpts, { weekday: 'short' }));
+
+      // Closed window: Sun after 16:00 ET → Mon before 09:00 ET
+      if ((dayET === 'Sun' && hourET >= 16) || (dayET === 'Mon' && hourET < 9)) {
+        txt.textContent = 'Closed now — back Monday at 9am · Order online anytime';
+        return;
+      }
+
+      var cutoff = 14;
+      if (hourET < cutoff) {
+        var hLeft = cutoff - hourET - (minET > 0 || secET > 0 ? 1 : 0);
+        var mLeft = (60 - minET - (secET > 0 ? 1 : 0)) % 60;
+        var sLeft = (60 - secET) % 60;
+        var pad = function (n) { return n < 10 ? '0' + n : '' + n; };
+        txt.innerHTML = '⏱  Order in <strong>' + pad(hLeft) + ':' + pad(mLeft) + ':' + pad(sLeft) + '</strong> for same-day delivery';
+      } else {
+        txt.innerHTML = 'Same-day cutoff passed — <a href="/collections/all" style="color:inherit;text-decoration:underline">order now for tomorrow</a>';
+      }
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
