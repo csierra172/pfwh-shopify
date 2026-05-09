@@ -300,6 +300,76 @@
         "padding-block-end": 0
       }
     },
+    "trust_badges": {
+      "type": "marquee",
+      "blocks": {
+        "t1": { "type": "_announcement", "settings": { "text": "★★★★★ Hand-delivered in Washington Heights" } },
+        "t2": { "type": "_announcement", "settings": { "text": "★★★★★ Photo-confirmed before it leaves the shop" } },
+        "t3": { "type": "_announcement", "settings": { "text": "★★★★★ Same-day before 2pm · Free over $125" } },
+        "t4": { "type": "_announcement", "settings": { "text": "★★★★★ Locally designed since 1995" } },
+        "t5": { "type": "_announcement", "settings": { "text": "★★★★★ Sympathy concierge with funeral home partners" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "speed": 25,
+        "section_width": "full-width",
+        "padding-block-start": 14,
+        "padding-block-end": 14
+      }
+    },
+    "testimonials": {
+      "type": "media-with-content",
+      "blocks": {
+        "kicker": {
+          "type": "text",
+          "settings": {
+            "text": "<p>What neighbors say</p>",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "font": "var(--font-accent--family)",
+            "case": "uppercase",
+            "letter_spacing": "0.16em"
+          }
+        },
+        "quote1": {
+          "type": "text",
+          "settings": {
+            "text": "<blockquote><p>\"Beautiful arrangement, exactly like the photo. The driver showed up within the window, even called ahead. Will absolutely use again for sympathy needs.\"</p><p style=\"font-size:0.85em;opacity:0.7;margin-top:8px\">— Maria R., 10033 · Google Review</p></blockquote>",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "max_width": "narrow"
+          }
+        },
+        "quote2": {
+          "type": "text",
+          "settings": {
+            "text": "<blockquote><p>\"Last-minute Mother's Day order at noon, delivered to my mom in Inwood by 4pm. The bouquet was bigger than I expected. Photo email was a nice touch.\"</p><p style=\"font-size:0.85em;opacity:0.7;margin-top:8px\">— David S., Mother's Day 2025 · Google Review</p></blockquote>",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "max_width": "narrow"
+          }
+        },
+        "quote3": {
+          "type": "text",
+          "settings": {
+            "text": "<blockquote><p>\"They handled a difficult sympathy delivery to a funeral home with so much care. Coordinated with the staff directly. Lifted a huge weight off our family.\"</p><p style=\"font-size:0.85em;opacity:0.7;margin-top:8px\">— Anonymous · Google Review</p></blockquote>",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "max_width": "narrow"
+          }
+        }
+      },
+      "block_order": ["kicker", "quote1", "quote2", "quote3"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "media_position": "right",
+        "media_width": 40,
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
+    },
     "care_guides": {
       "type": "featured-blog-posts",
       "blocks": {
@@ -328,10 +398,12 @@
   },
   "order": [
     "hero",
+    "trust_badges",
     "promise_marquee",
     "shop_by_occasion",
     "bestsellers",
     "photo_confirmation",
+    "testimonials",
     "neighborhood_story",
     "care_guides"
   ]
