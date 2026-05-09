@@ -1,0 +1,108 @@
+{% doc %}
+  Primavera Flowers — Schema.org JSON-LD for SERP rich results.
+  Renders Florist (LocalBusiness) on the homepage, Product on product pages,
+  Article on blog posts, BreadcrumbList everywhere.
+{% enddoc %}
+
+{%- liquid
+  assign canonical_origin = request.origin | default: 'https://primaveraflowersnyc.com'
+  assign business_name = shop.name | default: 'Primavera Flowers'
+  assign telephone = '+1-917-770-1684'
+  assign street = '463 Fort Washington Ave'
+  assign locality = 'New York'
+  assign region = 'NY'
+  assign postal = '10033'
+  assign service_zips = '10031,10032,10033,10034,10039,10040,10463,10468,10469' | split: ','
+-%}
+
+{%- if request.page_type == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Florist",
+      "@id": "{{ canonical_origin }}/#florist",
+      "name": "{{ business_name | escape }}",
+      "image": "{{ canonical_origin }}{%- if settings.social_image -%}{{ settings.social_image | image_url: width: 1200 }}{%- endif -%}",
+      "url": "{{ canonical_origin }}",
+      "telephone": "{{ telephone }}",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ street }}",
+        "addressLocality": "{{ locality }}",
+        "addressRegion": "{{ region }}",
+        "postalCode": "{{ postal }}",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.8489,
+        "longitude": -73.9352
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "16:00" }
+      ],
+      "areaServed": [
+        {%- for zip in service_zips -%}
+          { "@type": "PostalCodeSpecification", "postalCode": "{{ zip | strip }}", "addressCountry": "US" }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Same-day flower delivery",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Same-day delivery (order by 2pm)" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sympathy & funeral arrangements" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding & event florals" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Weekly subscription bouquets" } }
+        ]
+      },
+      "sameAs": [
+        {%- if settings.social_instagram_link != blank -%}"{{ settings.social_instagram_link }}"{%- endif -%}
+        {%- if settings.social_facebook_link != blank -%},"{{ settings.social_facebook_link }}"{%- endif -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{%- if request.page_type == 'product' and product -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      "description": {{ product.description | strip_html | truncatewords: 60 | json }},
+      "image": [
+        {%- for image in product.images limit: 5 -%}
+          "https:{{ image | image_url: width: 1200 }}"{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
+      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      "brand": { "@type": "Brand", "name": "{{ business_name | escape }}" },
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ canonical_origin }}{{ product.url }}",
+        "priceCurrency": "{{ cart.currency.iso_code }}",
+        "price": {{ product.selected_or_first_available_variant.price | money_without_currency | json }},
+        "availability": "{%- if product.available -%}https://schema.org/InStock{%- else -%}https://schema.org/OutOfStock{%- endif -%}",
+        "seller": { "@type": "Organization", "name": "{{ business_name | escape }}" }
+      }
+    }
+  </script>
+{%- endif -%}
+
+{%- if request.page_type == 'article' and article -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": {{ article.title | json }},
+      "image": "https:{{ article.image | image_url: width: 1200 }}",
+      "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+      "author": { "@type": "Person", "name": {{ article.author | json }} },
+      "publisher": { "@type": "Organization", "name": "{{ business_name | escape }}" }
+    }
+  </script>
+{%- endif -%}
