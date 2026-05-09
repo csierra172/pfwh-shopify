@@ -64,7 +64,17 @@
       {{ logo_image }}
     </div>
   {% else %}
-    {% render 'jumbo-text', text: shop.name %}
+    {% comment %} Primavera SVG fallback when no logo uploaded yet {% endcomment %}
+    <div class="logo-block__image-wrapper logo-block__svg-fallback">
+      <img
+        src="{{ 'logo-primavera.svg' | asset_url }}"
+        alt="{{ shop.name | default: 'Primavera Flowers' }}"
+        class="logo-block__image"
+        loading="eager"
+        width="120"
+        height="120"
+      >
+    </div>
   {% endif %}
 </div>
 

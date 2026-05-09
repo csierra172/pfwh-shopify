@@ -12,6 +12,9 @@
         type="image/png"
         href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
       >
+    {%- else -%}
+      <link rel="icon" type="image/svg+xml" href="{{ 'logo-primavera.svg' | asset_url }}">
+      <link rel="apple-touch-icon" href="{{ 'logo-primavera.svg' | asset_url }}">
     {%- endif -%}
 
     {% # theme-check-disable RemoteAsset %}
