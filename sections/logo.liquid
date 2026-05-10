@@ -69,7 +69,11 @@
         {{ logo_image }}
       </div>
     {% else %}
-      {% render 'jumbo-text', text: shop.name, block_settings: section.settings %}
+      {%- comment -%}
+        Display the brand name only (no city tag) — overrides Shopify shop.name
+        which carries the legal entity name "Primavera Flowers Washington Heights".
+      {%- endcomment -%}
+      {% render 'jumbo-text', text: 'Primavera Flowers', block_settings: section.settings %}
     {% endif %}
   </div>
 </div>

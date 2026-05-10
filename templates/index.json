@@ -3,12 +3,18 @@
     "hero": {
       "type": "primavera-hero",
       "settings": {
-        "eyebrow": "★ 4.9 on Google · Hablamos español",
-        "headline": "<h1>Your <em>real, local</em> Washington Heights florist.</h1>",
-        "lede": "Hand-tied on Fort Washington since 2004. Walked to your door same day. We text you a photo before it leaves the shop.",
+        "eyebrow": "Hand-tied. Hand-delivered. Today.",
+        "headline": "<h1>Real flowers, <em>built today</em>, walked to the door.</h1>",
+        "lede": "We hand-tie every bouquet at the bench, text you a photo before it leaves the shop, and walk it over the same day. No wire-service swaps. No closest-available. Just the bouquet on your screen, in your person's hands.",
         "cta_primary_label": "Send flowers today →",
-        "cta_secondary_label": "For Mami, this Sunday",
-        "show_meta_strip": true
+        "cta_secondary_label": "Shop bestsellers",
+        "cta_secondary_link": "/collections/bestsellers",
+        "review_line": "4.9 on Google · 200+ verified reviews",
+        "review_link": "https://www.google.com/search?q=Primavera+Flowers+NYC+Reviews",
+        "show_meta_strip": true,
+        "tag_label": "This week",
+        "tag_name": "Pink Garden Roses",
+        "tag_price": "From $69 · same-day"
       }
     },
     "promise": {
