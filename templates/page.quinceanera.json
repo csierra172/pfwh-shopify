@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "primavera-landing-page",
+      "settings": {
+        "eyebrow": "Quinceañera flowers · Hablamos español",
+        "headline": "<h1>Flores para tu <em>Quinceañera</em>.</h1>",
+        "lede": "Centerpieces, corsages, the bouquet for the court of honor, the church arch at La Milagrosa. Custom-built at our shop in Washington Heights. Familia Guzmán since 2004. Llámanos al (917) 770-1684 para una cotización.",
+        "cta_primary_label": "Get a quote (24h)",
+        "cta_primary_link": "/pages/contact",
+        "cta_secondary_label": "Llámanos en español",
+        "cta_secondary_link": "tel:+19177701684",
+        "show_trust_strip": true,
+        "body_html": "<h2>What we build for your <em>quince</em>.</h2><ul><li><strong>The bouquet for the quinceañera.</strong> Built around her dress color and her vision. Roses, peonies in season, ranunculus, lisianthus. Hand-tied with satin ribbon.</li><li><strong>Court of honor bouquets.</strong> Smaller versions of the main bouquet for damas. Color-matched.</li><li><strong>Centerpieces.</strong> For the salón. Tall for the head table, low for guest tables. We coordinate with your venue's table sizes.</li><li><strong>The church arch.</strong> We've built arches at La Milagrosa, Holy Rosary, and most upper-Manhattan parishes. We coordinate with the church on setup time.</li><li><strong>Corsages and boutonnières.</strong> For padrinos, madrinas, parents, chambelán. Wrist or pin.</li><li><strong>Crown floral.</strong> Half-crown or full circlet for the quinceañera. Real flowers. Built to last the day.</li></ul><h2>How we <em>plan</em> with you.</h2><ol><li><strong>Book 4-6 weeks ahead.</strong> Email us your date, venue, and Pinterest board (or just describe the vibe). We send a 30-minute consultation invite.</li><li><strong>Color and budget.</strong> We work to your dress color and your budget, not the other way around. Most quinces with us land between $1,200 and $4,500 total floral.</li><li><strong>50% deposit</strong> at booking. Balance the week of the event.</li><li><strong>Day-of coordination.</strong> Our team delivers the church arch in the morning, the salón centerpieces in the afternoon, and the personal florals (bouquet, crown, corsages) directly to your home.</li><li><strong>Hablamos español.</strong> Toda la familia. La consulta puede ser en español si lo prefieres.</li></ol><h2>Why <em>Primavera</em> for your quince.</h2><p>Most NYC florists treat quinceañeras as a side project. We treat them as a flagship. Our owners' familia have been part of the Washington Heights, Inwood, and Bronx Latino community for two decades. We understand the importance of the church arch (not optional), the meaning of pink vs. coral vs. blanco para la pureza, and the difference between a quince and a sweet sixteen. We've done over a hundred of these. We know which churches need the arch in by 9 AM and which salones won't let you set up before 4 PM.</p>",
+        "faq_heading": "<h2>Quinceañera <em>questions</em>.</h2>",
+        "faq_html": "<details><summary>¿Cuánto cuesta una quinceañera completa con ustedes?</summary><p>La mayoría de las quinces con Primavera salen entre $1,200 y $4,500 dependiendo del tamaño del salón, si quieres arco para la iglesia, y cuántas damas tienes. Mándanos un mensaje con tu fecha y presupuesto y te mandamos un cotización en 24 horas.</p></details><details><summary>How far in advance should I book?</summary><p>4-6 weeks ahead is ideal. We can do 2-3 weeks if it's a smaller event. Less than 2 weeks we can still help but only the personal florals (bouquet, crown, corsages), no centerpieces or arch.</p></details><details><summary>Do you deliver to the church and the salón both?</summary><p>Yes. Standard for us. We deliver the church arch in the morning, set up at the salón mid-afternoon, and drop the bouquet and crown to your home before you leave for the church.</p></details><details><summary>What churches and venues have you worked at?</summary><p>La Milagrosa, Holy Rosary, Incarnation, St. Elizabeth's, Our Lady Queen of Martyrs. For salones, we've worked El Embajador, Mi Familia, Aces, Marina del Rey (Bronx), and most upper-Manhattan halls. If your venue isn't listed, we'll go scout it.</p></details><details><summary>¿Hablan español?</summary><p>Sí. Toda la consulta y la planificación se puede hacer en español. Llámanos al (917) 770-1684. <a href='/pages/florista-washington-heights'>Ver más en español</a>.</p></details><details><summary>Can I see examples?</summary><p>Yes. Stop by the shop at 463 Fort Washington Ave. We have a portfolio book of past quinces and we can show you stems in person. Or follow @primaveraflowersnyc on Instagram.</p></details>",
+        "final_headline": "<h2>Cotización en <em>24 horas</em>.</h2>",
+        "final_lede": "Mándanos tu fecha, tu salón, y tu visión. Te respondemos en español o inglés en un día.",
+        "final_cta_label": "Pedir cotización →",
+        "final_cta_link": "/pages/contact"
+      }
+    }
+  },
+  "order": ["main"]
+}

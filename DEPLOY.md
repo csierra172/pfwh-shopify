@@ -63,6 +63,11 @@ Create these pages (Online Store → Pages → Add page) and pick the matching t
 | FAQ | faq | page.faq |
 | Florista Washington Heights | florista-washington-heights | page.es |
 | Subscriptions | subscriptions | page.subscriptions |
+| Roses | roses | page.roses |
+| Flower Delivery Washington Heights | flower-delivery-washington-heights | page.flower-delivery-washington-heights |
+| Columbia Presbyterian Hospital Flowers | columbia-presbyterian-hospital-flowers | page.columbia-presbyterian-hospital-flowers |
+| Quinceañera Flowers | quinceanera | page.quinceanera |
+| Día de las Madres | dia-de-las-madres | page.dia-de-las-madres |
 
 ## Step 4 — App stack (cost-prioritized)
 

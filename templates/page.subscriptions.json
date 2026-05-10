@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "primavera_subscriptions": {
+      "type": "primavera-subscriptions"
+    }
+  },
+  "order": [
+    "primavera_subscriptions"
+  ]
+}

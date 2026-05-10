@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "main": {
+      "type": "primavera-landing-page",
+      "blocks": {
+        "card_pink": {
+          "type": "product_card",
+          "settings": {
+            "label": "Bestseller",
+            "name": "Pink Garden Roses",
+            "price": "From $69",
+            "description": "Soft blush garden roses with ranunculus and dusty miller. The most popular gift in the shop.",
+            "cta_label": "Send pink roses →",
+            "cta_link": "/products/pink-garden-roses"
+          }
+        },
+        "card_red": {
+          "type": "product_card",
+          "settings": {
+            "label": "Classic",
+            "name": "Classic Red Roses",
+            "price": "From $69",
+            "description": "A dozen long-stem red roses, hand-tied with seasonal greenery and wrapped in our signature kraft paper.",
+            "cta_label": "Send red roses →",
+            "cta_link": "/products/red-roses"
+          }
+        },
+        "card_white": {
+          "type": "product_card",
+          "settings": {
+            "label": "Quiet, soft",
+            "name": "White Roses & Eucalyptus",
+            "price": "From $69",
+            "description": "White roses with seeded eucalyptus and silver dollar. Designed for weddings, sympathy, and quiet celebrations.",
+            "cta_label": "Send white roses →",
+            "cta_link": "/products/white-roses"
+          }
+        },
+        "card_rainbow": {
+          "type": "product_card",
+          "settings": {
+            "label": "For big occasions",
+            "name": "Rainbow Long-Stem Roses",
+            "price": "From $79",
+            "description": "A mixed dozen of long-stem roses in white, peach, blush, and crimson. Built for big-occasion delivery.",
+            "cta_label": "Send rainbow roses →",
+            "cta_link": "/products/rainbow-roses"
+          }
+        }
+      },
+      "block_order": ["card_pink", "card_red", "card_white", "card_rainbow"],
+      "settings": {
+        "eyebrow": "Hand-tied roses, walked to your door",
+        "headline": "<h1>Roses delivered <em>same day</em> in NYC.</h1>",
+        "lede": "A dozen pink garden roses on the kitchen counter by sundown. Classic red for the apology that matters. White roses and eucalyptus for the wedding, the wake, the quiet moment. Cut this morning at the 28th Street market. Tied at the bench at 463 Fort Washington. Walked to the door before five.",
+        "cta_primary_label": "Shop roses",
+        "cta_primary_link": "/collections/roses",
+        "cta_secondary_label": "Subscribe to weekly roses",
+        "cta_secondary_link": "/pages/subscriptions",
+        "show_trust_strip": true,
+        "body_html": "<h2>Why <em>real</em> roses, hand-delivered.</h2><p>Most rose-delivery sites in NYC are 1-800 wire services. Your order gets routed to whoever's closest, the bouquet you saw in the photo isn't what arrives, and there's no recourse when something looks off. We're the opposite of that. Primavera is a real shop on the corner of 187th and Fort Washington in Washington Heights. Our buyer rides the A train down to the 28th Street flower market most mornings. The roses you get were on a Dutch grower's truck two days ago and on our bench this morning.</p><h2>Choose by <em>moment</em>.</h2><p><strong>Pink garden roses.</strong> The open ruffled face, not the tight supermarket bud. For birthdays, just-because Tuesdays, the new neighbor across the hall. Our most-ordered SKU.</p><p><strong>Classic red roses.</strong> A dozen long-stem, hand-tied with kraft paper and natural raffia. For anniversaries, big apologies, the date that matters. Same-day to any door in 10032, 10033, 10034, 10040.</p><p><strong>White roses with eucalyptus.</strong> Quieter, more architectural. Designed for sympathy delivery to funeral homes, for the wedding hand-off, and for anniversaries where pink feels wrong.</p><p><strong>Rainbow long-stem roses.</strong> A mixed dozen in white, peach, blush, and crimson. Built for the big occasion, the front desk, the gift that has to land.</p><h2>How rose delivery <em>works</em>.</h2><ol><li>Order by 2:00 PM Monday through Saturday for same-day hand-delivery in Washington Heights, Hudson Heights, Inwood (10032, 10033, 10034, 10040).</li><li>We tie your bouquet at the bench, photograph it, and email or text you the picture before it leaves the shop.</li><li>If anything looks off, reply to the photo. We remake it before the driver heads out.</li><li>Our own driver walks or drives the bouquet to your recipient's door, usually within three hours.</li></ol><h2>Want roses <em>every Friday</em>?</h2><p>Our subscription tiers (Casa, Familia, Estudio) include rose deliveries as part of the designer's choice rotation. Pause or skip any week from your phone. Free vase with your first delivery. <a href='/pages/subscriptions'>See subscription tiers</a>.</p>",
+        "cards_heading": "<h2>This week's <em>roses</em>.</h2>",
+        "faq_heading": "<h2>Rose delivery <em>questions</em>.</h2>",
+        "faq_html": "<details><summary>How fresh are the roses?</summary><p>Cut at the 28th Street market the morning we send them. Conditioned in the cooler at the shop. Tied at the bench within hours of delivery. Most rose-delivery sites ship from out of state. We don't.</p></details><details><summary>What's the same-day cutoff?</summary><p>2:00 PM Monday through Saturday. Order before then for hand-delivery the same afternoon in 10032, 10033, 10034, 10040. After 2 PM, your roses ship the next morning.</p></details><details><summary>Do you do rose subscriptions?</summary><p>Yes. Our Familia tier ($75 per delivery, weekly) includes seasonal roses on rotation. <a href='/pages/subscriptions'>See subscription tiers</a>.</p></details><details><summary>How long do they last?</summary><p>Seven to ten days with a fresh trim every other day and clean water. Garden roses last shorter than supermarket roses but smell better and look more alive. We include a flower food packet.</p></details><details><summary>Can I pick the color?</summary><p>Yes. Pink, red, white, and rainbow are always on the bench. For specialty colors (peach, lavender, yellow, two-tone) call the shop at (917) 770-1684 and we'll tell you what's at the market this week.</p></details><details><summary>Do you deliver outside Washington Heights?</summary><p>Yes. Same-day across upper Manhattan and the Bronx for $15 to $25 (free over $125 in Manhattan). Outside that, we ship same-day to the five boroughs. Order by 2 PM.</p></details>",
+        "final_headline": "<h2>Send roses <em>today</em>.</h2>",
+        "final_lede": "Hand-tied at the bench. Photo before it leaves. Walked to the door by sundown.",
+        "final_cta_label": "Shop all roses →",
+        "final_cta_link": "/collections/roses"
+      }
+    }
+  },
+  "order": ["main"]
+}

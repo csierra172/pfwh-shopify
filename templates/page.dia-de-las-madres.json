@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "primavera-landing-page",
+      "settings": {
+        "eyebrow": "Día de las Madres · 10 de mayo · Hablamos español",
+        "headline": "<h1>Flores para <em>Mami</em>, entregadas el mismo día.</h1>",
+        "lede": "El 10 de mayo, Mami abre la puerta y ahí están sus flores. Hechas a mano en la 187 con Fort Washington. Llevadas a su puerta por nuestro propio chofer. Tarjeta bilingüe escrita a mano. Pide antes de las 2 PM del sábado para entrega el domingo en la mañana.",
+        "cta_primary_label": "Comprar para Mami →",
+        "cta_primary_link": "/products/dia-de-las-madres-special",
+        "cta_secondary_label": "See in English",
+        "cta_secondary_link": "/",
+        "show_trust_strip": true,
+        "body_html": "<h2>El <em>Día de las Madres</em>, no Mother's Day.</h2><p>El 10 de mayo es el Día de las Madres en México, Centroamérica, y para muchas familias dominicanas y puertorriqueñas en Washington Heights. Es diferente del Mother's Day americano (el segundo domingo de mayo), aunque a veces caen el mismo fin de semana. Para nosotros, son dos celebraciones, no una. Hacemos arreglos especiales para las dos.</p><h2>Para Mami, qué le mandamos.</h2><ul><li><strong>El especial Día de las Madres.</strong> Peonías rosadas en temporada, rosas blush, ranúnculo blanco, lisianthus rosado. Envuelto en kraft con cinta de satín. Tarjeta bilingüe pre-impresa <em>Feliz Día de las Madres</em>, con espacio para tu nota a mano.</li><li><strong>Rosas clásicas.</strong> Una docena de rosas de jardín rosadas o rojas. La forma más segura de hacerla sonreír.</li><li><strong>Ramo de temporada.</strong> Tulipanes en abril-mayo, peonías en mayo-junio, lo que esté más fresco en el mercado de la 28.</li><li><strong>Plantas duraderas.</strong> Una orquídea blanca dura 6-10 semanas. Una buena opción si Mami prefiere algo que no se acabe el lunes.</li></ul><h2>Cómo <em>funciona</em> la entrega.</h2><ol><li>Pide antes de las 2 PM del sábado para entrega el domingo en la mañana.</li><li>Si Mami vive en 10032, 10033, 10034, o 10040, entregamos a pie. Sin costo extra.</li><li>Si vive en otro código postal de Manhattan o el Bronx, también entregamos el mismo día por una cuota pequeña.</li><li>Te mandamos foto del ramo antes de salir de la tienda. Si algo no está bien, lo hacemos otra vez.</li><li>Llamamos al timbre. Si no abre, le dejamos las flores con el portero o en el vestíbulo y le mandamos foto de dónde quedaron.</li></ol><h2>Tarjeta <em>bilingüe</em>, gratis.</h2><p>Cada arreglo viene con una tarjeta hecha a mano. Tú nos dices el mensaje (en español, en inglés, o las dos), nosotros lo escribimos a mano. <em>Para Mami, con todo mi cariño.</em> O <em>Mom, you're my favorite person.</em> O las dos cosas en la misma tarjeta, una por cada lado.</p><h2>Para los hijos que no <em>viven</em> aquí.</h2><p>Muchos de nuestros pedidos del Día de las Madres vienen de hijos en California, Florida, o República Dominicana mandando flores a su mamá en WaHi. Pide en línea, danos la dirección, nosotros caminamos. Te mandamos foto antes y después de la entrega para que sepas que llegó.</p>",
+        "faq_heading": "<h2>Preguntas <em>frecuentes</em>.</h2>",
+        "faq_html": "<details><summary>¿Hasta cuándo puedo pedir?</summary><p>2 PM del sábado para entrega el domingo en la mañana. Después de eso, todavía podemos entregar el domingo pero el horario depende de la ruta del chofer. Mejor pedir temprano.</p></details><details><summary>¿Entregan en domingo?</summary><p>Sí, solo el fin de semana del Día de las Madres y del Mother's Day. El resto del año la tienda está cerrada los domingos en la tarde.</p></details><details><summary>Vivo en California, ¿pueden entregar a mi mamá en WaHi?</summary><p>Sí. Pide en línea, danos la dirección de Mami, te mandamos foto del ramo antes de salir y foto de la entrega cuando llega. Lo hacemos cada año para muchas familias.</p></details><details><summary>¿Cuánto cuestan las flores para Día de las Madres?</summary><p>Desde $48 (un ramo pequeño) hasta $148 (lush, el tamaño que necesita los dos brazos). El especial Día de las Madres es $85. Las rosas clásicas $69. Lo que sea para tu presupuesto.</p></details><details><summary>¿Tienen rosas?</summary><p>Sí. Rosas rosadas, rojas, blancas, y arcoíris. <a href='/pages/roses'>Ver el menú de rosas</a>.</p></details><details><summary>¿Pueden incluir un peluche o chocolates?</summary><p>Sí. Tenemos chocolates de un chocolatero local ($28), un osito de peluche ($24), una vela ($38), y globos mylar ($12). Los puedes agregar al checkout.</p></details>",
+        "final_headline": "<h2>Para <em>Mami</em>, este domingo.</h2>",
+        "final_lede": "Pide antes de las 2 PM del sábado. Le entregamos a su puerta el domingo en la mañana, con una tarjeta en tu letra (o la nuestra).",
+        "final_cta_label": "Comprar Día de las Madres →",
+        "final_cta_link": "/products/dia-de-las-madres-special"
+      }
+    }
+  },
+  "order": ["main"]
+}

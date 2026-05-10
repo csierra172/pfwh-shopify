@@ -32,7 +32,7 @@
             "sub": {
               "type": "text",
               "settings": {
-                "text": "<p>Familia Sierra · 463 Fort Washington Ave · desde 2004. Tu florista de verdad — no un servicio 1-800 que envía tu pedido desde tres estados. Pide antes de las 2 PM y caminamos tu ramo a tu puerta el mismo día en Washington Heights, Hudson Heights e Inwood (10032, 10033, 10034 y 10040). Te mandamos una foto del ramo antes de que salga. Si algo no está bien, lo hacemos otra vez.</p>",
+                "text": "<p>Familia Guzmán · 463 Fort Washington Ave · desde 2004. Tu florista de verdad. No un servicio 1-800 que envía tu pedido desde tres estados. Pide antes de las 2 PM y caminamos tu ramo a tu puerta el mismo día en Washington Heights, Hudson Heights e Inwood (10032, 10033, 10034 y 10040). Te mandamos una foto del ramo antes de que salga. Si algo no está bien, lo hacemos otra vez.</p>",
                 "type_preset": "paragraph",
                 "max_width": "narrow"
               }
@@ -109,7 +109,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p>Cada arreglo lo fotografiamos antes de que salga de la tienda en la 187 con Fort Washington. Sabes exactamente qué llega a la puerta de Mami — sin sorpresas, sin sustitutos, sin promesas vacías. Y si prefieres, pasa por la tienda y te lo armamos al momento.</p>",
+            "text": "<p>Cada arreglo lo fotografiamos antes de que salga de la tienda en la 187 con Fort Washington. Sabes exactamente qué llega a la puerta de Mami. Sin sorpresas, sin sustitutos, sin promesas vacías. Y si prefieres, pasa por la tienda y te lo armamos al momento.</p>",
             "type_preset": "paragraph"
           }
         }

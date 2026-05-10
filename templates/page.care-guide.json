@@ -14,8 +14,8 @@
     "day1": {
       "type": "media-with-content",
       "blocks": {
-        "h": { "type": "text", "settings": { "text": "<h2>Day 1 — first 10 minutes home</h2>", "type_preset": "h2", "font": "var(--font-heading--family)", "case": "none" } },
-        "body": { "type": "text", "settings": { "text": "<ol><li>Untie the bouquet right when you get it home.</li><li>Trim each stem at a 45° angle, ~1 inch off, with a sharp knife or pruning shears (kitchen scissors crush the stem).</li><li>Strip any leaves below the waterline — leaves underwater rot.</li><li>Fill a clean vase 2/3 full with cold water + the flower food packet we included.</li></ol>", "type_preset": "paragraph" } }
+        "h": { "type": "text", "settings": { "text": "<h2>Day 1. First 10 minutes home.</h2>", "type_preset": "h2", "font": "var(--font-heading--family)", "case": "none" } },
+        "body": { "type": "text", "settings": { "text": "<ol><li>Untie the bouquet right when you get it home.</li><li>Trim each stem at a 45° angle, about 1 inch off, with a sharp knife or pruning shears (kitchen scissors crush the stem).</li><li>Strip any leaves below the waterline. Leaves underwater rot.</li><li>Fill a clean vase 2/3 full with cold water plus the flower food packet we included.</li></ol>", "type_preset": "paragraph" } }
       },
       "block_order": ["h", "body"],
       "settings": { "color_scheme": "scheme-1", "section_width": "page-width", "media_position": "right", "media_width": 40, "padding-block-start": 40, "padding-block-end": 40 }
@@ -24,7 +24,7 @@
       "type": "media-with-content",
       "blocks": {
         "h": { "type": "text", "settings": { "text": "<h2>Every 2 days</h2>", "type_preset": "h2", "font": "var(--font-heading--family)", "case": "none" } },
-        "body": { "type": "text", "settings": { "text": "<ul><li>Re-cut stems, dump and refill the water.</li><li>Pull any browning blooms — they release ethylene gas that kills the rest.</li></ul>", "type_preset": "paragraph" } }
+        "body": { "type": "text", "settings": { "text": "<ul><li>Re-cut stems, dump and refill the water.</li><li>Pull any browning blooms. They release ethylene gas that kills the rest.</li></ul>", "type_preset": "paragraph" } }
       },
       "block_order": ["h", "body"],
       "settings": { "color_scheme": "scheme-2", "section_width": "page-width", "media_position": "left", "media_width": 40, "padding-block-start": 40, "padding-block-end": 40 }
@@ -33,7 +33,7 @@
       "type": "media-with-content",
       "blocks": {
         "h": { "type": "text", "settings": { "text": "<h2>Where to put them</h2>", "type_preset": "h2", "font": "var(--font-heading--family)", "case": "none" } },
-        "body": { "type": "text", "settings": { "text": "<ul><li>Out of direct sunlight</li><li>Away from radiators, AC vents, and ripe fruit</li><li>Cool overnight if possible (some pros put bouquets in the fridge — yes really)</li></ul>", "type_preset": "paragraph" } }
+        "body": { "type": "text", "settings": { "text": "<ul><li>Out of direct sunlight</li><li>Away from radiators, AC vents, and ripe fruit</li><li>Cool overnight if possible (some pros put bouquets in the fridge, yes really)</li></ul>", "type_preset": "paragraph" } }
       },
       "block_order": ["h", "body"],
       "settings": { "color_scheme": "scheme-3", "section_width": "full-width", "media_position": "right", "media_width": 50, "padding-block-start": 48, "padding-block-end": 48 }

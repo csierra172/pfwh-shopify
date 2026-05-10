@@ -73,7 +73,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p>Primavera is the family florist on the corner of 187th and Fort Washington — the same shop that's been here since 2004. Every arrangement is built at the bench, photographed before it leaves, and hand-walked or driven across Washington Heights, Hudson Heights, and Inwood. We're bilingual. We know the doormen on Pinehurst. We've sent flowers to every funeral home and every school auditorium in the neighborhood. When you order from Primavera, you're talking to the people making your flowers — not a 1-800 middleman routing your order three states away. Real florist. Real shop. Real hands. Hablamos español.</p>",
+            "text": "<p>Primavera is the family florist on the corner of 187th and Fort Washington. The same shop that's been here since 2004. Every arrangement is built at the bench, photographed before it leaves, and hand-walked or driven across Washington Heights, Hudson Heights, and Inwood. We're bilingual. We know the doormen on Pinehurst. We've sent flowers to every funeral home and every school auditorium in the neighborhood. When you order from Primavera, you're talking to the people making your flowers, not a 1-800 middleman routing your order three states away. Real florist. Real shop. Real hands. Hablamos español. Familia Guzmán since 2004.</p>",
             "type_preset": "paragraph"
           }
         }

@@ -1,0 +1,415 @@
+{% comment %}
+  Primavera Flowers, Subscriptions PDP.
+  Full funnel destination page for the three subscription tiers (Casa, Familia,
+  Estudio) plus a mid-page roses cross-sell. Voice rules: no em dashes, no
+  hyphens as connectors, simple, sharp.
+  Page handle: subscriptions  /  Template: page.subscriptions.json
+{% endcomment %}
+
+<style>
+  .ps {
+    --sage:        #a8b59a;
+    --sage-deep:   #7a8a6f;
+    --sage-soft:   #c8d2bc;
+    --cream:       #f5efe2;
+    --cream-2:     #ece4d2;
+    --paper:       #faf6ec;
+    --ink:         #2a2620;
+    --ink-2:       #5a544c;
+    --ink-3:       #8a847c;
+    --rose:        #d39283;
+    --rose-deep:   #b8705d;
+    --line:        #e2dac7;
+    --ps-serif:    "DM Serif Display", "Times New Roman", serif;
+    --ps-sans:     "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--cream); color: var(--ink); font-family: var(--ps-sans);
+    font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  .ps * { box-sizing: border-box; margin: 0; padding: 0; }
+  .ps a { color: inherit; text-decoration: none; }
+  .ps img { display: block; max-width: 100%; }
+
+  /* Hero */
+  .ps-hero { padding: 88px 40px 56px; text-align: center; max-width: 940px; margin: 0 auto; }
+  .ps-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 18px; display: inline-block; }
+  .ps-hero h1 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(40px, 5vw, 68px); line-height: 1.05; color: var(--ink); margin-bottom: 22px; }
+  .ps-hero h1 em { font-style: italic; color: var(--sage-deep); }
+  .ps-hero .ps-lede { font-size: 18px; line-height: 1.65; color: var(--ink-2); max-width: 640px; margin: 0 auto 32px; }
+  .ps-hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .ps-btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 28px; border-radius: 6px; font-size: 15px; font-weight: 600; transition: all .15s; border: none; cursor: pointer; background: var(--sage-deep); color: var(--cream); text-decoration: none; }
+  .ps-btn:hover { background: var(--ink); }
+  .ps-btn-ghost { background: transparent; color: var(--sage-deep); border: 1.5px solid var(--sage-deep); padding: 13.5px 26.5px; }
+  .ps-btn-ghost:hover { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+
+  /* Trust strip */
+  .ps-trust { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 36px 40px; }
+  .ps-trust-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .ps-trust-item { text-align: center; }
+  .ps-trust-item .ps-t-label { font-family: var(--ps-serif); font-size: 19px; color: var(--ink); margin-bottom: 4px; line-height: 1.2; }
+  .ps-trust-item .ps-t-sub { font-size: 13px; color: var(--ink-3); }
+
+  /* What's on the bench */
+  .ps-bench { padding: 72px 40px; max-width: 1100px; margin: 0 auto; text-align: center; }
+  .ps-bench h2 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(32px, 4vw, 46px); line-height: 1.1; color: var(--ink); margin-bottom: 14px; }
+  .ps-bench h2 em { font-style: italic; color: var(--sage-deep); }
+  .ps-bench .ps-sub { font-size: 16px; color: var(--ink-2); max-width: 580px; margin: 0 auto 36px; line-height: 1.6; }
+  .ps-bench-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .ps-bench-card { aspect-ratio: 4/5; background: var(--cream-2); border-radius: 8px; overflow: hidden; position: relative; }
+  .ps-bench-card img { width: 100%; height: 100%; object-fit: cover; }
+  .ps-bench-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.55)); }
+  .ps-bench-tag { position: absolute; bottom: 16px; left: 16px; right: 16px; color: var(--cream); z-index: 1; text-align: left; }
+  .ps-bench-tag .ps-bt-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.8; font-weight: 600; }
+  .ps-bench-tag .ps-bt-name { font-family: var(--ps-serif); font-size: 22px; line-height: 1.15; margin-top: 4px; }
+
+  /* Tiers */
+  .ps-tiers { padding: 16px 40px 80px; }
+  .ps-tiers-head { max-width: 880px; margin: 0 auto 44px; text-align: center; }
+  .ps-tiers-head h2 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(34px, 4vw, 50px); line-height: 1.1; color: var(--ink); margin-bottom: 14px; }
+  .ps-tiers-head h2 em { font-style: italic; color: var(--sage-deep); }
+  .ps-tiers-head p { font-size: 16px; color: var(--ink-2); line-height: 1.6; }
+  .ps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1200px; margin: 0 auto; align-items: stretch; }
+  .ps-card { background: var(--paper); padding: 40px 30px; border-radius: 8px; border: 1px solid var(--line); display: flex; flex-direction: column; min-height: 480px; position: relative; }
+  .ps-card.ps-featured { background: var(--sage-deep); color: var(--cream); border-color: var(--sage-deep); transform: scale(1.02); }
+  .ps-card.ps-featured .ps-name, .ps-card.ps-featured .ps-price { color: var(--cream); }
+  .ps-card.ps-featured .ps-meta, .ps-card.ps-featured .ps-feat li { color: rgba(245, 239, 226, 0.85); }
+  .ps-tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-deep); font-weight: 600; margin-bottom: 22px; }
+  .ps-card.ps-featured .ps-tag { color: var(--rose); }
+  .ps-name { font-family: var(--ps-serif); font-size: 36px; color: var(--ink); line-height: 1; }
+  .ps-price { font-family: var(--ps-serif); font-size: 26px; color: var(--ink); margin-top: 14px; }
+  .ps-price small { font-family: var(--ps-sans); font-size: 13px; color: var(--ink-3); margin-left: 6px; font-weight: 400; }
+  .ps-card.ps-featured .ps-price small { color: rgba(245, 239, 226, 0.7); }
+  .ps-meta { font-size: 13px; color: var(--ink-3); margin-top: 8px; }
+  .ps-feat { list-style: none; margin: 28px 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .ps-feat li { font-size: 14px; color: var(--ink-2); padding-left: 22px; position: relative; line-height: 1.5; }
+  .ps-feat li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--sage-deep); font-weight: 700; }
+  .ps-card.ps-featured .ps-feat li::before { color: var(--rose); }
+  .ps-card .ps-btn { margin-top: auto; align-self: flex-start; }
+  .ps-card.ps-featured .ps-btn { background: var(--cream); color: var(--ink); }
+  .ps-card.ps-featured .ps-btn:hover { background: var(--rose); color: var(--cream); }
+
+  /* Roses cross-sell */
+  .ps-roses { background: var(--cream-2); padding: 80px 40px; }
+  .ps-roses-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .ps-roses-img { aspect-ratio: 1/1; border-radius: 8px; overflow: hidden; background: var(--cream); }
+  .ps-roses-img img { width: 100%; height: 100%; object-fit: cover; }
+  .ps-roses-text .ps-eyebrow { color: var(--rose-deep); }
+  .ps-roses-text h2 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; color: var(--ink); margin: 12px 0 18px; }
+  .ps-roses-text h2 em { font-style: italic; color: var(--sage-deep); }
+  .ps-roses-text p { font-size: 16px; color: var(--ink-2); line-height: 1.65; margin-bottom: 18px; }
+  .ps-roses-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
+
+  /* How it works */
+  .ps-how { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 80px 40px; }
+  .ps-how-inner { max-width: 1100px; margin: 0 auto; }
+  .ps-how h2 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; color: var(--ink); text-align: center; margin-bottom: 14px; }
+  .ps-how h2 em { font-style: italic; color: var(--sage-deep); }
+  .ps-how .ps-sub { text-align: center; color: var(--ink-2); max-width: 580px; margin: 0 auto 48px; }
+  .ps-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .ps-step .ps-num { font-size: 12px; letter-spacing: 0.14em; color: var(--sage-deep); font-weight: 600; }
+  .ps-step .ps-t { font-family: var(--ps-serif); font-size: 22px; line-height: 1.2; margin: 10px 0 8px; color: var(--ink); }
+  .ps-step .ps-d { font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+
+  /* Photo guarantee */
+  .ps-guarantee { padding: 80px 40px; max-width: 900px; margin: 0 auto; text-align: center; }
+  .ps-guarantee h2 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; color: var(--ink); margin: 12px 0 18px; }
+  .ps-guarantee h2 em { font-style: italic; color: var(--sage-deep); }
+  .ps-guarantee p { font-size: 17px; color: var(--ink-2); line-height: 1.65; max-width: 680px; margin: 0 auto 32px; }
+  .ps-cutoff { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 22px 28px; max-width: 720px; margin: 0 auto; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+  .ps-cutoff strong { color: var(--ink); font-weight: 700; }
+
+  /* Where we deliver */
+  .ps-zones { background: var(--ink); color: var(--cream); padding: 72px 40px; }
+  .ps-zones-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .ps-zones h2 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(30px, 4vw, 44px); line-height: 1.1; margin-bottom: 14px; color: var(--cream); }
+  .ps-zones h2 em { font-style: italic; color: var(--sage-soft); }
+  .ps-zones p { color: rgba(245, 239, 226, 0.8); max-width: 580px; margin: 0 auto 28px; line-height: 1.65; }
+  .ps-zone-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .ps-zone-tags span { background: var(--sage-deep); padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; }
+  .ps-zone-tags span.dim { background: transparent; border: 1px solid rgba(245, 239, 226, 0.25); color: rgba(245, 239, 226, 0.85); }
+
+  /* FAQ */
+  .ps-faq { padding: 80px 40px; max-width: 800px; margin: 0 auto; }
+  .ps-faq h2 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(30px, 3.5vw, 42px); line-height: 1.1; color: var(--ink); text-align: center; margin-bottom: 40px; }
+  .ps-faq h2 em { font-style: italic; color: var(--sage-deep); }
+  .ps-faq details { border-top: 1px solid var(--line); padding: 22px 0; }
+  .ps-faq details:last-of-type { border-bottom: 1px solid var(--line); }
+  .ps-faq summary { font-family: var(--ps-serif); font-size: 20px; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .ps-faq summary::-webkit-details-marker { display: none; }
+  .ps-faq summary::after { content: "+"; font-family: var(--ps-sans); font-weight: 300; font-size: 26px; color: var(--sage-deep); flex-shrink: 0; }
+  .ps-faq details[open] summary::after { content: "−"; }
+  .ps-faq details p { font-size: 15px; color: var(--ink-2); margin-top: 14px; line-height: 1.65; }
+  .ps-faq details p a { text-decoration: underline; color: var(--sage-deep); }
+
+  /* Final CTA */
+  .ps-final { background: var(--sage-deep); color: var(--cream); padding: 80px 40px; text-align: center; }
+  .ps-final h2 { font-family: var(--ps-serif); font-weight: 400; font-size: clamp(32px, 4.5vw, 56px); line-height: 1.1; max-width: 720px; margin: 0 auto 18px; color: var(--cream); }
+  .ps-final h2 em { font-style: italic; color: var(--sage-soft); }
+  .ps-final p { color: rgba(245, 239, 226, 0.85); max-width: 540px; margin: 0 auto 32px; font-size: 17px; line-height: 1.6; }
+  .ps-final .ps-btn { background: var(--cream); color: var(--ink); }
+  .ps-final .ps-btn:hover { background: var(--rose); color: var(--cream); }
+
+  @media (max-width: 960px) {
+    .ps-hero { padding: 56px 24px 40px; }
+    .ps-tiers { padding: 8px 24px 56px; }
+    .ps-grid { grid-template-columns: 1fr; }
+    .ps-card.ps-featured { transform: none; }
+    .ps-trust-grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+    .ps-bench, .ps-roses, .ps-how, .ps-guarantee, .ps-zones, .ps-faq, .ps-final { padding: 56px 24px; }
+    .ps-bench-row { grid-template-columns: 1fr 1fr; }
+    .ps-roses-inner { grid-template-columns: 1fr; gap: 32px; }
+    .ps-steps { grid-template-columns: 1fr 1fr; gap: 22px; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="ps">
+
+  <section class="ps-hero">
+    <span class="ps-eyebrow">Hablamos español. Family florist on Fort Washington since 2004.</span>
+    <h1>Fresh flowers, <em>every Friday</em>. Hand-tied. Hand-delivered.</h1>
+    <p class="ps-lede">A standing order from your real, local Washington Heights florist. Pick a tier, pick a frequency, we walk it to your door. Free glass vase with your first delivery. Pause, skip, or cancel from your phone. No contracts, no fees, no surprises.</p>
+    <div class="ps-hero-ctas">
+      <a class="ps-btn" href="#tiers">Pick a tier</a>
+      <a class="ps-btn ps-btn-ghost" href="#how-it-works">How it works</a>
+    </div>
+  </section>
+
+  <section class="ps-trust">
+    <div class="ps-trust-grid">
+      <div class="ps-trust-item">
+        <div class="ps-t-label">Photo before delivery</div>
+        <div class="ps-t-sub">You see the bouquet before they do. Approve or remake.</div>
+      </div>
+      <div class="ps-trust-item">
+        <div class="ps-t-label">Hand-delivered by us</div>
+        <div class="ps-t-sub">Our own driver. Never a 1-800 wire-service handoff.</div>
+      </div>
+      <div class="ps-trust-item">
+        <div class="ps-t-label">Free vase, first delivery</div>
+        <div class="ps-t-sub">Clean-line glass vase included. Yours to keep.</div>
+      </div>
+      <div class="ps-trust-item">
+        <div class="ps-t-label">Pause, skip, cancel</div>
+        <div class="ps-t-sub">From your account or by text. Zero friction.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-bench">
+    <h2>What goes on the bench <em>this week</em>.</h2>
+    <p class="ps-sub">Designer's choice means our buyer picks the freshest stems at the 28th Street market that morning. Here is what's been moving lately. Yours will look like one of these.</p>
+    <div class="ps-bench-row">
+      <div class="ps-bench-card">
+        <img src="{{ 'hero-roses.png' | asset_url }}" alt="Pink garden roses on the bench at Primavera Flowers">
+        <div class="ps-bench-tag">
+          <div class="ps-bt-label">This week</div>
+          <div class="ps-bt-name">Pink Garden Roses</div>
+        </div>
+      </div>
+      <div class="ps-bench-card">
+        <img src="{{ 'madres.png' | asset_url }}" alt="Soft pink and blush mixed bouquet">
+        <div class="ps-bench-tag">
+          <div class="ps-bt-label">Recent Friday</div>
+          <div class="ps-bt-name">Blush Peonies, Ranunculus</div>
+        </div>
+      </div>
+      <div class="ps-bench-card">
+        <img src="{{ 'florist.png' | asset_url }}" alt="Designer's choice bouquet at Primavera Flowers">
+        <div class="ps-bench-tag">
+          <div class="ps-bt-label">Last Friday</div>
+          <div class="ps-bt-name">Mixed Garden, Designer's</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-tiers" id="tiers">
+    <div class="ps-tiers-head">
+      <span class="ps-eyebrow">Three tiers, one promise</span>
+      <h2>Pick the size of <em>your Friday</em>.</h2>
+      <p>Casa for the kitchen counter. Familia for the kitchen island. Estudio for the front desk. Every tier is hand-tied at the bench at 463 Fort Washington.</p>
+    </div>
+    <div class="ps-grid">
+
+      <div class="ps-card">
+        <span class="ps-tag">Casa. The starter.</span>
+        <div class="ps-name">Casa</div>
+        <div class="ps-price">$60<small>/ delivery</small></div>
+        <div class="ps-meta">Bi-weekly. Designer's choice.</div>
+        <ul class="ps-feat">
+          <li>Five-stem hand-tied bouquet, sized for the kitchen counter</li>
+          <li>Always seasonal. Whatever was best at the 28th Street market that morning.</li>
+          <li>Free glass vase with your first delivery</li>
+          <li>Free hand-delivery in Washington Heights, Hudson Heights, Inwood</li>
+          <li>Photo of your actual bouquet before it leaves the shop</li>
+          <li>Skip or pause any week from your phone</li>
+        </ul>
+        <a class="ps-btn" href="/products/subscription-classic">Start Casa →</a>
+      </div>
+
+      <div class="ps-card ps-featured">
+        <span class="ps-tag">Familia. Most loved.</span>
+        <div class="ps-name">Familia</div>
+        <div class="ps-price">$75<small>/ delivery</small></div>
+        <div class="ps-meta">Weekly. Larger, with a card.</div>
+        <ul class="ps-feat">
+          <li>Eight-stem garden bouquet, sized for the kitchen island</li>
+          <li>Free glass vase with your first delivery</li>
+          <li>Bilingual handwritten card. English or Spanish.</li>
+          <li>Skip, pause, or gift any week. Send Mami flowers all year.</li>
+          <li>Free hand-delivery across upper Manhattan</li>
+          <li>Photo of your actual bouquet before it leaves the shop</li>
+        </ul>
+        <a class="ps-btn" href="/products/subscription-seasonal">Start Familia →</a>
+      </div>
+
+      <div class="ps-card">
+        <span class="ps-tag">Estudio. For business.</span>
+        <div class="ps-name">Estudio</div>
+        <div class="ps-price">$105<small>/ delivery</small></div>
+        <div class="ps-meta">Weekly. Offices, lobbies, salons.</div>
+        <ul class="ps-feat">
+          <li>Twelve-stem statement piece, sized for the front desk</li>
+          <li>Vase rotation and refresh on every drop</li>
+          <li>Net-30 invoicing for businesses</li>
+          <li>Holiday installations and seasonal swaps included</li>
+          <li>Dedicated account designer at the Fort Washington shop</li>
+          <li>Free hand-delivery anywhere in upper Manhattan and the Bronx</li>
+        </ul>
+        <a class="ps-btn" href="/products/subscription-luxe">Start Estudio →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="ps-roses">
+    <div class="ps-roses-inner">
+      <div class="ps-roses-img">
+        <img src="{{ 'hero-roses.png' | asset_url }}" alt="A dozen pink garden roses, hand-tied at Primavera Flowers Washington Heights">
+      </div>
+      <div class="ps-roses-text">
+        <span class="ps-eyebrow">Just want roses?</span>
+        <h2>Roses, <em>hand-delivered</em>, no commitment.</h2>
+        <p>Subscriptions are the long game. Sometimes you just need a dozen roses to land at someone's door tonight. Pink garden roses, classic red, or white with eucalyptus. Cut this morning at the 28th Street market. Tied at the bench. Walked to the door before five.</p>
+        <p>Order by 2 PM Mon to Sat for hand-delivery same day across 10032, 10033, 10034, 10040. Free delivery over $85 in zone.</p>
+        <div class="ps-roses-row">
+          <a class="ps-btn" href="/pages/roses">See the rose menu →</a>
+          <a class="ps-btn ps-btn-ghost" href="/products/pink-garden-roses">Send pink garden roses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-how" id="how-it-works">
+    <div class="ps-how-inner">
+      <span class="ps-eyebrow" style="text-align: center; display: block;">How a Friday delivery works</span>
+      <h2>Real florist. Real shop. <em>Real hands</em>.</h2>
+      <p class="ps-sub">A standing order from a real florist on Fort Washington. Not a 1-800 number routing your stems through three states.</p>
+      <div class="ps-steps">
+        <div class="ps-step">
+          <div class="ps-num">01</div>
+          <div class="ps-t">Pick your tier</div>
+          <div class="ps-d">Casa for the kitchen counter. Familia for the island. Estudio for the lobby. Set your frequency, set your address.</div>
+        </div>
+        <div class="ps-step">
+          <div class="ps-num">02</div>
+          <div class="ps-t">We design Friday morning</div>
+          <div class="ps-d">Our buyer rides the A train to the 28th Street market by sunrise. Your bouquet is built that morning at the bench at 463 Fort Washington.</div>
+        </div>
+        <div class="ps-step">
+          <div class="ps-num">03</div>
+          <div class="ps-t">Photo before it leaves</div>
+          <div class="ps-d">A quick text or email of the actual bouquet before our driver heads out. If something looks off, reply. We remake it.</div>
+        </div>
+        <div class="ps-step">
+          <div class="ps-num">04</div>
+          <div class="ps-t">Walked to your door</div>
+          <div class="ps-d">Our own driver, on foot or by van across Washington Heights, Hudson Heights, Inwood. Pause or skip from your phone for next week.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-guarantee">
+    <span class="ps-eyebrow">The Primavera promise</span>
+    <h2>What you see is what they <em>get</em>.</h2>
+    <p>Every order gets a quick text or email of your actual bouquet, not a stock photo, the moment it's wrapped. If something looks off, we remake it. No bait and switch. No wire-service swaps. No "closest available." Just the bouquet on your screen, in your neighbor's hands.</p>
+    <div class="ps-cutoff">
+      Order by <strong>2:00 PM Mon to Sat</strong> for hand-delivery same day across 10032, 10033, 10034, 10040. Free delivery over $85 in zone. Photo of your bouquet emailed before it leaves the shop.
+    </div>
+  </section>
+
+  <section class="ps-zones">
+    <div class="ps-zones-inner">
+      <span class="ps-eyebrow" style="color: var(--sage-soft);">Where Friday lands</span>
+      <h2>A florist that <em>walks</em> to your door.</h2>
+      <p>Free hand-delivery across all of Washington Heights, Hudson Heights, Inwood. Same-day rest of upper Manhattan and the Bronx. Outside the zone, we ship same-day across the five boroughs.</p>
+      <div class="ps-zone-tags">
+        <span>10032</span>
+        <span>10033</span>
+        <span>10034</span>
+        <span>10040</span>
+        <span>10031</span>
+        <span>10039</span>
+        <span class="dim">10463</span>
+        <span class="dim">10468</span>
+        <span class="dim">+ all five boroughs</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-faq">
+    <h2>Subscription <em>questions</em>.</h2>
+    <details>
+      <summary>Where do you deliver subscriptions?</summary>
+      <p>Free hand-delivery to ZIPs 10032, 10033, 10034, 10040, 10031, and 10039. That covers all of Washington Heights, Hudson Heights, Inwood, and Hamilton Heights. Marble Hill (10463) and the Cloisters area are included. Outside that zone, we add a small fee at checkout.</p>
+    </details>
+    <details>
+      <summary>Can I pause or skip a week?</summary>
+      <p>Yes. Log into your account or text the shop at (917) 770-1684. We can pause, skip a single week, or change the delivery day. No fees, no contracts, no questions.</p>
+    </details>
+    <details>
+      <summary>What if I'm not home?</summary>
+      <p>We leave bouquets in a vestibule or with a doorman if you have one. Most of the buildings on Fort Washington and Pinehurst know us by sight. If you'd rather pick up at the shop, we'll hold it cooled until 6 PM.</p>
+    </details>
+    <details>
+      <summary>Can I gift a subscription?</summary>
+      <p>Yes. Familia is the most-gifted tier. Choose "gift" at checkout, add the recipient's address, and pick how many weeks. We'll include a handwritten note in your name and email you when each delivery lands.</p>
+    </details>
+    <details>
+      <summary>What if I just want roses, not a subscription?</summary>
+      <p>That's why we built the rose menu. A dozen pink garden roses, classic red, or white with eucalyptus. Hand-tied at the bench and walked to your door same day. <a href="/pages/roses">See the rose menu</a>.</p>
+    </details>
+    <details>
+      <summary>¿Hablan español?</summary>
+      <p>Sí. Toda la familia. Si prefieres ordenar o coordinar entregas en español, llámanos al (917) 770-1684 o pásate por la tienda en 463 Fort Washington Ave. <a href="/pages/florista-washington-heights">Ver en español</a>.</p>
+    </details>
+    <details>
+      <summary>How do I cancel?</summary>
+      <p>From your account in two clicks. Or text the shop. Or walk in. We don't make people stay who don't want to. Subscription floral is the long game and only works when you actually want the flowers.</p>
+    </details>
+  </section>
+
+  <section class="ps-final">
+    <h2>Fresh flowers, every Friday. <em>From the corner shop.</em></h2>
+    <p>Pick a tier. Pick a frequency. We do the rest. Pause anytime.</p>
+    <a class="ps-btn" href="#tiers">Choose your tier →</a>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Primavera Subscriptions PDP",
+  "tag": "section",
+  "class": "primavera-subscriptions-section",
+  "settings": [
+    { "type": "header", "content": "About this section" },
+    { "type": "paragraph", "content": "Full subscription PDP funnel. Hero, trust strip, this-week's-bench preview, three tiers, roses cross-sell, how-it-works, photo guarantee, delivery zones, FAQ, final CTA. Lives at /pages/subscriptions." }
+  ],
+  "presets": [ { "name": "Primavera Subscriptions PDP" } ]
+}
+{% endschema %}

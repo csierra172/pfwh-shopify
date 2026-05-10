@@ -1,0 +1,251 @@
+{% comment %}
+  Primavera Flowers, generic landing-page section.
+  Reusable section for category and SEO landing pages (roses, flower delivery
+  Washington Heights, NYP/Columbia hospital, Quinceañera, Día de las Madres,
+  Inwood, Hudson Heights, etc.). Content variations come from section settings
+  in the corresponding templates/page.{handle}.json file.
+
+  Voice rules: no em dashes, no hyphens as connectors, simple, sharp.
+{% endcomment %}
+
+<style>
+  .pp {
+    --sage:        #a8b59a;
+    --sage-deep:   #7a8a6f;
+    --sage-soft:   #c8d2bc;
+    --cream:       #f5efe2;
+    --cream-2:     #ece4d2;
+    --paper:       #faf6ec;
+    --ink:         #2a2620;
+    --ink-2:       #5a544c;
+    --ink-3:       #8a847c;
+    --rose:        #d39283;
+    --rose-deep:   #b8705d;
+    --line:        #e2dac7;
+    --pp-serif:    "DM Serif Display", "Times New Roman", serif;
+    --pp-sans:     "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--cream); color: var(--ink); font-family: var(--pp-sans);
+    font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  .pp * { box-sizing: border-box; margin: 0; padding: 0; }
+  .pp a { color: inherit; text-decoration: none; }
+  .pp img { display: block; max-width: 100%; }
+
+  .pp-hero { padding: 80px 40px 56px; text-align: center; max-width: 900px; margin: 0 auto; }
+  .pp-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 18px; display: inline-block; }
+  .pp-hero h1 { font-family: var(--pp-serif); font-weight: 400; font-size: clamp(36px, 5vw, 64px); line-height: 1.05; color: var(--ink); margin-bottom: 22px; }
+  .pp-hero h1 em { font-style: italic; color: var(--sage-deep); }
+  .pp-hero .pp-lede { font-size: 18px; line-height: 1.65; color: var(--ink-2); max-width: 640px; margin: 0 auto 32px; }
+  .pp-hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .pp-btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 28px; border-radius: 6px; font-size: 15px; font-weight: 600; transition: all .15s; border: none; cursor: pointer; background: var(--sage-deep); color: var(--cream); text-decoration: none; }
+  .pp-btn:hover { background: var(--ink); }
+  .pp-btn-ghost { background: transparent; color: var(--sage-deep); border: 1.5px solid var(--sage-deep); padding: 13.5px 26.5px; }
+  .pp-btn-ghost:hover { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+
+  .pp-trust { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 36px 40px; }
+  .pp-trust-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .pp-trust-item { text-align: center; }
+  .pp-trust-item .pp-t-label { font-family: var(--pp-serif); font-size: 18px; color: var(--ink); margin-bottom: 4px; line-height: 1.2; }
+  .pp-trust-item .pp-t-sub { font-size: 13px; color: var(--ink-3); }
+
+  .pp-body { padding: 64px 40px; max-width: 760px; margin: 0 auto; }
+  .pp-body h2 { font-family: var(--pp-serif); font-weight: 400; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; color: var(--ink); margin: 36px 0 14px; }
+  .pp-body h2:first-child { margin-top: 0; }
+  .pp-body h2 em { font-style: italic; color: var(--sage-deep); }
+  .pp-body h3 { font-family: var(--pp-serif); font-weight: 400; font-size: 22px; color: var(--ink); margin: 28px 0 10px; }
+  .pp-body p { color: var(--ink-2); line-height: 1.7; margin-bottom: 16px; }
+  .pp-body ul, .pp-body ol { color: var(--ink-2); line-height: 1.7; padding-left: 22px; margin-bottom: 16px; }
+  .pp-body li { margin-bottom: 6px; }
+  .pp-body strong { color: var(--ink); font-weight: 600; }
+  .pp-body a { color: var(--sage-deep); text-decoration: underline; text-underline-offset: 3px; }
+  .pp-body a:hover { color: var(--rose-deep); }
+
+  .pp-cutoff { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 22px 28px; max-width: 760px; margin: 24px auto; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+  .pp-cutoff strong { color: var(--ink); font-weight: 700; }
+
+  .pp-cards { padding: 64px 40px; max-width: 1200px; margin: 0 auto; }
+  .pp-cards h2 { font-family: var(--pp-serif); font-weight: 400; font-size: clamp(30px, 4vw, 42px); line-height: 1.1; color: var(--ink); text-align: center; margin-bottom: 40px; }
+  .pp-cards h2 em { font-style: italic; color: var(--sage-deep); }
+  .pp-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .pp-card { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 28px 24px; display: flex; flex-direction: column; }
+  .pp-card .pp-c-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 12px; }
+  .pp-card .pp-c-name { font-family: var(--pp-serif); font-size: 24px; line-height: 1.15; color: var(--ink); margin-bottom: 8px; }
+  .pp-card .pp-c-price { font-size: 14px; color: var(--ink-2); font-weight: 600; margin-bottom: 12px; }
+  .pp-card .pp-c-desc { font-size: 14px; line-height: 1.55; color: var(--ink-2); margin-bottom: 18px; flex: 1; }
+  .pp-card .pp-btn { align-self: flex-start; padding: 11px 20px; font-size: 13px; }
+
+  .pp-faq { padding: 64px 40px; max-width: 800px; margin: 0 auto; }
+  .pp-faq h2 { font-family: var(--pp-serif); font-weight: 400; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.1; color: var(--ink); text-align: center; margin-bottom: 36px; }
+  .pp-faq h2 em { font-style: italic; color: var(--sage-deep); }
+  .pp-faq details { border-top: 1px solid var(--line); padding: 22px 0; }
+  .pp-faq details:last-of-type { border-bottom: 1px solid var(--line); }
+  .pp-faq summary { font-family: var(--pp-serif); font-size: 19px; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .pp-faq summary::-webkit-details-marker { display: none; }
+  .pp-faq summary::after { content: "+"; font-family: var(--pp-sans); font-weight: 300; font-size: 26px; color: var(--sage-deep); flex-shrink: 0; }
+  .pp-faq details[open] summary::after { content: "−"; }
+  .pp-faq details p { font-size: 15px; color: var(--ink-2); margin-top: 14px; line-height: 1.65; }
+  .pp-faq details p a { color: var(--sage-deep); text-decoration: underline; }
+
+  .pp-final { background: var(--sage-deep); color: var(--cream); padding: 64px 40px; text-align: center; }
+  .pp-final h2 { font-family: var(--pp-serif); font-weight: 400; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; max-width: 720px; margin: 0 auto 16px; color: var(--cream); }
+  .pp-final h2 em { font-style: italic; color: var(--sage-soft); }
+  .pp-final p { color: rgba(245, 239, 226, 0.85); max-width: 540px; margin: 0 auto 28px; font-size: 16px; line-height: 1.6; }
+  .pp-final .pp-btn { background: var(--cream); color: var(--ink); }
+  .pp-final .pp-btn:hover { background: var(--rose); color: var(--cream); }
+
+  @media (max-width: 960px) {
+    .pp-hero { padding: 56px 24px 36px; }
+    .pp-trust-grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+    .pp-body, .pp-cards, .pp-faq, .pp-final { padding: 48px 24px; }
+    .pp-cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="pp">
+
+  {% if section.settings.eyebrow != blank or section.settings.headline != blank or section.settings.lede != blank %}
+    <section class="pp-hero">
+      {% if section.settings.eyebrow != blank %}
+        <span class="pp-eyebrow">{{ section.settings.eyebrow }}</span>
+      {% endif %}
+      {% if section.settings.headline != blank %}
+        {{ section.settings.headline }}
+      {% endif %}
+      {% if section.settings.lede != blank %}
+        <p class="pp-lede">{{ section.settings.lede }}</p>
+      {% endif %}
+      {% if section.settings.cta_primary_label != blank %}
+        <div class="pp-hero-ctas">
+          <a class="pp-btn" href="{{ section.settings.cta_primary_link | default: '/collections/all' }}">{{ section.settings.cta_primary_label }}</a>
+          {% if section.settings.cta_secondary_label != blank %}
+            <a class="pp-btn pp-btn-ghost" href="{{ section.settings.cta_secondary_link | default: '/' }}">{{ section.settings.cta_secondary_label }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </section>
+  {% endif %}
+
+  {% if section.settings.show_trust_strip %}
+    <section class="pp-trust">
+      <div class="pp-trust-grid">
+        <div class="pp-trust-item">
+          <div class="pp-t-label">Photo before delivery</div>
+          <div class="pp-t-sub">You see the bouquet first. Approve or remake.</div>
+        </div>
+        <div class="pp-trust-item">
+          <div class="pp-t-label">Hand-delivered by us</div>
+          <div class="pp-t-sub">Our own driver. Never a 1-800 wire-service handoff.</div>
+        </div>
+        <div class="pp-trust-item">
+          <div class="pp-t-label">Family on Fort Washington</div>
+          <div class="pp-t-sub">Familia Guzmán. Real shop. Real hands. Since 2004.</div>
+        </div>
+        <div class="pp-trust-item">
+          <div class="pp-t-label">Hablamos español</div>
+          <div class="pp-t-sub">Toda la familia. Llámanos al (917) 770-1684.</div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {% if section.settings.body_html != blank %}
+    <section class="pp-body">
+      {{ section.settings.body_html }}
+      <div class="pp-cutoff">
+        Order by <strong>2:00 PM Mon to Sat</strong> for hand-delivery same day across 10032, 10033, 10034, 10040. Free delivery over $85 in zone. Photo of your bouquet emailed before it leaves the shop.
+      </div>
+    </section>
+  {% endif %}
+
+  {% if section.settings.cards_heading != blank or section.blocks.size > 0 %}
+    <section class="pp-cards">
+      {% if section.settings.cards_heading != blank %}
+        {{ section.settings.cards_heading }}
+      {% endif %}
+      {% if section.blocks.size > 0 %}
+        <div class="pp-cards-grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'product_card' %}
+              <div class="pp-card" {{ block.shopify_attributes }}>
+                {% if block.settings.label != blank %}<div class="pp-c-label">{{ block.settings.label }}</div>{% endif %}
+                {% if block.settings.name != blank %}<div class="pp-c-name">{{ block.settings.name }}</div>{% endif %}
+                {% if block.settings.price != blank %}<div class="pp-c-price">{{ block.settings.price }}</div>{% endif %}
+                {% if block.settings.description != blank %}<div class="pp-c-desc">{{ block.settings.description }}</div>{% endif %}
+                {% if block.settings.cta_label != blank %}<a class="pp-btn" href="{{ block.settings.cta_link | default: '#' }}">{{ block.settings.cta_label }}</a>{% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </section>
+  {% endif %}
+
+  {% if section.settings.faq_html != blank %}
+    <section class="pp-faq">
+      {% if section.settings.faq_heading != blank %}{{ section.settings.faq_heading }}{% endif %}
+      {{ section.settings.faq_html }}
+    </section>
+  {% endif %}
+
+  {% if section.settings.final_headline != blank %}
+    <section class="pp-final">
+      {{ section.settings.final_headline }}
+      {% if section.settings.final_lede != blank %}<p>{{ section.settings.final_lede }}</p>{% endif %}
+      {% if section.settings.final_cta_label != blank %}
+        <a class="pp-btn" href="{{ section.settings.final_cta_link | default: '/collections/all' }}">{{ section.settings.final_cta_label }}</a>
+      {% endif %}
+    </section>
+  {% endif %}
+
+</div>
+
+{% schema %}
+{
+  "name": "Primavera Landing Page",
+  "tag": "section",
+  "class": "primavera-landing-page-section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "richtext", "id": "headline", "label": "Headline (use h1 inside)" },
+    { "type": "textarea", "id": "lede", "label": "Lede paragraph" },
+    { "type": "text", "id": "cta_primary_label", "label": "Primary CTA label" },
+    { "type": "url", "id": "cta_primary_link", "label": "Primary CTA link" },
+    { "type": "text", "id": "cta_secondary_label", "label": "Secondary CTA label" },
+    { "type": "url", "id": "cta_secondary_link", "label": "Secondary CTA link" },
+    { "type": "header", "content": "Trust strip" },
+    { "type": "checkbox", "id": "show_trust_strip", "label": "Show 4-pillar trust strip", "default": true },
+    { "type": "header", "content": "Body content" },
+    { "type": "richtext", "id": "body_html", "label": "Body (richtext, supports h2/h3/p/ul/ol/strong/a)" },
+    { "type": "header", "content": "Product cards" },
+    { "type": "richtext", "id": "cards_heading", "label": "Cards section heading (use h2)" },
+    { "type": "header", "content": "FAQ" },
+    { "type": "richtext", "id": "faq_heading", "label": "FAQ heading (use h2)" },
+    { "type": "html", "id": "faq_html", "label": "FAQ HTML (use <details><summary>...</summary><p>...</p></details>)" },
+    { "type": "header", "content": "Final CTA" },
+    { "type": "richtext", "id": "final_headline", "label": "Final CTA headline (use h2)" },
+    { "type": "textarea", "id": "final_lede", "label": "Final CTA lede" },
+    { "type": "text", "id": "final_cta_label", "label": "Final CTA label" },
+    { "type": "url", "id": "final_cta_link", "label": "Final CTA link" }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Small label (eyebrow)" },
+        { "type": "text", "id": "name", "label": "Product name" },
+        { "type": "text", "id": "price", "label": "Price line" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Send it →" },
+        { "type": "url", "id": "cta_link", "label": "CTA link" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Primavera Landing Page" } ]
+}
+{% endschema %}

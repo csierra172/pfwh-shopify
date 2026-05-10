@@ -33,7 +33,7 @@
             "sub": {
               "type": "text",
               "settings": {
-                "text": "<p>Standing sprays, casket sprays, wreaths, and home arrangements — designed at our Fort Washington Avenue shop, never a wire-service swap. Delivered the same day to every funeral home in Washington Heights, Inwood, Marble Hill, and the South Bronx. Llámanos en español al (917) 770-1684.</p>",
+                "text": "<p>Standing sprays, casket sprays, wreaths, and home arrangements. Designed at our Fort Washington Avenue shop, never a wire-service swap. Delivered the same day to every funeral home in Washington Heights, Inwood, Marble Hill, and the South Bronx. Llámanos en español al (917) 770-1684.</p>",
                 "type_preset": "paragraph",
                 "alignment": "center",
                 "max_width": "narrow"
@@ -114,7 +114,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p>We have same-day fulfillment relationships with Ortiz Funeral Home, Schwartz Brothers Memorial Chapels, and every funeral home throughout Washington Heights, Inwood, and the Bronx. Tell us which chapel and we'll coordinate timing and placement directly with the staff — many of them know us by name. No need to manage logistics during a hard week. Llámanos en español al (917) 770-1684 si lo prefieres.</p>",
+            "text": "<p>We have same-day fulfillment relationships with Ortiz Funeral Home, Schwartz Brothers Memorial Chapels, and every funeral home throughout Washington Heights, Inwood, and the Bronx. Tell us which chapel and we'll coordinate timing and placement directly with the staff. Many of them know us by name. No need to manage logistics during a hard week. Llámanos en español al (917) 770-1684 si lo prefieres.</p>",
             "type_preset": "paragraph"
           }
         }

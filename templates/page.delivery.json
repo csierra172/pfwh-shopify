@@ -38,7 +38,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Order by 2 PM ET</strong> and we walk or drive your bouquet to your door from the shop on Fort Washington Avenue:</p><ul><li><strong>Washington Heights / Hudson Heights</strong> — 10032, 10033, 10040 (free hand-delivery on foot)</li><li><strong>Inwood / The Cloisters</strong> — 10034 (free hand-delivery)</li><li><strong>Hamilton Heights / West Harlem</strong> — 10031, 10039</li><li><strong>Marble Hill / South Bronx</strong> — 10463, 10468, 10469 (delivery fee +$10)</li></ul><p>Outside these zones? We ship same-day across the five boroughs, or pick Next-Day at checkout (order by 9 PM ET).</p>",
+            "text": "<p><strong>Order by 2 PM ET</strong> and we walk or drive your bouquet to your door from the shop on Fort Washington Avenue:</p><ul><li><strong>Washington Heights, Hudson Heights</strong> (10032, 10033, 10040). Free hand-delivery on foot.</li><li><strong>Inwood, The Cloisters</strong> (10034). Free hand-delivery.</li><li><strong>Hamilton Heights, West Harlem</strong> (10031, 10039)</li><li><strong>Marble Hill, South Bronx</strong> (10463, 10468, 10469). Delivery fee +$10.</li></ul><p>Outside these zones? We ship same-day across the five boroughs, or pick Next-Day at checkout (order by 9 PM ET).</p>",
             "type_preset": "paragraph"
           }
         }
@@ -68,7 +68,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<ul><li>Free hand-delivery in Washington Heights, Hudson Heights, and Inwood — every order, no minimum</li><li>Same-day rest of Manhattan — $15 (free over $125)</li><li>Same-day Bronx — $25</li><li>Sympathy / funeral home delivery in upper Manhattan and the Bronx — included on orders over $150</li><li>Saturday delivery — same hours, order by noon</li><li>Sunday — limited; call the shop at (917) 770-1684</li></ul>",
+            "text": "<ul><li>Free hand-delivery in Washington Heights, Hudson Heights, and Inwood (every order, no minimum)</li><li>Same-day rest of Manhattan: $15 (free over $125)</li><li>Same-day Bronx: $25</li><li>Sympathy and funeral home delivery in upper Manhattan and the Bronx: included on orders over $150</li><li>Saturday delivery: same hours, order by noon</li><li>Sunday: limited. Call the shop at (917) 770-1684.</li></ul>",
             "type_preset": "paragraph"
           }
         }
@@ -98,7 +98,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p>Every arrangement is photographed by the designer who built it. We email the photo to you the moment your bouquet leaves the shop — so you know exactly what's arriving and when.</p>",
+            "text": "<p>Every arrangement is photographed by the designer who built it. We email the photo to you the moment your bouquet leaves the shop, so you know exactly what's arriving and when.</p>",
             "type_preset": "paragraph"
           }
         }

@@ -55,14 +55,26 @@
     class="header-logo__image-container header-logo__image-container--original"
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      alt_text_fallback: alt_text_fallback,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
+    {%- if settings.logo != blank -%}
+      {% render 'image',
+        image: settings.logo,
+        class: 'header-logo__image',
+        height: settings.logo_height,
+        alt_text_fallback: alt_text_fallback,
+        text_fallback: shop.name,
+        style: logo_style
+      %}
+    {%- else -%}
+      {%- comment -%} Theme-asset fallback when no logo image has been uploaded in admin. {%- endcomment -%}
+      <img
+        src="{{ 'primavera-logo.svg' | asset_url }}"
+        class="header-logo__image header-logo__image--asset-fallback"
+        alt="{{ alt_text_fallback }}"
+        height="{{ settings.logo_height }}"
+        loading="eager"
+        decoding="async"
+      >
+    {%- endif -%}
   </span>
 
   {% if use_inverse_logo %}
@@ -128,6 +140,20 @@
     @media screen and (min-width: 750px) {
       height: var(--header-logo-image-height);
       width: var(--header-logo-image-width);
+    }
+  }
+
+  .header-logo__image--asset-fallback {
+    object-fit: contain;
+    height: 36px;
+    width: auto;
+    display: block;
+    background: var(--sage-deep, #7a8a6f);
+    border-radius: 50%;
+    padding: 4px;
+
+    @media screen and (max-width: 749px) {
+      height: 32px;
     }
   }
 
