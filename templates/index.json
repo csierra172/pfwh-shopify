@@ -1,6 +1,10 @@
 {
   "sections": {
+<<<<<<< HEAD
     "hero": {
+=======
+    "primavera_hero": {
+>>>>>>> 8393837 (v7 hero + brand assets: flower-focused, no models. Real storefront, hands-only craft shot, bouquet-led hero.)
       "type": "primavera-hero",
       "settings": {
         "eyebrow": "★ 4.9 on Google · Hablamos español",
@@ -9,17 +13,34 @@
         "cta_primary_label": "Send flowers today →",
         "cta_primary_link": "/collections/all",
         "cta_secondary_label": "Shop bestsellers",
+<<<<<<< HEAD
         "cta_secondary_link": "/collections/bestsellers",
         "show_review_line": true,
         "review_line": "4.9 on Google · 200+ verified reviews",
         "review_link": "https://www.google.com/search?q=Primavera+Flowers+NYC+Reviews",
         "show_meta_strip": true,
         "show_hero_tag": true,
+=======
+        "cta_secondary_link": "/collections/all",
+        "review_line": "4.9 on Google · 200+ verified reviews",
+        "review_link": "https://www.google.com/search?q=Primavera+Flowers+Washington+Heights+Reviews",
+        "show_meta_strip": true,
+        "meta1_label": "Same-day cutoff",
+        "meta1_value": "2:00 PM",
+        "meta1_sub": "Mon to Sat",
+        "meta2_label": "Delivery zone",
+        "meta2_value": "10033",
+        "meta2_sub": "10032 · 10034 · 10040",
+        "meta3_label": "Bouquets from",
+        "meta3_value": "$59",
+        "meta3_sub": "Hand-tied seasonal",
+>>>>>>> 8393837 (v7 hero + brand assets: flower-focused, no models. Real storefront, hands-only craft shot, bouquet-led hero.)
         "tag_label": "This week",
         "tag_name": "Pink Garden Roses",
         "tag_price": "From $69 · same-day delivery"
       }
     },
+<<<<<<< HEAD
     "promise": {
       "type": "primavera-promise",
       "blocks": {
@@ -59,12 +80,54 @@
       "block_order": ["o1", "o2", "o3", "o4", "o5"]
     },
     "products": {
+=======
+    "primavera_promise": {
+      "type": "primavera-promise",
+      "blocks": {
+        "p1": {
+          "type": "card",
+          "settings": {
+            "num": "01",
+            "title": "Real florist. Real shop. Real hands.",
+            "description": "Not a wire service routing your order three states away. Every bouquet is built at the bench at 463 Fort Washington Ave."
+          }
+        },
+        "p2": {
+          "type": "card",
+          "settings": {
+            "num": "02",
+            "title": "A photo before it leaves the shop.",
+            "description": "We text you a photo of your actual bouquet before it heads out the door. If it is not right, we remake it."
+          }
+        },
+        "p3": {
+          "type": "card",
+          "settings": {
+            "num": "03",
+            "title": "Cut this morning. Built today.",
+            "description": "Our buyer is at the 28th Street market before sunrise. Stems land at the shop by 9, in your hands by afternoon."
+          }
+        },
+        "p4": {
+          "type": "card",
+          "settings": {
+            "num": "04",
+            "title": "Same-day delivery inside the Heights.",
+            "description": "Order by 2 PM Monday through Saturday. We walk, bike, or drive to every building in the neighborhood."
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"]
+    },
+    "primavera_products": {
+>>>>>>> 8393837 (v7 hero + brand assets: flower-focused, no models. Real storefront, hands-only craft shot, bouquet-led hero.)
       "type": "primavera-products",
       "settings": {
         "headline": "<h2>This week, <em>fresh in</em>.</h2>",
         "intro": "From the bench this week, ready to send today. Each one is built to order."
       },
       "blocks": {
+<<<<<<< HEAD
         "pr1": { "type": "card", "settings": { "badge": "Bestseller", "badge_style": "rose", "name": "Pink Garden Roses", "price": "$69", "description": "Garden roses, ranunculus, eucalyptus. Hand-tied with raffia.", "link": "/products/pink-roses" } },
         "pr2": { "type": "card", "settings": { "badge": "Mother's Day", "badge_style": "cream", "name": "Para Mami", "price": "$85", "description": "Blush roses and pink peonies, kraft-wrapped, bilingual card.", "link": "/products/dia-de-las-madres" } },
         "pr3": { "type": "card", "settings": { "badge": "Sympathy", "badge_style": "cream", "name": "Sympathy Standing Spray", "price": "$175", "description": "White roses, lilies, carnations on easel. Direct to any funeral home.", "link": "/products/sympathy-spray" } },
@@ -87,12 +150,119 @@
       "block_order": ["s1", "s2", "s3"]
     },
     "reviews": {
+=======
+        "prod1": {
+          "type": "card",
+          "settings": {
+            "badge": "Best seller",
+            "name": "Pink Garden Rose Bouquet",
+            "price": "From $69",
+            "description": "Lush garden roses, seasonal greens, hand-tied with raffia. Same-day available.",
+            "link": "/collections/all"
+          }
+        },
+        "prod2": {
+          "type": "card",
+          "settings": {
+            "badge": "Popular",
+            "badge_style": "rose",
+            "name": "Preserved Rose Box",
+            "price": "From $89",
+            "description": "Real roses preserved to last a year. No water needed. A gift that stays.",
+            "link": "/collections/all"
+          }
+        },
+        "prod3": {
+          "type": "card",
+          "settings": {
+            "name": "Seasonal Wildflower Mix",
+            "price": "From $59",
+            "description": "Whatever is freshest at the market that morning. Different every week.",
+            "link": "/collections/all"
+          }
+        },
+        "prod4": {
+          "type": "card",
+          "settings": {
+            "badge": "New",
+            "name": "White Lily Arrangement",
+            "price": "From $75",
+            "description": "Clean, classic, versatile. Works for any occasion or no occasion at all.",
+            "link": "/collections/all"
+          }
+        }
+      },
+      "block_order": ["prod1", "prod2", "prod3", "prod4"]
+    },
+    "primavera_occasions": {
+      "type": "primavera-occasions",
+      "settings": {
+        "headline": "<h2>For the <em>moments</em>, not just the flowers.</h2>",
+        "intro": "For birthdays, anniversaries, sympathy, weddings, and the just-because Tuesdays. Pick the moment."
+      },
+      "blocks": {
+        "occ1": {
+          "type": "tile",
+          "settings": {
+            "num": "/01",
+            "name": "<h3>Birthday</h3>",
+            "copy": "Make it a day they remember.",
+            "cta_text": "Shop birthday →",
+            "link": "/collections/all"
+          }
+        },
+        "occ2": {
+          "type": "tile",
+          "settings": {
+            "num": "/02",
+            "name": "<h3>Anniversary</h3>",
+            "copy": "Say it with the best flowers in the Heights.",
+            "cta_text": "Shop anniversary →",
+            "link": "/collections/all"
+          }
+        },
+        "occ3": {
+          "type": "tile",
+          "settings": {
+            "num": "/03",
+            "name": "<h3>Sympathy</h3>",
+            "copy": "We handle the details with care.",
+            "cta_text": "Shop sympathy →",
+            "link": "/collections/all"
+          }
+        },
+        "occ4": {
+          "type": "tile",
+          "settings": {
+            "num": "/04",
+            "name": "<h3>Wedding</h3>",
+            "copy": "From the Heights to the altar.",
+            "cta_text": "Plan your wedding →",
+            "link": "/collections/all"
+          }
+        },
+        "occ5": {
+          "type": "tile",
+          "settings": {
+            "num": "/05",
+            "name": "<h3>Just because</h3>",
+            "copy": "No reason needed. That is the best reason.",
+            "cta_text": "Shop all →",
+            "link": "/collections/all"
+          }
+        }
+      },
+      "block_order": ["occ1", "occ2", "occ3", "occ4", "occ5"]
+    },
+    "primavera_reviews": {
+>>>>>>> 8393837 (v7 hero + brand assets: flower-focused, no models. Real storefront, hands-only craft shot, bouquet-led hero.)
       "type": "primavera-reviews",
       "settings": {
         "eyebrow": "From our neighbors",
         "headline": "<h2>200+ reviews from across the <em>Heights</em>.</h2>",
         "rating_text": "4.9 on Google · 200+ verified reviews",
         "cta_label": "Read all reviews on Google →",
+<<<<<<< HEAD
         "cta_link": "https://www.google.com/search?q=Primavera+Flowers+NYC+Reviews"
       },
       "blocks": {
@@ -155,5 +325,44 @@
     "coverage",
     "subs_teaser",
     "editorial"
+=======
+        "cta_link": "https://www.google.com/search?q=Primavera+Flowers+Washington+Heights+Reviews"
+      },
+      "blocks": {
+        "rev1": {
+          "type": "review",
+          "settings": {
+            "quote": "I ordered same-day and they texted me a photo of the bouquet before delivering. The roses were stunning. This is my go-to flower shop in Washington Heights.",
+            "name": "Maria G.",
+            "source": "Google · 5 stars"
+          }
+        },
+        "rev2": {
+          "type": "review",
+          "settings": {
+            "quote": "Ordered for my mom's birthday and they delivered within 2 hours. Beautiful arrangement, very fresh. Will definitely order again.",
+            "name": "Carlos R.",
+            "source": "Google · 5 stars"
+          }
+        },
+        "rev3": {
+          "type": "review",
+          "settings": {
+            "quote": "Best flower shop in the neighborhood. They have been here for years and you can feel the quality. The staff is so helpful and hablamos español.",
+            "name": "Isabella M.",
+            "source": "Google · 5 stars"
+          }
+        }
+      },
+      "block_order": ["rev1", "rev2", "rev3"]
+    }
+  },
+  "order": [
+    "primavera_hero",
+    "primavera_promise",
+    "primavera_products",
+    "primavera_occasions",
+    "primavera_reviews"
+>>>>>>> 8393837 (v7 hero + brand assets: flower-focused, no models. Real storefront, hands-only craft shot, bouquet-led hero.)
   ]
 }
