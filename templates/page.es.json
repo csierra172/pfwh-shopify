@@ -22,7 +22,7 @@
             "headline": {
               "type": "text",
               "settings": {
-                "text": "<h1>Flores frescas, entregadas el mismo día.</h1>",
+                "text": "<h1>Flores frescas, entregadas el mismo día en Washington Heights.</h1>",
                 "type_preset": "h1",
                 "font": "var(--font-heading--family)",
                 "case": "none",
@@ -32,7 +32,7 @@
             "sub": {
               "type": "text",
               "settings": {
-                "text": "<p>Pide antes de las 2pm y entregamos hoy en 10032, 10033, 10034 y 10040. Te enviamos una foto de tu ramo antes de que salga de la tienda.</p>",
+                "text": "<p>Familia Sierra · 463 Fort Washington Ave · desde 2004. Pide antes de las 2 PM y caminamos tu ramo a tu puerta el mismo día en Washington Heights, Hudson Heights e Inwood (10032, 10033, 10034 y 10040). Te enviamos una foto antes de que salga de la tienda.</p>",
                 "type_preset": "paragraph",
                 "max_width": "narrow"
               }
@@ -109,7 +109,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p>Cada arreglo lo fotografiamos antes de que salga de la tienda. Sabes exactamente qué llega — sin sorpresas, sin sustitutos, sin promesas vacías.</p>",
+            "text": "<p>Cada arreglo lo fotografiamos antes de que salga de la tienda en la 187 con Fort Washington. Sabes exactamente qué llega a la puerta de Mami — sin sorpresas, sin sustitutos, sin promesas vacías. Y si prefieres, pasa por la tienda y te lo armamos al momento.</p>",
             "type_preset": "paragraph"
           }
         }

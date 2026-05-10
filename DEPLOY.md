@@ -12,8 +12,8 @@ layout/        theme.liquid + password.liquid
 locales/       51 languages
 sections/      41 section types
 snippets/      103 snippets
-templates/     Page templates — homepage rebuilt; new: page.delivery, page.story, page.sympathy, page.faq, page.es
-data/          products.csv — 23 SKUs / 39 variants ready for Shopify import
+templates/     Page templates — homepage rebuilt; new: page.delivery, page.story, page.sympathy, page.faq, page.es, page.subscriptions
+data/          products.csv — 35+ SKUs / 60+ variants ready for Shopify import
 ```
 
 ## Step 1 — Connect this repo to Shopify
@@ -62,6 +62,7 @@ Create these pages (Online Store → Pages → Add page) and pick the matching t
 | Sympathy Concierge | sympathy | page.sympathy |
 | FAQ | faq | page.faq |
 | Florista Washington Heights | florista-washington-heights | page.es |
+| Subscriptions | subscriptions | page.subscriptions |
 
 ## Step 4 — App stack (cost-prioritized)
 
