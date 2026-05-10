@@ -1,32 +1,39 @@
 {% doc %}
-  Welcome popup — fires 8s after first visit (per session+30 days), captures
-  email for 15% off first order. Hidden if user previously dismissed or
-  subscribed. Hidden in design mode to avoid editor noise.
+  Welcome popup, v2 — stronger.
+  Two-column hero card (image left, offer right) with a clear 15% off
+  offer, social proof line, bilingual signal, and 2 trust pills.
+  Fires on whichever happens first: exit-intent, 50% scroll, or 12s
+  on the page. Suppresses for 30 days after dismiss / 365 after submit.
+  Hidden in design mode, on cart and checkout.
 {% enddoc %}
 
 {%- unless request.design_mode or request.path contains '/cart' or request.path contains '/checkout' -%}
 <div
   id="welcome-popup-backdrop"
+  role="dialog" aria-modal="true" aria-labelledby="welcome-popup-title"
   style="
     position: fixed; inset: 0; z-index: 9999;
-    background: rgba(15, 15, 15, 0.55);
+    background: rgba(15, 15, 15, 0.62);
+    backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
     display: none;
     align-items: center; justify-content: center;
-    padding: 20px;
-    opacity: 0; transition: opacity 280ms ease;
+    padding: 16px;
+    opacity: 0; transition: opacity 320ms ease;
   "
-  role="dialog" aria-modal="true" aria-labelledby="welcome-popup-title"
 >
   <div
     id="welcome-popup-card"
     style="
-      background: #F8F4EE; color: #1F3A2E;
-      max-width: 460px; width: 100%;
-      padding: 40px 32px 32px;
-      border-radius: 4px;
+      background: #f5efe2; color: #2a2620;
+      max-width: 720px; width: 100%;
+      border-radius: 8px;
       position: relative;
-      font-family: var(--font-body--family);
-      transform: scale(0.96); transition: transform 280ms ease;
+      font-family: 'Inter', system-ui, sans-serif;
+      transform: scale(0.96); transition: transform 320ms ease;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
     "
   >
     <button
@@ -34,62 +41,127 @@
       onclick="window.__welcomePopupDismiss()"
       aria-label="Close"
       style="
-        position: absolute; top: 8px; right: 12px;
-        background: transparent; border: none; cursor: pointer;
-        font-size: 28px; line-height: 1; color: inherit; padding: 4px 10px;
+        position: absolute; top: 10px; right: 14px;
+        background: rgba(255,255,255,0.9); border: none; cursor: pointer;
+        font-size: 22px; line-height: 1; color: #2a2620;
+        width: 32px; height: 32px; border-radius: 50%;
+        display: grid; place-content: center; z-index: 2;
       "
     >×</button>
 
-    <p style="font-family: var(--font-accent--family); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; margin: 0 0 12px; opacity: 0.7;">Welcome to Primavera</p>
-    <h2 id="welcome-popup-title" style="font-family: var(--font-heading--family); font-size: 1.85rem; line-height: 1.15; margin: 0 0 12px;">15% off your first order.</h2>
-    <p style="margin: 0 0 22px; font-size: 0.95rem; line-height: 1.5;">Hand-delivered in Washington Heights, Inwood, and the South Bronx. Same-day before 2pm. Photo-confirmed before it leaves the shop.</p>
-
-    <form
-      method="POST"
-      action="/contact#welcome-popup"
-      id="welcome-popup-form"
-      onsubmit="return window.__welcomePopupSubmit(event)"
+    <!-- Image side -->
+    <div
+      id="welcome-popup-image"
+      style="
+        background-image: url('{{ 'hero-roses.png' | asset_url }}');
+        background-size: cover; background-position: center;
+        min-height: 360px; position: relative;
+      "
     >
-      <input type="hidden" name="form_type" value="customer">
-      <input type="hidden" name="utf8" value="✓">
-      <input type="hidden" name="contact[tags]" value="newsletter, welcome-popup">
-      <label for="welcome-popup-email" style="display: block; font-size: 0.85rem; margin-bottom: 6px;">Your email</label>
-      <input
-        type="email" required name="contact[email]" id="welcome-popup-email"
-        placeholder="you@email.com"
-        style="
-          width: 100%; padding: 12px 14px;
-          border: 1px solid #1F3A2E; background: #fff; color: #1F3A2E;
-          font-size: 1rem; border-radius: 0; box-sizing: border-box;
-        "
-      >
-      <button
-        type="submit"
-        style="
-          width: 100%; margin-top: 12px; padding: 14px 16px;
-          background: #a42325; color: #fff; border: none;
-          font-family: var(--font-accent--family); text-transform: uppercase; letter-spacing: 0.12em;
-          font-size: 0.85rem; cursor: pointer;
-        "
-      >Send me the code</button>
-    </form>
+      <div style="position: absolute; bottom: 16px; left: 16px; background: rgba(245,239,226,0.95); padding: 10px 14px; border-radius: 4px;">
+        <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #7a8a6f; font-weight: 600;">Today on the bench</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 18px; color: #2a2620; margin-top: 2px;">Pink Garden Roses</div>
+      </div>
+    </div>
 
-    <p style="font-size: 0.75rem; opacity: 0.6; margin: 14px 0 0; line-height: 1.4;">No spam — just occasion reminders, seasonal drops, and the occasional sympathy guide. Unsubscribe anytime.</p>
+    <!-- Offer side -->
+    <div style="padding: 36px 32px 28px; display: flex; flex-direction: column; justify-content: center;">
+      <p style="font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.16em; font-size: 11px; margin: 0 0 14px; color: #7a8a6f; font-weight: 600;">Welcome · Hablamos español</p>
+
+      <h2 id="welcome-popup-title" style="font-family: 'DM Serif Display', 'Times New Roman', serif; font-weight: 400; font-size: 32px; line-height: 1.1; margin: 0 0 12px; color: #2a2620;">
+        Get <em style="color: #7a8a6f; font-style: italic;">15% off</em> your first bouquet.
+      </h2>
+
+      <p style="margin: 0 0 18px; font-size: 14px; line-height: 1.55; color: #5a544c;">
+        Hand-tied at 463 Fort Washington. Walked to your door same day. We text you a photo before it leaves the shop.
+      </p>
+
+      <!-- Trust pills -->
+      <div style="display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap;">
+        <span style="font-size: 11px; letter-spacing: 0.06em; padding: 6px 10px; background: rgba(122,138,111,0.12); color: #4a3f2c; border-radius: 999px; font-weight: 500;">★ 4.9 on Google</span>
+        <span style="font-size: 11px; letter-spacing: 0.06em; padding: 6px 10px; background: rgba(122,138,111,0.12); color: #4a3f2c; border-radius: 999px; font-weight: 500;">200+ neighbors</span>
+        <span style="font-size: 11px; letter-spacing: 0.06em; padding: 6px 10px; background: rgba(122,138,111,0.12); color: #4a3f2c; border-radius: 999px; font-weight: 500;">Since 2004</span>
+      </div>
+
+      <form
+        method="POST"
+        action="/contact#welcome-popup"
+        id="welcome-popup-form"
+        onsubmit="return window.__welcomePopupSubmit(event)"
+        style="display: flex; flex-direction: column; gap: 10px;"
+      >
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="newsletter, welcome-popup, pfwh-15-off">
+        <input
+          type="email" required name="contact[email]" id="welcome-popup-email"
+          placeholder="you@email.com"
+          autocomplete="email"
+          style="
+            width: 100%; padding: 14px 16px;
+            border: 1.5px solid #e2dac7; background: #fff; color: #2a2620;
+            font-size: 15px; border-radius: 6px; box-sizing: border-box;
+            font-family: inherit;
+          "
+        >
+        <button
+          type="submit"
+          style="
+            width: 100%; padding: 14px 18px;
+            background: #7a8a6f; color: #f5efe2; border: none;
+            font-family: inherit; font-weight: 600;
+            font-size: 15px; cursor: pointer; border-radius: 6px;
+            transition: background 0.15s;
+          "
+          onmouseover="this.style.background='#2a2620'" onmouseout="this.style.background='#7a8a6f'"
+        >Send me 15% off →</button>
+      </form>
+
+      <p style="font-size: 11px; opacity: 0.6; margin: 12px 0 0; line-height: 1.45; color: #5a544c;">
+        We email occasion reminders, seasonal drops, and the rare sympathy guide. No spam. Unsubscribe in one click.
+      </p>
+
+      <button
+        type="button"
+        onclick="window.__welcomePopupDismiss()"
+        style="
+          background: transparent; border: none; color: #8a847c; cursor: pointer;
+          font-size: 12px; padding: 10px 0 0; text-decoration: underline;
+          font-family: inherit; align-self: flex-start;
+        "
+      >No thanks, I'll pay full price</button>
+    </div>
   </div>
 </div>
 
+<style>
+  @media (max-width: 640px) {
+    #welcome-popup-card {
+      grid-template-columns: 1fr !important;
+      max-width: 420px !important;
+    }
+    #welcome-popup-image {
+      min-height: 180px !important;
+    }
+    #welcome-popup-card h2 {
+      font-size: 26px !important;
+    }
+  }
+</style>
+
 <script>
   (function () {
-    var KEY = 'pfwh_welcome_popup_v1';
-    var DELAY_MS = 8000;
-    var SUPPRESS_DAYS = 30;
+    var KEY = 'pfwh_welcome_popup_v2';
+    var DELAY_MS = 12000;
+    var SCROLL_TRIGGER = 0.5; // 50% of viewport scrolled
+    var SUPPRESS_DAYS_DISMISS = 30;
+    var SUPPRESS_DAYS_SUBMIT = 365;
 
     function isSuppressed() {
       try {
         var raw = localStorage.getItem(KEY);
         if (!raw) return false;
-        var until = parseInt(raw, 10);
-        return Date.now() < until;
+        return Date.now() < parseInt(raw, 10);
       } catch (e) { return false; }
     }
     function suppress(days) {
@@ -99,19 +171,19 @@
       var bd = document.getElementById('welcome-popup-backdrop');
       if (!bd) return;
       bd.style.opacity = '0';
-      setTimeout(function () { bd.style.display = 'none'; }, 280);
-      suppress(SUPPRESS_DAYS);
+      setTimeout(function () { bd.style.display = 'none'; }, 320);
+      suppress(SUPPRESS_DAYS_DISMISS);
     };
     window.__welcomePopupSubmit = function (e) {
-      // Klaviyo / Shopify customer form will handle submission;
-      // we just hide the popup for the rest of the year on success path.
-      suppress(365);
+      suppress(SUPPRESS_DAYS_SUBMIT);
       return true;
     };
 
     if (isSuppressed()) return;
 
-    setTimeout(function () {
+    var fired = false;
+    function fire() {
+      if (fired) return; fired = true;
       var bd = document.getElementById('welcome-popup-backdrop');
       var card = document.getElementById('welcome-popup-card');
       if (!bd || !card) return;
@@ -129,7 +201,31 @@
           document.removeEventListener('keydown', escHandler);
         }
       });
-    }, DELAY_MS);
+      var emailInput = document.getElementById('welcome-popup-email');
+      if (emailInput) setTimeout(function(){ emailInput.focus(); }, 360);
+    }
+
+    // Trigger 1: time delay
+    setTimeout(fire, DELAY_MS);
+
+    // Trigger 2: scroll past threshold
+    function onScroll() {
+      var pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (pct > SCROLL_TRIGGER) {
+        fire();
+        window.removeEventListener('scroll', onScroll);
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Trigger 3: exit intent (mouse leaves through top of viewport, desktop only)
+    function onMouseOut(e) {
+      if (e.clientY <= 0 && e.relatedTarget == null && window.innerWidth > 768) {
+        fire();
+        document.removeEventListener('mouseout', onMouseOut);
+      }
+    }
+    document.addEventListener('mouseout', onMouseOut);
   })();
 </script>
 {%- endunless -%}
