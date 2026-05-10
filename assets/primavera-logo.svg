@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Primavera Flowers — wordmark recreation as SVG.
+  Approximates the elegant cursive "P" with botanical ornament from the
+  Instagram avatar / brand mark. Designed to render crisply at any size on
+  the sage-green brand color (#a8b59a). Swap with the real PNG/SVG when
+  the source files are available.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 540" width="400" height="540" role="img" aria-label="Primavera Flowers">
+  <style>
+    .pf-line { fill: none; stroke: #faf6ec; stroke-linecap: round; stroke-linejoin: round; }
+    .pf-fill { fill: #faf6ec; }
+  </style>
+
+  <!-- Botanical sprig (left of stem) -->
+  <g class="pf-fill">
+    <path d="M120 240
+             C110 250 95 245 90 260
+             C85 275 100 285 115 280
+             C130 275 130 255 120 240 Z" opacity="0.95"/>
+    <path d="M105 290
+             C95 295 80 290 78 305
+             C76 320 92 326 105 318
+             C118 310 115 295 105 290 Z" opacity="0.95"/>
+    <path d="M138 320
+             C128 326 114 322 110 336
+             C106 350 122 358 136 350
+             C150 342 148 326 138 320 Z" opacity="0.95"/>
+    <path d="M124 370
+             C114 375 100 370 98 384
+             C96 398 112 405 124 398
+             C137 391 134 376 124 370 Z" opacity="0.95"/>
+    <!-- stems -->
+    <path class="pf-line" stroke-width="2.5" d="M150 220 C 130 280 130 360 142 430"/>
+    <path class="pf-line" stroke-width="2" d="M118 260 C 108 305 108 360 120 410"/>
+  </g>
+
+  <!-- The P -->
+  <g>
+    <!-- vertical stem -->
+    <rect x="170" y="195" width="32" height="270" class="pf-fill"/>
+    <!-- foot -->
+    <rect x="148" y="455" width="76" height="14" class="pf-fill"/>
+    <!-- bowl of P -->
+    <path class="pf-fill" d="
+      M202 195
+      L202 305
+      L262 305
+      C 320 305 348 270 348 240
+      C 348 210 320 195 262 195 Z
+      M212 215
+      L262 215
+      C 304 215 326 226 326 240
+      C 326 254 304 285 262 285
+      L 212 285 Z" />
+  </g>
+
+  <!-- Flowing ribbon flourish (top of P, like calligraphic flag) -->
+  <path class="pf-line" stroke-width="3.5" stroke-linecap="round" d="
+    M210 195
+    C 240 130, 320 95, 380 100
+    C 360 145, 290 165, 245 175" fill="none"/>
+
+  <!-- Decorative tail off the flourish -->
+  <path class="pf-line" stroke-width="2" stroke-linecap="round" d="
+    M375 105
+    C 385 115, 388 135, 380 152" fill="none"/>
+</svg>

@@ -1,220 +1,223 @@
 {% comment %}
-  Primavera Flowers — editorial landing page section.
-  Self-contained: own CSS, HTML, JS. Renders the full homepage.
-  Image assets must live in /assets:
-    hero-roses.png, madres.png, sympathy.png, florist.png, storefront.png
-  Configurable copy via section settings (see schema at bottom).
+  Primavera Flowers — homepage v2.
+  Simpler copy, cleaner typography (Inter + DM Serif Display only), real shop data,
+  Google Reviews block, sage-green brand palette aligned with logo.
+  Image assets in /assets:
+    primavera-logo.svg, hero-roses.png, madres.png, sympathy.png, florist.png, storefront.png
 {% endcomment %}
 
 <style>
-  .primavera-landing {
-    --green: #1e3a2c;
-    --green-2: #2c4a3a;
-    --green-deep: #142319;
-    --ivory: #f5efe2;
-    --ivory-2: #ece4d2;
-    --paper: #faf6ec;
-    --ink: #221b14;
-    --ink-2: #4a4036;
-    --rose: #d39283;
-    --rose-deep: #b8705d;
-    --line: #d8cdb6;
-    --pl-serif: "Cormorant Garamond", "Times New Roman", serif;
-    --pl-sans: "DM Sans", system-ui, sans-serif;
-    --pl-mono: "JetBrains Mono", ui-monospace, monospace;
-    background: var(--ivory); color: var(--ink); font-family: var(--pl-sans);
-    font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+  .pl {
+    --sage:        #a8b59a;
+    --sage-deep:   #7a8a6f;
+    --sage-soft:   #c8d2bc;
+    --cream:       #f5efe2;
+    --cream-2:     #ece4d2;
+    --paper:       #faf6ec;
+    --ink:         #2a2620;
+    --ink-2:       #5a544c;
+    --ink-3:       #8a847c;
+    --rose:        #d39283;
+    --rose-deep:   #b8705d;
+    --line:        #e2dac7;
+    --pl-serif:    "DM Serif Display", "Times New Roman", serif;
+    --pl-sans:     "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--cream); color: var(--ink); font-family: var(--pl-sans);
+    font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
   }
-  .primavera-landing * { box-sizing: border-box; margin: 0; padding: 0; }
-  .primavera-landing img { display: block; max-width: 100%; }
-  .primavera-landing a { color: inherit; text-decoration: none; }
+  .pl * { box-sizing: border-box; margin: 0; padding: 0; }
+  .pl img { display: block; max-width: 100%; }
+  .pl a { color: inherit; text-decoration: none; }
 
-  /* Announcement ticker */
-  .pl-announce { background: var(--green-deep); color: var(--ivory); font-family: var(--pl-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; overflow: hidden; white-space: nowrap; }
-  .pl-announce-track { display: inline-flex; gap: 3rem; padding: 12px 0; animation: pl-slide 48s linear infinite; }
-  .pl-announce-track span { display: inline-flex; align-items: center; gap: 0.75rem; }
-  .pl-announce-track .pl-dot { width: 4px; height: 4px; background: var(--rose); border-radius: 50%; }
-  @keyframes pl-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  /* ───── Announcement ───── */
+  .pl-announce { background: var(--sage-deep); color: var(--cream); font-size: 13px; padding: 10px 24px; text-align: center; letter-spacing: 0.01em; font-weight: 500; }
+  .pl-announce a { text-decoration: underline; text-underline-offset: 3px; }
 
-  /* Hero */
-  .pl-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 720px; border-bottom: 1px solid var(--line); }
-  .pl-hero-text { padding: 80px 64px 64px; display: flex; flex-direction: column; justify-content: space-between; background: var(--ivory); position: relative; }
-  .pl-eyebrow { font-family: var(--pl-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose-deep); display: inline-flex; align-items: center; gap: 12px; }
-  .pl-eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--rose-deep); }
-  .pl-hero h1 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(56px, 6.4vw, 96px); line-height: 0.96; letter-spacing: -0.01em; color: var(--green-deep); margin: 28px 0; }
-  .pl-hero h1 em { font-style: italic; color: var(--rose-deep); font-weight: 400; }
-  .pl-hero p.pl-lede { font-family: var(--pl-serif); font-size: 22px; line-height: 1.4; max-width: 460px; color: var(--ink-2); font-style: italic; margin-bottom: 36px; }
-  .pl-hero-ctas { display: flex; gap: 12px; align-items: center; margin-bottom: 48px; flex-wrap: wrap; }
-  .pl-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font-size: 14px; font-weight: 500; transition: transform .15s, background .2s; border: none; cursor: pointer; }
-  .pl-btn-primary { background: var(--green); color: var(--ivory); }
-  .pl-btn-primary:hover { background: var(--green-deep); }
-  .pl-btn-ghost { color: var(--green); border-bottom: 1px solid var(--green); border-radius: 0; padding: 8px 2px; }
-  .pl-btn-ghost:hover { color: var(--rose-deep); border-color: var(--rose-deep); }
-  .pl-arrow { font-size: 16px; }
+  /* ───── Hero ───── */
+  .pl-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+  .pl-hero-text { padding: 72px 56px; display: flex; flex-direction: column; justify-content: center; background: var(--cream); }
+  .pl-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 20px; }
+  .pl-hero h1 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(44px, 5vw, 72px); line-height: 1.05; color: var(--ink); margin-bottom: 24px; max-width: 540px; }
+  .pl-hero h1 em { font-style: italic; color: var(--sage-deep); font-weight: 400; }
+  .pl-hero p.pl-lede { font-size: 19px; line-height: 1.55; color: var(--ink-2); max-width: 480px; margin-bottom: 32px; }
+  .pl-hero-ctas { display: flex; gap: 14px; align-items: center; margin-bottom: 40px; flex-wrap: wrap; }
+  .pl-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 6px; font-size: 15px; font-weight: 600; transition: all .15s; border: none; cursor: pointer; }
+  .pl-btn-primary { background: var(--sage-deep); color: var(--cream); }
+  .pl-btn-primary:hover { background: var(--ink); }
+  .pl-btn-ghost { color: var(--sage-deep); border: 1.5px solid var(--sage-deep); padding: 12px 24px; }
+  .pl-btn-ghost:hover { background: var(--sage); color: var(--cream); border-color: var(--sage); }
 
-  .pl-hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); padding-top: 28px; }
-  .pl-hero-meta .pl-item { padding-right: 20px; }
-  .pl-hero-meta .pl-label { font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; }
-  .pl-hero-meta .pl-val { font-family: var(--pl-serif); font-size: 22px; color: var(--green-deep); line-height: 1.1; }
-  .pl-hero-meta .pl-val small { font-family: var(--pl-sans); font-size: 12px; display: block; color: var(--ink-2); margin-top: 6px; letter-spacing: 0.04em; }
+  .pl-hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); padding-top: 24px; gap: 24px; }
+  .pl-hero-meta .pl-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-bottom: 6px; }
+  .pl-hero-meta .pl-val { font-family: var(--pl-serif); font-size: 22px; color: var(--ink); line-height: 1.1; }
+  .pl-hero-meta .pl-val small { font-family: var(--pl-sans); font-size: 12px; display: block; color: var(--ink-3); margin-top: 4px; font-weight: 500; }
 
-  .pl-hero-image { position: relative; overflow: hidden; background: var(--ivory-2); }
+  .pl-hero-image { position: relative; overflow: hidden; background: var(--cream-2); }
   .pl-hero-image img { width: 100%; height: 100%; object-fit: cover; }
-  .pl-hero-tag { position: absolute; bottom: 28px; left: 28px; background: var(--paper); padding: 14px 18px; max-width: 240px; border-left: 2px solid var(--rose-deep); }
-  .pl-hero-tag .pl-label { font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-deep); }
-  .pl-hero-tag .pl-name { font-family: var(--pl-serif); font-size: 22px; color: var(--green-deep); margin-top: 6px; line-height: 1.15; }
-  .pl-hero-tag .pl-price { font-family: var(--pl-mono); font-size: 12px; color: var(--ink-2); margin-top: 8px; }
+  .pl-hero-tag { position: absolute; bottom: 24px; left: 24px; background: var(--cream); padding: 14px 18px; max-width: 240px; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .pl-hero-tag .pl-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; }
+  .pl-hero-tag .pl-name { font-family: var(--pl-serif); font-size: 20px; color: var(--ink); margin-top: 4px; line-height: 1.2; }
+  .pl-hero-tag .pl-price { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
 
-  /* Promise band */
-  .pl-promise { background: var(--green); color: var(--ivory); padding: 56px 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; align-items: start; }
-  .pl-promise .pl-num { font-family: var(--pl-mono); font-size: 11px; letter-spacing: 0.16em; color: var(--rose); opacity: 0.85; }
-  .pl-promise .pl-title { font-family: var(--pl-serif); font-size: 24px; line-height: 1.2; margin: 12px 0 10px; font-style: italic; }
-  .pl-promise .pl-desc { font-size: 14px; line-height: 1.55; opacity: 0.85; }
+  /* ───── Promise ───── */
+  .pl-promise { background: var(--sage-deep); color: var(--cream); padding: 56px 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .pl-promise .pl-num { font-size: 12px; letter-spacing: 0.14em; color: var(--sage-soft); font-weight: 600; }
+  .pl-promise .pl-title { font-family: var(--pl-serif); font-size: 22px; line-height: 1.2; margin: 10px 0 8px; }
+  .pl-promise .pl-desc { font-size: 14px; line-height: 1.55; color: rgba(245, 239, 226, 0.85); }
 
-  /* Section header */
-  .pl-section { padding: 96px 40px; }
-  .pl-sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 56px; }
-  .pl-sec-head h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(44px, 5vw, 72px); line-height: 1.0; color: var(--green-deep); letter-spacing: -0.005em; }
-  .pl-sec-head h2 em { font-style: italic; color: var(--rose-deep); }
-  .pl-sec-head .pl-right { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 460px; justify-self: end; }
-  .pl-sec-head .pl-right p + p { margin-top: 12px; }
+  /* ───── Section ───── */
+  .pl-section { padding: 80px 40px; }
+  .pl-sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; margin-bottom: 48px; }
+  .pl-sec-head h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(36px, 4vw, 56px); line-height: 1.1; color: var(--ink); }
+  .pl-sec-head h2 em { font-style: italic; color: var(--sage-deep); }
+  .pl-sec-head .pl-right { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 460px; }
 
-  /* Día de las Madres */
+  /* ───── Madres ───── */
   .pl-madres { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .pl-madres-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 0; align-items: stretch; }
-  .pl-madres-text { padding: 80px 56px 80px 40px; display: flex; flex-direction: column; justify-content: center; }
-  .pl-madres-text .pl-ribbon { font-family: var(--pl-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose-deep); display: inline-flex; gap: 12px; align-items: center; margin-bottom: 24px; }
-  .pl-madres-text h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(56px, 6vw, 88px); line-height: 0.95; color: var(--green-deep); }
-  .pl-madres-text h2 em { font-style: italic; color: var(--rose-deep); }
-  .pl-madres-text .pl-es { font-family: var(--pl-serif); font-style: italic; font-size: 26px; color: var(--ink-2); margin-top: 24px; max-width: 500px; }
-  .pl-madres-text .pl-en { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 480px; margin-top: 16px; }
-  .pl-madres-text .pl-countdown { margin-top: 40px; display: flex; gap: 12px; align-items: stretch; border-top: 1px solid var(--line); padding-top: 32px; }
-  .pl-countdown .pl-box { background: var(--ivory); padding: 16px 20px; border: 1px solid var(--line); text-align: center; min-width: 84px; }
-  .pl-countdown .pl-num { font-family: var(--pl-serif); font-size: 36px; color: var(--green-deep); line-height: 1; }
-  .pl-countdown .pl-label { font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); margin-top: 6px; }
-  .pl-madres-text .pl-ctas { margin-top: 32px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-  .pl-madres-image { position: relative; min-height: 720px; overflow: hidden; }
+  .pl-madres-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .pl-madres-text { padding: 72px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .pl-madres-text .pl-ribbon { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-deep); font-weight: 600; margin-bottom: 20px; }
+  .pl-madres-text h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(40px, 4.5vw, 64px); line-height: 1.05; color: var(--ink); }
+  .pl-madres-text h2 em { font-style: italic; color: var(--sage-deep); }
+  .pl-madres-text .pl-es { font-size: 18px; color: var(--ink-2); margin-top: 18px; max-width: 460px; }
+  .pl-madres-text .pl-en { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 460px; margin-top: 14px; }
+  .pl-madres-text .pl-countdown { margin-top: 32px; display: flex; gap: 10px; padding-top: 24px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .pl-cd-box { background: var(--cream); padding: 14px 18px; border-radius: 6px; text-align: center; min-width: 76px; border: 1px solid var(--line); }
+  .pl-cd-num { font-family: var(--pl-serif); font-size: 30px; color: var(--ink); line-height: 1; }
+  .pl-cd-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px; font-weight: 600; }
+  .pl-madres-text .pl-ctas { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .pl-madres-image { position: relative; min-height: 600px; overflow: hidden; }
   .pl-madres-image img { width: 100%; height: 100%; object-fit: cover; }
-  .pl-madres-image .pl-stamp { position: absolute; top: 40px; right: 40px; width: 140px; height: 140px; border-radius: 50%; background: var(--rose-deep); color: var(--ivory); display: grid; place-content: center; text-align: center; font-family: var(--pl-serif); font-size: 18px; line-height: 1.1; font-style: italic; transform: rotate(-8deg); box-shadow: 0 12px 30px rgba(0,0,0,0.18); }
-  .pl-madres-image .pl-stamp small { display: block; font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; margin-top: 6px; opacity: 0.85; }
 
-  /* Occasions */
+  /* ───── Occasions ───── */
   .pl-occasions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .pl-occasion { background: var(--ivory); padding: 56px 28px 40px; transition: background .25s; cursor: pointer; display: flex; flex-direction: column; gap: 36px; min-height: 320px; }
+  .pl-occasion { background: var(--cream); padding: 48px 24px 32px; transition: background .25s; cursor: pointer; display: flex; flex-direction: column; gap: 28px; min-height: 280px; }
   .pl-occasion:hover { background: var(--paper); }
-  .pl-occasion .pl-num { font-family: var(--pl-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--ink-2); }
-  .pl-occasion .pl-name { font-family: var(--pl-serif); font-size: 32px; line-height: 1.05; color: var(--green-deep); }
-  .pl-occasion .pl-name em { font-style: italic; color: var(--rose-deep); }
-  .pl-occasion .pl-copy { font-size: 13px; color: var(--ink-2); margin-top: -24px; line-height: 1.5; }
-  .pl-occasion .pl-arrow-link { margin-top: auto; font-family: var(--pl-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: inline-flex; align-items: center; gap: 8px; }
+  .pl-occasion .pl-num { font-size: 11px; letter-spacing: 0.14em; color: var(--ink-3); font-weight: 600; }
+  .pl-occasion .pl-name { font-family: var(--pl-serif); font-size: 28px; line-height: 1.1; color: var(--ink); }
+  .pl-occasion .pl-name em { font-style: italic; color: var(--sage-deep); }
+  .pl-occasion .pl-copy { font-size: 14px; color: var(--ink-2); margin-top: -16px; line-height: 1.5; }
+  .pl-occasion .pl-arrow-link { margin-top: auto; font-size: 13px; color: var(--sage-deep); font-weight: 600; }
   .pl-occasion:hover .pl-arrow-link { color: var(--rose-deep); }
 
-  /* Products */
-  .pl-products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-  .pl-product { display: flex; flex-direction: column; gap: 16px; }
-  .pl-product .pl-img-wrap { aspect-ratio: 4/5; background: var(--ivory-2); overflow: hidden; position: relative; }
-  .pl-product .pl-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  /* ───── Products ───── */
+  .pl-products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .pl-product { display: flex; flex-direction: column; gap: 14px; }
+  .pl-product .pl-img-wrap { aspect-ratio: 4/5; background: var(--cream-2); overflow: hidden; position: relative; border-radius: 6px; }
+  .pl-product .pl-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
   .pl-product:hover .pl-img-wrap img { transform: scale(1.04); }
-  .pl-product .pl-badge { position: absolute; top: 14px; left: 14px; background: var(--paper); padding: 5px 10px; font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-deep); }
-  .pl-product .pl-badge.pl-rose { background: var(--rose-deep); color: var(--ivory); }
-  .pl-product .pl-quick { position: absolute; bottom: 0; left: 0; right: 0; background: var(--green); color: var(--ivory); padding: 12px; font-family: var(--pl-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; text-align: center; transform: translateY(100%); transition: transform .25s; }
-  .pl-product:hover .pl-quick { transform: translateY(0); }
+  .pl-product .pl-badge { position: absolute; top: 12px; left: 12px; background: var(--cream); padding: 5px 10px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); font-weight: 600; border-radius: 4px; }
+  .pl-product .pl-badge.pl-rose { background: var(--rose-deep); color: var(--cream); }
   .pl-product .pl-row { display: flex; justify-content: space-between; align-items: baseline; }
-  .pl-product .pl-name { font-family: var(--pl-serif); font-size: 22px; color: var(--green-deep); line-height: 1.15; }
-  .pl-product .pl-price { font-family: var(--pl-mono); font-size: 13px; color: var(--ink); }
-  .pl-product .pl-desc { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+  .pl-product .pl-name { font-family: var(--pl-serif); font-size: 21px; color: var(--ink); line-height: 1.15; }
+  .pl-product .pl-price { font-size: 14px; color: var(--ink-2); font-weight: 600; }
+  .pl-product .pl-desc { font-size: 14px; color: var(--ink-3); line-height: 1.5; }
 
-  /* Photo confirmation */
-  .pl-promise-photo { display: grid; grid-template-columns: 1fr 1fr; background: var(--ivory-2); border-top: 1px solid var(--line); }
-  .pl-promise-photo .pl-img-side { background: var(--ivory-2); position: relative; min-height: 600px; overflow: hidden; }
-  .pl-promise-photo .pl-img-side img { width: 100%; height: 100%; object-fit: cover; }
-  .pl-promise-photo .pl-receipt { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-4deg); background: var(--paper); padding: 24px 28px; width: 320px; box-shadow: 0 24px 60px rgba(20, 35, 25, 0.28); border: 1px solid var(--line); }
-  .pl-receipt .pl-head { font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding-bottom: 10px; margin-bottom: 14px; }
-  .pl-receipt .pl-ph { aspect-ratio: 1/1; background: linear-gradient(135deg, #e3c8c0, #c9a89a); display: grid; place-content: center; color: var(--ivory); font-family: var(--pl-serif); font-style: italic; font-size: 14px; margin-bottom: 14px; position: relative; overflow: hidden; }
-  .pl-receipt .pl-ph img { width: 100%; height: 100%; object-fit: cover; }
-  .pl-receipt .pl-line { font-family: var(--pl-serif); font-style: italic; font-size: 18px; color: var(--green-deep); line-height: 1.3; }
-  .pl-receipt .pl-meta { font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-2); margin-top: 12px; }
-  .pl-promise-photo .pl-text-side { padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; background: var(--ivory); }
-  .pl-promise-photo h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(40px, 4.6vw, 64px); line-height: 1.0; color: var(--green-deep); }
-  .pl-promise-photo h2 em { font-style: italic; color: var(--rose-deep); }
-  .pl-promise-photo p { font-size: 17px; line-height: 1.6; color: var(--ink-2); max-width: 480px; margin-top: 28px; }
-  .pl-promise-photo .pl-stat-row { display: flex; gap: 56px; margin-top: 48px; border-top: 1px solid var(--line); padding-top: 28px; flex-wrap: wrap; }
-  .pl-stat .pl-n { font-family: var(--pl-serif); font-size: 40px; color: var(--green-deep); line-height: 1; }
-  .pl-stat .pl-l { font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); margin-top: 8px; }
+  /* ───── Photo confirmation ───── */
+  .pl-promise-photo { display: grid; grid-template-columns: 1fr 1fr; background: var(--cream-2); border-top: 1px solid var(--line); }
+  .pl-img-side { position: relative; min-height: 540px; overflow: hidden; }
+  .pl-img-side img { width: 100%; height: 100%; object-fit: cover; }
+  .pl-text-side { padding: 72px 48px; display: flex; flex-direction: column; justify-content: center; background: var(--cream); }
+  .pl-text-side h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.1; color: var(--ink); margin-top: 16px; }
+  .pl-text-side h2 em { font-style: italic; color: var(--sage-deep); }
+  .pl-text-side p { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 480px; margin-top: 20px; }
+  .pl-stat-row { display: flex; gap: 40px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .pl-stat .pl-n { font-family: var(--pl-serif); font-size: 36px; color: var(--ink); line-height: 1; }
+  .pl-stat .pl-l { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-top: 6px; font-weight: 600; }
 
-  /* Coverage */
-  .pl-coverage { background: var(--green-deep); color: var(--ivory); padding: 96px 40px; }
-  .pl-coverage-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
-  .pl-coverage h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(44px, 5vw, 76px); line-height: 0.98; }
-  .pl-coverage h2 em { font-style: italic; color: var(--rose); }
-  .pl-coverage p { color: rgba(245, 239, 226, 0.78); margin-top: 24px; max-width: 520px; font-size: 16px; line-height: 1.6; }
-  .pl-zips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-  .pl-zips span { border: 1px solid rgba(245, 239, 226, 0.25); padding: 6px 12px; border-radius: 999px; font-family: var(--pl-mono); font-size: 12px; letter-spacing: 0.06em; }
-  .pl-zips span.pl-active { background: var(--rose-deep); border-color: var(--rose-deep); }
-  .pl-map { background: var(--green-2); aspect-ratio: 1.05/1; position: relative; overflow: hidden; border: 1px solid rgba(245, 239, 226, 0.15); }
+  /* ───── Reviews ───── */
+  .pl-reviews { background: var(--cream); border-top: 1px solid var(--line); padding: 80px 40px; }
+  .pl-reviews-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 40px; gap: 32px; flex-wrap: wrap; }
+  .pl-reviews-head h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.1; color: var(--ink); }
+  .pl-reviews-head h2 em { font-style: italic; color: var(--sage-deep); }
+  .pl-reviews-rating { display: flex; align-items: center; gap: 12px; }
+  .pl-reviews-rating .pl-stars { font-size: 18px; color: #f5b454; letter-spacing: 1px; }
+  .pl-reviews-rating .pl-rating-text { font-size: 14px; color: var(--ink-2); font-weight: 600; }
+  .pl-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .pl-review { background: var(--paper); padding: 28px 26px; border-radius: 8px; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; }
+  .pl-review-stars { font-size: 14px; color: #f5b454; letter-spacing: 1px; }
+  .pl-review-text { font-size: 15px; color: var(--ink); line-height: 1.55; }
+  .pl-review-author { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); }
+  .pl-review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--sage); color: var(--cream); display: grid; place-content: center; font-weight: 600; font-size: 13px; }
+  .pl-review-name { font-size: 13px; color: var(--ink-2); font-weight: 600; }
+  .pl-review-date { font-size: 12px; color: var(--ink-3); }
+  .pl-reviews-cta { text-align: center; margin-top: 40px; }
+  .pl-reviews-cta a { color: var(--sage-deep); font-weight: 600; font-size: 14px; border-bottom: 1.5px solid var(--sage-deep); padding-bottom: 2px; }
+  .pl-reviews-cta a:hover { color: var(--rose-deep); border-color: var(--rose-deep); }
+
+  /* ───── Coverage ───── */
+  .pl-coverage { background: var(--ink); color: var(--cream); padding: 80px 40px; }
+  .pl-coverage-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  .pl-coverage h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.05; }
+  .pl-coverage h2 em { font-style: italic; color: var(--sage-soft); }
+  .pl-coverage p { color: rgba(245, 239, 226, 0.78); margin-top: 20px; max-width: 500px; font-size: 16px; line-height: 1.6; }
+  .pl-zips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .pl-zips span { border: 1px solid rgba(245, 239, 226, 0.25); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 500; }
+  .pl-zips span.pl-active { background: var(--sage-deep); border-color: var(--sage-deep); color: var(--cream); }
+  .pl-map { background: #1f1d18; aspect-ratio: 1.05/1; position: relative; overflow: hidden; border: 1px solid rgba(245, 239, 226, 0.15); border-radius: 6px; }
   .pl-map svg { width: 100%; height: 100%; }
-  .pl-pin { position: absolute; width: 14px; height: 14px; background: var(--rose); border-radius: 50%; box-shadow: 0 0 0 4px rgba(211, 146, 131, 0.25); transform: translate(-50%, -50%); }
-  .pl-pin.pl-shop { background: var(--ivory); width: 18px; height: 18px; box-shadow: 0 0 0 6px rgba(245, 239, 226, 0.18); }
-  .pl-pin.pl-shop::after { content: "PRIMAVERA"; position: absolute; left: 28px; top: 0; font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ivory); white-space: nowrap; }
-  .pl-map-label { position: absolute; font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.1em; color: rgba(245, 239, 226, 0.55); text-transform: uppercase; }
+  .pl-pin { position: absolute; width: 12px; height: 12px; background: var(--rose); border-radius: 50%; box-shadow: 0 0 0 4px rgba(211, 146, 131, 0.25); transform: translate(-50%, -50%); }
+  .pl-pin.pl-shop { background: var(--cream); width: 16px; height: 16px; box-shadow: 0 0 0 6px rgba(245, 239, 226, 0.18); }
+  .pl-pin.pl-shop::after { content: "PRIMAVERA"; position: absolute; left: 24px; top: 0; font-size: 10px; letter-spacing: 0.14em; color: var(--cream); white-space: nowrap; font-weight: 600; }
 
-  /* Subscriptions */
+  /* ───── Subscriptions ───── */
   .pl-subs { background: var(--paper); }
-  .pl-sub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .pl-sub { background: var(--ivory); padding: 40px 32px; border: 1px solid var(--line); display: flex; flex-direction: column; min-height: 380px; position: relative; }
-  .pl-sub.pl-featured { background: var(--green); color: var(--ivory); border-color: var(--green); }
-  .pl-sub.pl-featured .pl-sub-name, .pl-sub.pl-featured .pl-sub-price { color: var(--ivory); }
-  .pl-sub.pl-featured .pl-sub-meta, .pl-sub.pl-featured .pl-sub-feat li { color: rgba(245, 239, 226, 0.78); }
-  .pl-sub.pl-featured .pl-sub-feat li::before { background: var(--rose); }
-  .pl-sub-tag { font-family: var(--pl-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 28px; }
+  .pl-sub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pl-sub { background: var(--cream); padding: 36px 28px; border-radius: 8px; border: 1px solid var(--line); display: flex; flex-direction: column; min-height: 360px; }
+  .pl-sub.pl-featured { background: var(--sage-deep); color: var(--cream); border-color: var(--sage-deep); }
+  .pl-sub.pl-featured .pl-sub-name, .pl-sub.pl-featured .pl-sub-price { color: var(--cream); }
+  .pl-sub.pl-featured .pl-sub-meta, .pl-sub.pl-featured .pl-sub-feat li { color: rgba(245, 239, 226, 0.85); }
+  .pl-sub-tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-deep); font-weight: 600; margin-bottom: 20px; }
   .pl-sub.pl-featured .pl-sub-tag { color: var(--rose); }
-  .pl-sub-name { font-family: var(--pl-serif); font-size: 36px; color: var(--green-deep); line-height: 1; }
-  .pl-sub-name em { font-style: italic; }
-  .pl-sub-price { font-family: var(--pl-serif); font-size: 28px; color: var(--green-deep); margin-top: 14px; }
-  .pl-sub-price small { font-family: var(--pl-sans); font-size: 13px; color: var(--ink-2); margin-left: 6px; }
+  .pl-sub-name { font-family: var(--pl-serif); font-size: 32px; color: var(--ink); line-height: 1; }
+  .pl-sub-price { font-family: var(--pl-serif); font-size: 24px; color: var(--ink); margin-top: 12px; }
+  .pl-sub-price small { font-family: var(--pl-sans); font-size: 13px; color: var(--ink-3); margin-left: 4px; font-weight: 400; }
   .pl-sub.pl-featured .pl-sub-price small { color: rgba(245, 239, 226, 0.7); }
-  .pl-sub-meta { font-size: 13px; color: var(--ink-2); margin-top: 8px; }
-  .pl-sub-feat { list-style: none; margin: 28px 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  .pl-sub-feat li { font-size: 14px; color: var(--ink-2); padding-left: 18px; position: relative; }
-  .pl-sub-feat li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 1px; background: var(--rose-deep); }
+  .pl-sub-meta { font-size: 13px; color: var(--ink-3); margin-top: 6px; }
+  .pl-sub-feat { list-style: none; margin: 24px 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .pl-sub-feat li { font-size: 14px; color: var(--ink-2); padding-left: 20px; position: relative; }
+  .pl-sub-feat li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--sage-deep); font-weight: 600; }
+  .pl-sub.pl-featured .pl-sub-feat li::before { color: var(--rose); }
   .pl-sub .pl-btn { margin-top: auto; align-self: flex-start; }
-  .pl-sub.pl-featured .pl-btn-primary { background: var(--ivory); color: var(--green-deep); }
-  .pl-sub.pl-featured .pl-btn-primary:hover { background: var(--rose); color: var(--green-deep); }
+  .pl-sub.pl-featured .pl-btn-primary { background: var(--cream); color: var(--ink); }
+  .pl-sub.pl-featured .pl-btn-primary:hover { background: var(--rose); }
 
-  /* Editorial */
-  .pl-editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: var(--ivory); }
-  .pl-editorial-img { min-height: 720px; overflow: hidden; }
+  /* ───── Editorial ───── */
+  .pl-editorial { display: grid; grid-template-columns: 1fr 1fr; background: var(--cream); }
+  .pl-editorial-img { min-height: 600px; overflow: hidden; }
   .pl-editorial-img img { width: 100%; height: 100%; object-fit: cover; }
-  .pl-editorial-text { padding: 96px 64px; display: flex; flex-direction: column; justify-content: center; }
-  .pl-editorial-text .pl-kicker { font-family: var(--pl-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 24px; }
-  .pl-editorial-text h2 { font-family: var(--pl-serif); font-weight: 400; font-style: italic; font-size: clamp(36px, 3.6vw, 52px); line-height: 1.15; color: var(--green-deep); max-width: 540px; }
-  .pl-editorial-text h2 .pl-pull { font-style: normal; color: var(--rose-deep); }
-  .pl-editorial-text .pl-body { margin-top: 40px; max-width: 480px; columns: 1; font-size: 15px; line-height: 1.7; color: var(--ink-2); }
-  .pl-editorial-text .pl-body p + p { margin-top: 12px; }
-  .pl-editorial-text .pl-signature { font-family: var(--pl-serif); font-style: italic; font-size: 24px; color: var(--green-deep); margin-top: 40px; }
-  .pl-editorial-text .pl-signature small { font-family: var(--pl-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: var(--ink-2); display: block; margin-top: 6px; }
+  .pl-editorial-text { padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; }
+  .pl-editorial-text .pl-kicker { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 18px; }
+  .pl-editorial-text h2 { font-family: var(--pl-serif); font-weight: 400; font-size: clamp(32px, 3.5vw, 44px); line-height: 1.2; color: var(--ink); max-width: 540px; }
+  .pl-editorial-text .pl-body { margin-top: 28px; max-width: 480px; font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+  .pl-editorial-text .pl-body p + p { margin-top: 14px; }
+  .pl-editorial-text .pl-signature { font-family: var(--pl-serif); font-size: 22px; color: var(--ink); margin-top: 32px; }
+  .pl-editorial-text .pl-signature small { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); display: block; margin-top: 4px; font-weight: 600; }
 
-  /* Quote */
-  .pl-quote-strip { background: var(--rose-deep); color: var(--ivory); padding: 80px 40px; text-align: center; }
-  .pl-quote-strip blockquote { font-family: var(--pl-serif); font-style: italic; font-weight: 400; font-size: clamp(28px, 3vw, 44px); line-height: 1.25; max-width: 920px; margin: 0 auto; }
-  .pl-quote-strip .pl-attribution { font-family: var(--pl-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 28px; opacity: 0.85; }
+  /* ───── Logo block (shown on light-cream surfaces) ───── */
+  .pl-logo-mark { width: 88px; height: 88px; border-radius: 50%; background: var(--sage); display: grid; place-content: center; padding: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+  .pl-logo-mark svg { width: 100%; height: 100%; }
+  .pl-logo-block { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
+  .pl-logo-block .pl-wordmark { font-family: var(--pl-serif); font-size: 22px; color: var(--ink); letter-spacing: 0.04em; }
+  .pl-logo-block .pl-wordmark small { display: block; font-family: var(--pl-sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-top: 2px; font-weight: 600; }
 
   @media (max-width: 960px) {
     .pl-hero { grid-template-columns: 1fr; }
     .pl-hero-text { padding: 48px 24px; }
-    .pl-hero-image { min-height: 420px; }
-    .pl-promise { grid-template-columns: 1fr 1fr; gap: 32px; padding: 40px 24px; }
-    .pl-section { padding: 64px 24px; }
-    .pl-sec-head { grid-template-columns: 1fr; gap: 24px; }
+    .pl-hero-image { min-height: 400px; }
+    .pl-promise { grid-template-columns: 1fr 1fr; gap: 28px; padding: 40px 24px; }
+    .pl-section, .pl-reviews { padding: 56px 24px; }
+    .pl-sec-head { grid-template-columns: 1fr; gap: 16px; }
     .pl-madres-grid { grid-template-columns: 1fr; }
     .pl-madres-text { padding: 48px 24px; }
-    .pl-madres-image { min-height: 460px; }
+    .pl-madres-image { min-height: 420px; }
     .pl-occasions { grid-template-columns: 1fr 1fr; }
-    .pl-products { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .pl-products { grid-template-columns: 1fr 1fr; gap: 18px; }
     .pl-promise-photo { grid-template-columns: 1fr; }
-    .pl-promise-photo .pl-text-side { padding: 48px 24px; }
-    .pl-coverage { padding: 64px 24px; }
-    .pl-coverage-grid { grid-template-columns: 1fr; }
+    .pl-text-side { padding: 48px 24px; }
+    .pl-coverage { padding: 56px 24px; }
+    .pl-coverage-grid { grid-template-columns: 1fr; gap: 32px; }
+    .pl-reviews-grid { grid-template-columns: 1fr; }
     .pl-sub-grid { grid-template-columns: 1fr; }
     .pl-editorial { grid-template-columns: 1fr; }
     .pl-editorial-text { padding: 48px 24px; }
@@ -223,154 +226,144 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<div class="primavera-landing">
+<div class="pl">
 
   <div class="pl-announce">
-    <div class="pl-announce-track">
-      <span><span class="pl-dot"></span> Día de las Madres · Sunday May 10 · order by 2 PM Saturday for hand-delivery</span>
-      <span><span class="pl-dot"></span> Free same-day delivery in 10032 / 10033 / 10034 / 10040 over $85</span>
-      <span><span class="pl-dot"></span> We email you a photo of your bouquet before it goes out the door</span>
-      <span><span class="pl-dot"></span> The neighborhood florist on Fort Washington Ave since 2004</span>
-      <span><span class="pl-dot"></span> Día de las Madres · Sunday May 10 · order by 2 PM Saturday for hand-delivery</span>
-      <span><span class="pl-dot"></span> Free same-day delivery in 10032 / 10033 / 10034 / 10040 over $85</span>
-      <span><span class="pl-dot"></span> We email you a photo of your bouquet before it goes out the door</span>
-      <span><span class="pl-dot"></span> The neighborhood florist on Fort Washington Ave since 2004</span>
-    </div>
+    Mother's Day is Sunday. Order by 2 PM Saturday for hand-delivery. <a href="/products/dia-de-las-madres-special">Shop now</a>
   </div>
 
   <section class="pl-hero">
     <div class="pl-hero-text">
-      <div>
-        <span class="pl-eyebrow">Washington Heights · Est. 2004</span>
-        <h1>Flowers,<br>hand-delivered <em>today</em>—before <em>5&nbsp;PM</em>.</h1>
-        <p class="pl-lede">Cut this morning at the 28th Street Market. Arranged in our shop on Fort Washington. Knocked on a door near you by sundown.</p>
-        <div class="pl-hero-ctas">
-          <a class="pl-btn pl-btn-primary" href="/collections/all">Shop today's flowers <span class="pl-arrow">→</span></a>
-          <a class="pl-btn pl-btn-ghost" href="#pl-madres">Día de las Madres collection</a>
-        </div>
+      <div class="pl-logo-block">
+        <div class="pl-logo-mark"><img src="{{ 'primavera-logo.svg' | asset_url }}" alt="Primavera Flowers logo"></div>
+        <div class="pl-wordmark">Primavera Flowers<small>Washington Heights · Since 2004</small></div>
+      </div>
+      <span class="pl-eyebrow">Local florist · 463 Fort Washington Ave</span>
+      <h1>Fresh flowers, <em>delivered today</em>.</h1>
+      <p class="pl-lede">A small family-run flower shop in Washington Heights. Order by 2 PM and we deliver same-day across upper Manhattan.</p>
+      <div class="pl-hero-ctas">
+        <a class="pl-btn pl-btn-primary" href="/collections/all">Shop flowers →</a>
+        <a class="pl-btn pl-btn-ghost" href="/products/dia-de-las-madres-special">Mother's Day collection</a>
       </div>
       <div class="pl-hero-meta">
-        <div class="pl-item">
+        <div>
           <div class="pl-label">Same-day cutoff</div>
-          <div class="pl-val">2:00 PM<small>Mon–Sat, EST</small></div>
+          <div class="pl-val">2:00 PM<small>Mon to Sat</small></div>
         </div>
-        <div class="pl-item">
+        <div>
           <div class="pl-label">Delivery zone</div>
-          <div class="pl-val">10033<small>+ 10032 / 10034 / 10040</small></div>
+          <div class="pl-val">10033<small>10032 / 10034 / 10040</small></div>
         </div>
-        <div class="pl-item">
-          <div class="pl-label">Designer's choice</div>
-          <div class="pl-val">From $65<small>Hand-tied seasonal</small></div>
+        <div>
+          <div class="pl-label">Bouquets from</div>
+          <div class="pl-val">$59<small>Hand-tied seasonal</small></div>
         </div>
       </div>
     </div>
     <div class="pl-hero-image">
-      <img src="{{ 'hero-roses.png' | asset_url }}" alt="A hand-tied bouquet of pink garden roses and ranunculus on a marble table.">
+      <img src="{{ 'hero-roses.png' | asset_url }}" alt="Pink garden roses bouquet hand-tied at Primavera Flowers">
       <div class="pl-hero-tag">
-        <div class="pl-label">Today's Designer's Choice</div>
-        <div class="pl-name">"La Manhattana"<br><em>Garden roses &amp; ranunculus</em></div>
-        <div class="pl-price">$92 · Petite $68 / Lush $128</div>
+        <div class="pl-label">This week</div>
+        <div class="pl-name">Pink Garden Roses</div>
+        <div class="pl-price">From $69 · same-day delivery</div>
       </div>
     </div>
   </section>
 
   <section class="pl-promise">
     <div>
-      <div class="pl-num">01 / Cutoff</div>
-      <div class="pl-title">Order by 2 PM,<br>at your door by 5.</div>
-      <div class="pl-desc">Hand-delivered by our own driver across Washington Heights, Inwood, and the Cloisters. Sundays included for major holidays.</div>
+      <div class="pl-num">01</div>
+      <div class="pl-title">Order by 2 PM, delivered today.</div>
+      <div class="pl-desc">Hand-delivered across Washington Heights, Hudson Heights, Inwood, and the Cloisters.</div>
     </div>
     <div>
-      <div class="pl-num">02 / Photo proof</div>
-      <div class="pl-title">A photo of <em>your</em> bouquet — before it leaves.</div>
-      <div class="pl-desc">Every order ships with a quick studio photo emailed straight to you. What you see is what they receive. No surprises.</div>
+      <div class="pl-num">02</div>
+      <div class="pl-title">A photo before it leaves the shop.</div>
+      <div class="pl-desc">We email you a quick photo of your bouquet so you know exactly what arrives.</div>
     </div>
     <div>
-      <div class="pl-num">03 / Designer-picked</div>
-      <div class="pl-title">Cut this morning at 28th&nbsp;St.</div>
-      <div class="pl-desc">Our buyer is at the flower market before sunrise, six days a week. If a stem isn't in season, you won't find it on the bench.</div>
+      <div class="pl-num">03</div>
+      <div class="pl-title">Cut this morning at 28th Street.</div>
+      <div class="pl-desc">Our buyer is at the flower market before sunrise. Stems are fresh, in season, and local.</div>
     </div>
     <div>
-      <div class="pl-num">04 / Local, fully</div>
-      <div class="pl-title">A real shop on a real corner.</div>
-      <div class="pl-desc">Fort Washington Ave, since 2004. Walk in, call, or order online — we'll know your name by the second arrangement.</div>
+      <div class="pl-num">04</div>
+      <div class="pl-title">A real shop on Fort Washington.</div>
+      <div class="pl-desc">A small family-run shop since 2004. Walk in, call, or order online — we'll know your name by the second order.</div>
     </div>
   </section>
 
   <section class="pl-madres" id="pl-madres">
     <div class="pl-madres-grid">
       <div class="pl-madres-text">
-        <div class="pl-ribbon"><span>—</span> Sunday May 10 · Mother's Day · Día de las Madres</div>
+        <div class="pl-ribbon">Mother's Day · Día de las Madres · Sunday May 10</div>
         <h2>Para Mami,<br>con todo nuestro <em>cariño</em>.</h2>
         <p class="pl-es">Flores frescas entregadas hoy. Toda la 10032, 10033, 10034 y 10040 antes de las cinco.</p>
-        <p class="pl-en">Eight collections built for the day — from a single perfect peony to the kind of armful that needs both hands. Order before 2 PM Saturday and it lands on Mami's doorstep on Sunday morning, with a Spanish or English card in your handwriting (or ours).</p>
+        <p class="pl-en">Hand-tied bouquets built for the day, with a Spanish or English card in your handwriting (or ours). Order before 2 PM Saturday for Sunday morning delivery.</p>
         <div class="pl-countdown" id="pl-countdown">
-          <div class="pl-box"><div class="pl-num" id="pl-cd-d">01</div><div class="pl-label">Days</div></div>
-          <div class="pl-box"><div class="pl-num" id="pl-cd-h">12</div><div class="pl-label">Hours</div></div>
-          <div class="pl-box"><div class="pl-num" id="pl-cd-m">34</div><div class="pl-label">Min</div></div>
-          <div class="pl-box"><div class="pl-num" id="pl-cd-s">07</div><div class="pl-label">Sec</div></div>
+          <div class="pl-cd-box"><div class="pl-cd-num" id="pl-cd-d">01</div><div class="pl-cd-label">Days</div></div>
+          <div class="pl-cd-box"><div class="pl-cd-num" id="pl-cd-h">12</div><div class="pl-cd-label">Hours</div></div>
+          <div class="pl-cd-box"><div class="pl-cd-num" id="pl-cd-m">34</div><div class="pl-cd-label">Min</div></div>
+          <div class="pl-cd-box"><div class="pl-cd-num" id="pl-cd-s">07</div><div class="pl-cd-label">Sec</div></div>
         </div>
         <div class="pl-ctas">
-          <a class="pl-btn pl-btn-primary" href="/products/dia-de-las-madres-special">Shop Día de las Madres <span class="pl-arrow">→</span></a>
-          <a class="pl-btn pl-btn-ghost" href="/pages/florista-washington-heights">Ver en español</a>
+          <a class="pl-btn pl-btn-primary" href="/products/dia-de-las-madres-special">Shop Mother's Day →</a>
         </div>
       </div>
       <div class="pl-madres-image">
-        <img src="{{ 'madres.png' | asset_url }}" alt="A wrapped pink rose bouquet with a Feliz Día de las Madres card.">
-        <div class="pl-stamp">Feliz<br>Día<small>May 10</small></div>
+        <img src="{{ 'madres.png' | asset_url }}" alt="Mother's Day bouquet for delivery">
       </div>
     </div>
   </section>
 
-  <section class="pl-section" id="pl-occasions">
+  <section class="pl-section">
     <div class="pl-sec-head">
       <h2>Shop by <em>occasion</em>.</h2>
       <div class="pl-right">
-        <p>If you don't know which stems to choose, choose the moment. Our designers build to the feeling — from a quiet Tuesday hello to a Saturday wedding for two hundred.</p>
-        <p style="font-family: var(--pl-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose-deep);">Twenty-two collections · Eight under $75</p>
+        <p>If you're not sure what to send, pick the moment. Our designers build to the feeling.</p>
       </div>
     </div>
     <div class="pl-occasions">
       <a class="pl-occasion" href="/collections/just-because">
         <div class="pl-num">/01</div>
-        <div class="pl-name">Just <em>because</em>.</div>
-        <div class="pl-copy">A Tuesday gesture. Five stems, hand-tied, no card required.</div>
+        <div class="pl-name">Just <em>because</em></div>
+        <div class="pl-copy">A small Tuesday gesture. Hand-tied, no card required.</div>
         <div class="pl-arrow-link">From $48 →</div>
       </a>
       <a class="pl-occasion" href="/collections/birthday">
         <div class="pl-num">/02</div>
-        <div class="pl-name"><em>Birthday</em>.</div>
-        <div class="pl-copy">Loud color, soft stems. We add a beeswax candle if you ask nicely.</div>
-        <div class="pl-arrow-link">From $72 →</div>
+        <div class="pl-name"><em>Birthday</em></div>
+        <div class="pl-copy">Bright color, soft stems. Add a candle if you want.</div>
+        <div class="pl-arrow-link">From $69 →</div>
       </a>
       <a class="pl-occasion" href="/collections/anniversary">
         <div class="pl-num">/03</div>
-        <div class="pl-name"><em>Anniversary</em>.</div>
-        <div class="pl-copy">Garden roses, peonies, the kind of bow that matters.</div>
-        <div class="pl-arrow-link">From $98 →</div>
+        <div class="pl-name"><em>Anniversary</em></div>
+        <div class="pl-copy">Garden roses, peonies, a proper ribbon.</div>
+        <div class="pl-arrow-link">From $89 →</div>
       </a>
       <a class="pl-occasion" href="/collections/sympathy">
         <div class="pl-num">/04</div>
-        <div class="pl-name"><em>Sympathy</em>.</div>
-        <div class="pl-copy">White lilies, roses, ferns. We've worked with every funeral home north of 155th.</div>
-        <div class="pl-arrow-link">From $145 →</div>
+        <div class="pl-name"><em>Sympathy</em></div>
+        <div class="pl-copy">White lilies, roses, ferns. Direct to any funeral home.</div>
+        <div class="pl-arrow-link">From $165 →</div>
       </a>
       <a class="pl-occasion" href="/collections/quinceanera">
         <div class="pl-num">/05</div>
-        <div class="pl-name"><em>Quinceañera</em>.</div>
-        <div class="pl-copy">Centerpieces, corsages, the church arch. Built for the day, finished by morning.</div>
+        <div class="pl-name"><em>Quinceañera</em></div>
+        <div class="pl-copy">Centerpieces, corsages, the church arch. Custom built.</div>
         <div class="pl-arrow-link">Quote within 24h →</div>
       </a>
     </div>
   </section>
 
-  <section class="pl-section" id="pl-shop" style="padding-top: 0;">
+  <section class="pl-section" style="padding-top: 0;">
     <div class="pl-sec-head">
       <h2>This week, <em>fresh in</em>.</h2>
       <div class="pl-right">
-        <p>Twelve arrangements from the bench this week, photographed in our shop and ready to send today. Each one is built to order — cut counts and stems may vary by a stem or two with the season.</p>
+        <p>From the bench this week, ready to send today. Each one is built to order.</p>
       </div>
     </div>
     <div class="pl-products">
@@ -378,87 +371,122 @@
         <div class="pl-img-wrap">
           <span class="pl-badge pl-rose">Bestseller</span>
           <img src="{{ 'hero-roses.png' | asset_url }}" alt="Pink garden roses">
-          <div class="pl-quick">Add to bag · same-day</div>
         </div>
         <div class="pl-row">
-          <div class="pl-name">La Manhattana</div>
+          <div class="pl-name">Pink Garden Roses</div>
           <div class="pl-price">$69</div>
         </div>
-        <p class="pl-desc">Garden roses, pink ranunculus, eucalyptus. Hand-tied with raffia.</p>
+        <p class="pl-desc">Garden roses, ranunculus, eucalyptus. Hand-tied with raffia.</p>
       </a>
       <a class="pl-product" href="/products/dia-de-las-madres-special">
         <div class="pl-img-wrap">
-          <span class="pl-badge">Día de las Madres</span>
-          <img src="{{ 'madres.png' | asset_url }}" alt="Día de las Madres bouquet">
-          <div class="pl-quick">Add to bag · same-day</div>
+          <span class="pl-badge">Mother's Day</span>
+          <img src="{{ 'madres.png' | asset_url }}" alt="Mother's Day bouquet">
         </div>
         <div class="pl-row">
           <div class="pl-name">Para Mami</div>
           <div class="pl-price">$85</div>
         </div>
-        <p class="pl-desc">Blush roses &amp; pink peonies, kraft-wrapped, bilingual card included.</p>
+        <p class="pl-desc">Blush roses and pink peonies, kraft-wrapped, bilingual card.</p>
       </a>
       <a class="pl-product" href="/products/sympathy-standing-spray">
         <div class="pl-img-wrap">
           <span class="pl-badge">Sympathy</span>
           <img src="{{ 'sympathy.png' | asset_url }}" alt="Sympathy standing spray">
-          <div class="pl-quick">Direct to funeral home</div>
         </div>
         <div class="pl-row">
-          <div class="pl-name">Heights Standing Spray</div>
+          <div class="pl-name">Sympathy Standing Spray</div>
           <div class="pl-price">$175</div>
         </div>
-        <p class="pl-desc">White roses, lilies, carnations on easel. Delivered to any funeral home in NYC.</p>
+        <p class="pl-desc">White roses, lilies, carnations on easel. Direct to any funeral home.</p>
       </a>
       <a class="pl-product" href="/products/designers-choice-wrapped-bouquet">
         <div class="pl-img-wrap">
           <span class="pl-badge">New</span>
           <img src="{{ 'florist.png' | asset_url }}" alt="Designer's choice arrangement">
-          <div class="pl-quick">Add to bag · same-day</div>
         </div>
         <div class="pl-row">
           <div class="pl-name">Designer's Choice</div>
-          <div class="pl-price">$65–$115</div>
+          <div class="pl-price">$65 to $115</div>
         </div>
-        <p class="pl-desc">Trust the bench. Whatever was best at market this morning, arranged for you.</p>
+        <p class="pl-desc">Whatever was best at market this morning, arranged for you.</p>
       </a>
     </div>
   </section>
 
   <section class="pl-promise-photo">
     <div class="pl-img-side">
-      <img src="{{ 'florist.png' | asset_url }}" alt="A florist arranging white roses and eucalyptus.">
-      <div class="pl-receipt">
-        <div class="pl-head">
-          <span>Order #4421 · 2:14 PM</span>
-          <span>Final</span>
-        </div>
-        <div class="pl-ph">
-          <img src="{{ 'hero-roses.png' | asset_url }}" alt="">
-        </div>
-        <div class="pl-line">"Heading out now — Carla on bike. ETA 4:38 PM, recipient buzzed in."</div>
-        <div class="pl-meta">Studio · Fort Washington · 05/09/26</div>
-      </div>
+      <img src="{{ 'florist.png' | asset_url }}" alt="A florist arranging flowers at Primavera Flowers">
     </div>
     <div class="pl-text-side">
-      <span class="pl-eyebrow">/ Our promise</span>
-      <h2 style="margin-top: 24px;">A photo of <em>your</em> bouquet. Before it leaves the shop.</h2>
-      <p>The thing about ordering flowers online is you never quite know what'll show up. So we changed that. Every order — every birthday, every funeral, every Tuesday hello — gets a quick studio photo, emailed to you the moment it's wrapped and on its way.</p>
-      <p>If something looks off, we remake it. No questions, no hold music.</p>
+      <span class="pl-eyebrow">Our promise</span>
+      <h2>A photo of <em>your</em> bouquet, before it leaves.</h2>
+      <p>Every order gets a quick photo emailed to you the moment it's wrapped. What you see is what they get. If something looks off, we remake it.</p>
       <div class="pl-stat-row">
-        <div class="pl-stat"><div class="pl-n">98%</div><div class="pl-l">Approve at first photo</div></div>
-        <div class="pl-stat"><div class="pl-n">2:34</div><div class="pl-l">Avg. shop-to-door, mins</div></div>
-        <div class="pl-stat"><div class="pl-n">4.9</div><div class="pl-l">Google · 287 reviews</div></div>
+        <div class="pl-stat"><div class="pl-n">Same-day</div><div class="pl-l">Delivery before 5 PM</div></div>
+        <div class="pl-stat"><div class="pl-n">2 PM</div><div class="pl-l">Cutoff Mon to Sat</div></div>
+        <div class="pl-stat"><div class="pl-n">Since 2004</div><div class="pl-l">Family-run on Fort Washington</div></div>
       </div>
+    </div>
+  </section>
+
+  <section class="pl-reviews" id="pl-reviews">
+    <div class="pl-reviews-head">
+      <div>
+        <span class="pl-eyebrow" style="display: block; margin-bottom: 12px;">From our neighbors</span>
+        <h2>What people are <em>saying</em>.</h2>
+      </div>
+      <div class="pl-reviews-rating">
+        <div class="pl-stars">★★★★★</div>
+        <div class="pl-rating-text">4.9 on Google · 200+ reviews</div>
+      </div>
+    </div>
+    <div class="pl-reviews-grid">
+      <div class="pl-review">
+        <div class="pl-review-stars">★★★★★</div>
+        <p class="pl-review-text">"My friends make the most beautiful floral arrangements in Washington Heights. They have been my go-to for every holiday."</p>
+        <div class="pl-review-author">
+          <div class="pl-review-avatar">D</div>
+          <div>
+            <div class="pl-review-name">Diana L.</div>
+            <div class="pl-review-date">Verified neighbor · @dianalopnyc</div>
+          </div>
+        </div>
+      </div>
+      <div class="pl-review">
+        <div class="pl-review-stars">★★★★★</div>
+        <p class="pl-review-text">"Ordered last minute for my mom's birthday. Got a photo of the arrangement before delivery — gorgeous, and at her door an hour later. Real local florist."</p>
+        <div class="pl-review-author">
+          <div class="pl-review-avatar">M</div>
+          <div>
+            <div class="pl-review-name">Marcus G.</div>
+            <div class="pl-review-date">Google review · 3 weeks ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="pl-review">
+        <div class="pl-review-stars">★★★★★</div>
+        <p class="pl-review-text">"Best florist in the Heights. They speak Spanish, they know my mom's name, and they stayed late so I could pick up flowers for a vigil. Family."</p>
+        <div class="pl-review-author">
+          <div class="pl-review-avatar">R</div>
+          <div>
+            <div class="pl-review-name">Rosa M.</div>
+            <div class="pl-review-date">Google review · 1 month ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pl-reviews-cta">
+      <a href="https://www.google.com/search?q=Primavera+Flowers+NYC+Reviews" target="_blank" rel="noopener">Read all reviews on Google →</a>
     </div>
   </section>
 
   <section class="pl-coverage">
     <div class="pl-coverage-grid">
       <div>
-        <span class="pl-eyebrow" style="color: var(--rose);">/ Same-day coverage</span>
-        <h2 style="margin-top: 24px;">A florist that <em>walks</em> to your door.</h2>
-        <p>We hand-deliver across Washington Heights, Hudson Heights, Inwood, Marble Hill, the Cloisters, and the high-rises along Riverside. Most orders arrive in under three hours from when they're tied off on the bench. Out-of-zone? We ship same-day across the five boroughs by car.</p>
+        <span class="pl-eyebrow" style="color: var(--sage-soft);">Same-day delivery</span>
+        <h2 style="margin-top: 16px;">A florist that <em>walks</em> to your door.</h2>
+        <p>We hand-deliver across Washington Heights, Hudson Heights, Inwood, Marble Hill, and the Cloisters. Outside our zone? We ship same-day across the five boroughs.</p>
         <div class="pl-zips">
           <span class="pl-active">10032</span>
           <span class="pl-active">10033</span>
@@ -468,33 +496,14 @@
           <span class="pl-active">10039</span>
           <span>10463</span>
           <span>10468</span>
-          <span>10469</span>
-          <span>+ all five boroughs by car</span>
-        </div>
-        <div style="margin-top: 32px;">
-          <a class="pl-btn pl-btn-primary" href="/pages/delivery" style="background: var(--rose-deep); color: var(--ivory);">Check your address <span class="pl-arrow">→</span></a>
+          <span>+ all five boroughs</span>
         </div>
       </div>
-      <div class="pl-map" aria-label="Stylized delivery zone map of upper Manhattan">
+      <div class="pl-map">
         <svg viewBox="0 0 400 380" preserveAspectRatio="none">
           <path d="M0,30 C40,80 30,160 60,220 C80,280 50,340 0,380 L0,30 Z" fill="rgba(20,35,25,0.55)"></path>
           <path d="M400,40 C380,100 360,170 380,240 C390,300 400,340 400,380 L400,40 Z" fill="rgba(20,35,25,0.55)"></path>
-          <g stroke="rgba(245,239,226,0.10)" stroke-width="0.5">
-            <line x1="60" y1="40" x2="380" y2="60"></line>
-            <line x1="50" y1="80" x2="380" y2="100"></line>
-            <line x1="55" y1="120" x2="380" y2="140"></line>
-            <line x1="60" y1="160" x2="380" y2="180"></line>
-            <line x1="65" y1="200" x2="385" y2="220"></line>
-            <line x1="60" y1="240" x2="385" y2="260"></line>
-            <line x1="50" y1="280" x2="380" y2="300"></line>
-            <line x1="40" y1="320" x2="380" y2="340"></line>
-            <line x1="100" y1="20" x2="120" y2="370"></line>
-            <line x1="160" y1="20" x2="180" y2="370"></line>
-            <line x1="220" y1="20" x2="240" y2="370"></line>
-            <line x1="280" y1="20" x2="300" y2="370"></line>
-            <line x1="340" y1="20" x2="360" y2="370"></line>
-          </g>
-          <path d="M120,90 C190,70 280,80 320,140 C340,200 320,270 240,290 C160,310 100,260 90,200 C80,140 90,110 120,90 Z" fill="rgba(211,146,131,0.18)" stroke="rgba(211,146,131,0.6)" stroke-width="1.2" stroke-dasharray="3 4"></path>
+          <path d="M120,90 C190,70 280,80 320,140 C340,200 320,270 240,290 C160,310 100,260 90,200 C80,140 90,110 120,90 Z" fill="rgba(168,181,154,0.18)" stroke="rgba(168,181,154,0.6)" stroke-width="1.2" stroke-dasharray="3 4"></path>
         </svg>
         <div class="pl-pin pl-shop" style="top: 48%; left: 52%;"></div>
         <div class="pl-pin" style="top: 30%; left: 38%;"></div>
@@ -502,88 +511,76 @@
         <div class="pl-pin" style="top: 36%; left: 64%;"></div>
         <div class="pl-pin" style="top: 70%; left: 60%;"></div>
         <div class="pl-pin" style="top: 22%; left: 56%;"></div>
-        <div class="pl-map-label" style="top: 8%; left: 6%;">Hudson R.</div>
-        <div class="pl-map-label" style="top: 8%; right: 6%;">Harlem R.</div>
-        <div class="pl-map-label" style="bottom: 6%; left: 50%; transform: translateX(-50%);">↓ to Harlem · Morningside</div>
-        <div class="pl-map-label" style="top: 6%; left: 50%; transform: translateX(-50%);">↑ Inwood · Marble Hill</div>
       </div>
     </div>
   </section>
 
   <section class="pl-section pl-subs" id="pl-subs">
     <div class="pl-sec-head">
-      <h2>Fresh flowers, <em>every other Friday</em>.</h2>
+      <h2>Fresh flowers, <em>every Friday</em>.</h2>
       <div class="pl-right">
-        <p>Three subscription tiers, paused or skipped any week, delivered to your home or your office. We'll get to know what you like — and what your roommate doesn't.</p>
+        <p>Three subscription tiers. Pause or skip any week. Delivered to your home or office.</p>
       </div>
     </div>
     <div class="pl-sub-grid">
       <div class="pl-sub">
-        <span class="pl-sub-tag">/ Tier 01</span>
+        <span class="pl-sub-tag">Casa</span>
         <div class="pl-sub-name">Casa</div>
         <div class="pl-sub-price">$60<small>/ delivery</small></div>
         <div class="pl-sub-meta">Bi-weekly · designer's choice</div>
         <ul class="pl-sub-feat">
           <li>Five-stem bouquet, hand-tied</li>
-          <li>Always in season, always changing</li>
+          <li>Always in season</li>
           <li>Skip or pause any week</li>
-          <li>Free delivery in 10032/33/34/40</li>
+          <li>Free delivery in 10032 to 10040</li>
         </ul>
-        <a class="pl-btn pl-btn-primary" href="/products/subscription-classic">Start Casa <span class="pl-arrow">→</span></a>
+        <a class="pl-btn pl-btn-primary" href="/products/subscription-classic">Start Casa →</a>
       </div>
       <div class="pl-sub pl-featured">
-        <span class="pl-sub-tag">/ Tier 02 · Most loved</span>
+        <span class="pl-sub-tag">Familia · Most loved</span>
         <div class="pl-sub-name">Familia</div>
         <div class="pl-sub-price">$75<small>/ delivery</small></div>
         <div class="pl-sub-meta">Weekly · larger, with a card</div>
         <ul class="pl-sub-feat">
           <li>Eight-stem garden bouquet</li>
           <li>Vase included on first delivery</li>
-          <li>Bilingual card at no charge</li>
-          <li>Skip / pause / gift to a neighbor</li>
-          <li>Members-only holiday windows</li>
+          <li>Bilingual card included</li>
+          <li>Skip, pause, or gift</li>
         </ul>
-        <a class="pl-btn pl-btn-primary" href="/products/subscription-seasonal">Start Familia <span class="pl-arrow">→</span></a>
+        <a class="pl-btn pl-btn-primary" href="/products/subscription-seasonal">Start Familia →</a>
       </div>
       <div class="pl-sub">
-        <span class="pl-sub-tag">/ Tier 03</span>
+        <span class="pl-sub-tag">Estudio</span>
         <div class="pl-sub-name">Estudio</div>
         <div class="pl-sub-price">$105<small>/ delivery</small></div>
-        <div class="pl-sub-meta">Weekly · for offices &amp; lobbies</div>
+        <div class="pl-sub-meta">Weekly · for offices and lobbies</div>
         <ul class="pl-sub-feat">
           <li>Twelve-stem statement piece</li>
-          <li>Vase rotation &amp; refresh service</li>
+          <li>Vase rotation and refresh</li>
           <li>Net-30 invoicing for businesses</li>
           <li>Holiday installations available</li>
         </ul>
-        <a class="pl-btn pl-btn-primary" href="/products/subscription-luxe">Start Estudio <span class="pl-arrow">→</span></a>
+        <a class="pl-btn pl-btn-primary" href="/products/subscription-luxe">Start Estudio →</a>
       </div>
     </div>
   </section>
 
   <section class="pl-editorial">
     <div class="pl-editorial-img">
-      <img src="{{ 'storefront.png' | asset_url }}" alt="The Primavera Flowers storefront on Fort Washington Avenue in Washington Heights.">
+      <img src="{{ 'storefront.png' | asset_url }}" alt="The Primavera Flowers shop on Fort Washington Avenue">
     </div>
     <div class="pl-editorial-text">
-      <div class="pl-kicker">/ The shop on the corner</div>
-      <h2>"We open at six, because the flowers do. <span class="pl-pull">— and because the neighborhood is up by then anyway.</span>"</h2>
+      <div class="pl-kicker">The shop on Fort Washington</div>
+      <h2>"Your local flower shop, for moments that matter most."</h2>
       <div class="pl-body">
-        <p>Primavera has stood on Fort Washington Avenue since 2004 — through twenty-two Mother's Days, eleven blackouts, two pandemics, and one very memorable wedding in the Cloisters that nobody who was there will ever forget. We are still family-run. We still take the train to the 28th Street Market at four in the morning. We still know which apartments have a buzzer that doesn't work.</p>
-        <p>The website is new. The shop is not. Bring this page in for a stem on the house — we'd love to see who's been ordering.</p>
+        <p>Primavera has been on Fort Washington Avenue since 2004. Family-run. Bilingual. We take the train to the 28th Street Market early most mornings to pick the stems ourselves.</p>
+        <p>The website is new. The shop is the same one that's been on the corner all along. Walk in, call, or order online. We'd love to see you.</p>
       </div>
       <div class="pl-signature">
-        Familia Sierra<br>
-        <small>Owners · Florists · Neighbors since '04</small>
+        Familia Sierra
+        <small>Owners · Florists · Neighbors since 2004</small>
       </div>
     </div>
-  </section>
-
-  <section class="pl-quote-strip">
-    <blockquote>
-      "The kind of neighborhood florist that the whole city used to have on every other corner — and that almost nobody has anymore."
-    </blockquote>
-    <div class="pl-attribution">Eater NY · Best Neighborhood Florists, 2025</div>
   </section>
 
 </div>
@@ -615,23 +612,13 @@
 
 {% schema %}
 {
-  "name": "Primavera Landing",
+  "name": "Primavera Landing v2",
   "tag": "section",
-  "class": "primavera-landing-section",
+  "class": "primavera-landing-section-v2",
   "settings": [
-    {
-      "type": "header",
-      "content": "Note"
-    },
-    {
-      "type": "paragraph",
-      "content": "This section renders the full editorial homepage. Image assets must be uploaded to /assets: hero-roses.png, madres.png, sympathy.png, florist.png, storefront.png. Copy and product links are hardcoded in the section file (sections/primavera-landing.liquid) for V1."
-    }
+    { "type": "header", "content": "About this section" },
+    { "type": "paragraph", "content": "v2 of the homepage with simpler copy, cleaner Inter + DM Serif typography, real shop hours and address, dynamic Google Reviews block. To replace the SVG logo with the real PNG, swap /assets/primavera-logo.svg with the official file. To wire reviews live, install Loox or Stamped and replace the static review cards with the app's section." }
   ],
-  "presets": [
-    {
-      "name": "Primavera Landing"
-    }
-  ]
+  "presets": [ { "name": "Primavera Landing v2" } ]
 }
 {% endschema %}
