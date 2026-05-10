@@ -1,32 +1,34 @@
 {% comment %}
-  Primavera, Delivery coverage section (dark band, ZIP tags + Google map).
-  ZIP tags are blocks.
+  Primavera Coverage. Dark ink band with ZIP chips + Google Maps embed.
 {% endcomment %}
 
 <section class="pv-coverage pv-section">
   <div class="pv-coverage-grid">
     <div>
-      {% if section.settings.eyebrow != blank %}<span class="pv-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
-      {% if section.settings.headline != blank %}<div class="pv-h-wrap">{{ section.settings.headline }}</div>{% endif %}
-      {% if section.settings.body != blank %}<p>{{ section.settings.body }}</p>{% endif %}
+      <span class="pv-eyebrow">{{ section.settings.eyebrow | default: 'Built for the Heights' }}</span>
+      {% if section.settings.headline != blank %}<div class="pv-h-wrap">{{ section.settings.headline }}</div>{% else %}<div class="pv-h-wrap"><h2>A florist that <em>walks</em> to your door.</h2></div>{% endif %}
+      <p>{{ section.settings.body | default: 'We hand-deliver across Washington Heights, Hudson Heights, Inwood, Marble Hill, and the Cloisters. Most orders go on foot from the shop on Fort Washington. Outside our zone? We ship same-day across upper Manhattan and the Bronx.' }}</p>
       <div class="pv-zips">
-        {% for block in section.blocks %}
-          <span class="{% if block.settings.active %}pv-active{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
-        {% endfor %}
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            <span class="{% if block.settings.active %}pv-active{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.label | default: 'ZIP' }}</span>
+          {% endfor %}
+        {% else %}
+          <span class="pv-active">10032</span>
+          <span class="pv-active">10033</span>
+          <span class="pv-active">10034</span>
+          <span class="pv-active">10040</span>
+          <span class="pv-active">10031</span>
+          <span class="pv-active">10039</span>
+          <span>10463</span>
+          <span>10468</span>
+          <span>+ all five boroughs</span>
+        {% endif %}
       </div>
     </div>
     <div class="pv-map">
-      <iframe
-        src="{{ section.settings.map_embed_url | default: 'https://maps.google.com/maps?q=Primavera+Flowers+NYC,+463+Fort+Washington+Ave,+New+York,+NY+10033&t=&z=14&ie=UTF8&iwloc=&output=embed' }}"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen
-        title="Primavera Flowers NYC location"
-      ></iframe>
-      <div class="pv-map-caption">
-        {{ section.settings.map_caption | default: '463 Fort Washington Ave' }}
-        <a href="{{ section.settings.directions_url | default: 'https://www.google.com/maps/dir/?api=1&destination=Primavera+Flowers+NYC,+463+Fort+Washington+Ave,+New+York,+NY+10033' }}" target="_blank" rel="noopener">Get directions</a>
-      </div>
+      <iframe src="{{ section.settings.map_embed_url | default: 'https://maps.google.com/maps?q=Primavera+Flowers+NYC,+463+Fort+Washington+Ave,+New+York,+NY+10033&t=&z=14&ie=UTF8&iwloc=&output=embed' }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Primavera Flowers NYC location"></iframe>
+      <div class="pv-map-caption">{{ section.settings.map_caption | default: '463 Fort Washington Ave' }} <a href="{{ section.settings.directions_url | default: 'https://www.google.com/maps/dir/?api=1&destination=Primavera+Flowers+NYC,+463+Fort+Washington+Ave,+New+York,+NY+10033' }}" target="_blank" rel="noopener">Get directions</a></div>
     </div>
   </div>
 </section>
@@ -35,8 +37,8 @@
   .pv-section { --sage-deep:#7a8a6f; --sage-soft:#c8d2bc; --cream:#f5efe2; --ink:#2a2620; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
   .pv-coverage { background: var(--ink); color: var(--cream); padding: 80px 40px; font-family: var(--pv-sans); }
   .pv-coverage-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
-  .pv-coverage .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-soft); font-weight: 600; }
-  .pv-coverage .pv-h-wrap { margin-top: 16px; }
+  .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-soft); font-weight: 600; }
+  .pv-h-wrap { margin-top: 16px; }
   .pv-coverage h2 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(32px,4.5vw,56px); line-height: 1.05; margin: 0; color: var(--cream); }
   .pv-coverage h2 em { font-style: italic; color: var(--sage-soft); }
   .pv-coverage p { color: rgba(245,239,226,.78); margin-top: 20px; max-width: 500px; font-size: 16px; line-height: 1.6; }
@@ -55,43 +57,31 @@
 
 {% schema %}
 {
-  "name": "Primavera Coverage",
+  "name": "Delivery coverage (Primavera)",
   "tag": "section",
   "class": "primavera-coverage-section",
   "max_blocks": 16,
   "settings": [
+    { "type": "paragraph", "content": "Dark ink band showing delivery zones and a Google Maps embed of the shop. ZIP chips are blocks; falls back to 9 default chips." },
+    { "type": "header", "content": "Heading" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built for the Heights" },
-    { "type": "richtext", "id": "headline", "label": "Headline (use h2)", "default": "<h2>A florist that <em>walks</em> to your door.</h2>" },
+    { "type": "richtext", "id": "headline", "label": "Headline (h2)", "default": "<h2>A florist that <em>walks</em> to your door.</h2>" },
     { "type": "textarea", "id": "body", "label": "Body paragraph", "default": "We hand-deliver across Washington Heights, Hudson Heights, Inwood, Marble Hill, and the Cloisters. Most orders go on foot from the shop on Fort Washington. Outside our zone? We ship same-day across upper Manhattan and the Bronx." },
-    { "type": "url", "id": "map_embed_url", "label": "Google Maps embed URL (output=embed)" },
+    { "type": "header", "content": "Map embed" },
+    { "type": "url", "id": "map_embed_url", "label": "Google Maps embed URL", "info": "Use the output=embed format. Defaults to the shop at 463 Fort Washington Ave." },
     { "type": "text", "id": "map_caption", "label": "Map caption", "default": "463 Fort Washington Ave" },
-    { "type": "url", "id": "directions_url", "label": "Get directions URL" }
+    { "type": "url", "id": "directions_url", "label": "Get directions URL", "info": "Defaults to a Google Maps directions link to the shop." }
   ],
   "blocks": [
     {
       "type": "zip",
-      "name": "ZIP tag",
+      "name": "ZIP chip",
       "settings": [
-        { "type": "text", "id": "label", "label": "Label" },
-        { "type": "checkbox", "id": "active", "label": "Highlighted (filled tag)", "default": true }
+        { "type": "text", "id": "label", "label": "Label", "info": "e.g. 10033 or '+ all five boroughs'", "default": "10033" },
+        { "type": "checkbox", "id": "active", "label": "Highlighted (filled chip)", "info": "On = sage-filled (free zone). Off = outlined (extended zone).", "default": true }
       ]
     }
   ],
-  "presets": [
-    {
-      "name": "Primavera Coverage",
-      "blocks": [
-        { "type": "zip", "settings": { "label": "10032", "active": true } },
-        { "type": "zip", "settings": { "label": "10033", "active": true } },
-        { "type": "zip", "settings": { "label": "10034", "active": true } },
-        { "type": "zip", "settings": { "label": "10040", "active": true } },
-        { "type": "zip", "settings": { "label": "10031", "active": true } },
-        { "type": "zip", "settings": { "label": "10039", "active": true } },
-        { "type": "zip", "settings": { "label": "10463", "active": false } },
-        { "type": "zip", "settings": { "label": "10468", "active": false } },
-        { "type": "zip", "settings": { "label": "+ all five boroughs", "active": false } }
-      ]
-    }
-  ]
+  "presets": [{ "name": "Delivery coverage (Primavera)", "category": "Primavera" }]
 }
 {% endschema %}

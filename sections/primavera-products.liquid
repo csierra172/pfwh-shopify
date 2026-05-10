@@ -1,33 +1,31 @@
 {% comment %}
-  Primavera, Featured products grid (4 cards by default).
-  Cards are blocks with image, badge, name, price, description, link.
+  Primavera Products grid. 4 product cards as blocks; falls back to 4
+  hardcoded cards if blocks are empty.
 {% endcomment %}
 
 <section class="pv-products-wrap pv-section">
   <div class="pv-sec-head">
-    {% if section.settings.headline != blank %}{{ section.settings.headline }}{% endif %}
-    {% if section.settings.intro != blank %}<div class="pv-right"><p>{{ section.settings.intro }}</p></div>{% endif %}
+    {% if section.settings.headline != blank %}{{ section.settings.headline }}{% else %}<h2>This week, <em>fresh in</em>.</h2>{% endif %}
+    <div class="pv-right"><p>{{ section.settings.intro | default: 'From the bench this week, ready to send today. Each one is built to order.' }}</p></div>
   </div>
   <div class="pv-products">
-    {% for block in section.blocks %}
-      <a class="pv-product" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
-        <div class="pv-img-wrap">
-          {% if block.settings.badge != blank %}
-            <span class="pv-badge {% if block.settings.badge_style == 'rose' %}pv-rose{% endif %}">{{ block.settings.badge }}</span>
-          {% endif %}
-          {% if block.settings.image != blank %}
-            {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.image.alt | default: block.settings.name }}
-          {% else %}
-            <img src="{{ 'hero-roses.png' | asset_url }}" alt="{{ block.settings.name | default: 'Product' }}" loading="lazy">
-          {% endif %}
-        </div>
-        <div class="pv-row">
-          <div class="pv-name">{{ block.settings.name }}</div>
-          {% if block.settings.price != blank %}<div class="pv-price">{{ block.settings.price }}</div>{% endif %}
-        </div>
-        {% if block.settings.description != blank %}<p class="pv-desc">{{ block.settings.description }}</p>{% endif %}
-      </a>
-    {% endfor %}
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        <a class="pv-product" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+          <div class="pv-img-wrap">
+            {% if block.settings.badge != blank %}<span class="pv-badge {% if block.settings.badge_style == 'rose' %}pv-rose{% endif %}">{{ block.settings.badge }}</span>{% endif %}
+            {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.image.alt | default: block.settings.name }}{% else %}<img src="{{ 'hero-roses.png' | asset_url }}" alt="{{ block.settings.name | default: 'Product' }}" loading="lazy">{% endif %}
+          </div>
+          <div class="pv-row"><div class="pv-name">{{ block.settings.name | default: 'Product name' }}</div><div class="pv-price">{{ block.settings.price | default: '$00' }}</div></div>
+          <p class="pv-desc">{{ block.settings.description | default: 'Hand-tied. Walked to your door.' }}</p>
+        </a>
+      {% endfor %}
+    {% else %}
+      <a class="pv-product" href="/products/pink-roses"><div class="pv-img-wrap"><span class="pv-badge pv-rose">Bestseller</span><img src="{{ 'hero-roses.png' | asset_url }}" alt="Pink garden roses" loading="lazy"></div><div class="pv-row"><div class="pv-name">Pink Garden Roses</div><div class="pv-price">$69</div></div><p class="pv-desc">Garden roses, ranunculus, eucalyptus. Hand-tied with raffia.</p></a>
+      <a class="pv-product" href="/products/dia-de-las-madres"><div class="pv-img-wrap"><span class="pv-badge">Mother's Day</span><img src="{{ 'madres.png' | asset_url }}" alt="Mother's Day bouquet" loading="lazy"></div><div class="pv-row"><div class="pv-name">Para Mami</div><div class="pv-price">$85</div></div><p class="pv-desc">Blush roses and pink peonies, kraft-wrapped, bilingual card.</p></a>
+      <a class="pv-product" href="/products/sympathy-spray"><div class="pv-img-wrap"><span class="pv-badge">Sympathy</span><img src="{{ 'sympathy.png' | asset_url }}" alt="Sympathy standing spray" loading="lazy"></div><div class="pv-row"><div class="pv-name">Sympathy Standing Spray</div><div class="pv-price">$175</div></div><p class="pv-desc">White roses, lilies, carnations on easel. Direct to any funeral home.</p></a>
+      <a class="pv-product" href="/products/designers-choice"><div class="pv-img-wrap"><span class="pv-badge">New</span><img src="{{ 'florist.png' | asset_url }}" alt="Designer's choice arrangement" loading="lazy"></div><div class="pv-row"><div class="pv-name">Designer's Choice</div><div class="pv-price">$65 to $115</div></div><p class="pv-desc">Whatever was best at market this morning, arranged for you.</p></a>
+    {% endif %}
   </div>
 </section>
 
@@ -40,15 +38,15 @@
   .pv-sec-head .pv-right p { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 460px; margin: 0; }
   .pv-products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
   .pv-product { display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: inherit; }
-  .pv-product .pv-img-wrap { aspect-ratio: 4/5; background: var(--cream-2); overflow: hidden; position: relative; border-radius: 6px; }
-  .pv-product .pv-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; display: block; }
+  .pv-img-wrap { aspect-ratio: 4/5; background: var(--cream-2); overflow: hidden; position: relative; border-radius: 6px; }
+  .pv-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; display: block; }
   .pv-product:hover .pv-img-wrap img { transform: scale(1.04); }
-  .pv-product .pv-badge { position: absolute; top: 12px; left: 12px; background: var(--cream); padding: 5px 10px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); font-weight: 600; border-radius: 4px; }
-  .pv-product .pv-badge.pv-rose { background: var(--rose-deep); color: var(--cream); }
-  .pv-product .pv-row { display: flex; justify-content: space-between; align-items: baseline; }
-  .pv-product .pv-name { font-family: var(--pv-serif); font-size: 21px; color: var(--ink); line-height: 1.15; }
-  .pv-product .pv-price { font-size: 14px; color: var(--ink-2); font-weight: 600; }
-  .pv-product .pv-desc { font-size: 14px; color: var(--ink-3); line-height: 1.5; margin: 0; }
+  .pv-badge { position: absolute; top: 12px; left: 12px; background: var(--cream); padding: 5px 10px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); font-weight: 600; border-radius: 4px; }
+  .pv-badge.pv-rose { background: var(--rose-deep); color: var(--cream); }
+  .pv-row { display: flex; justify-content: space-between; align-items: baseline; }
+  .pv-name { font-family: var(--pv-serif); font-size: 21px; color: var(--ink); line-height: 1.15; }
+  .pv-price { font-size: 14px; color: var(--ink-2); font-weight: 600; }
+  .pv-desc { font-size: 14px; color: var(--ink-3); line-height: 1.5; margin: 0; }
   @media (max-width: 960px) {
     .pv-products-wrap { padding: 0 24px 56px; }
     .pv-sec-head { grid-template-columns: 1fr; gap: 16px; margin: 48px 0 32px; }
@@ -58,12 +56,13 @@
 
 {% schema %}
 {
-  "name": "Primavera Products",
+  "name": "Featured products (Primavera)",
   "tag": "section",
   "class": "primavera-products-section",
   "max_blocks": 8,
   "settings": [
-    { "type": "richtext", "id": "headline", "label": "Headline (use h2)", "default": "<h2>This week, <em>fresh in</em>.</h2>" },
+    { "type": "paragraph", "content": "Featured products grid. Each card is a block — add up to 8. Falls back to 4 default products (Pink Roses, Para Mami, Sympathy Spray, Designer's Choice) if no blocks defined." },
+    { "type": "richtext", "id": "headline", "label": "Section headline (h2)", "default": "<h2>This week, <em>fresh in</em>.</h2>" },
     { "type": "textarea", "id": "intro", "label": "Intro paragraph", "default": "From the bench this week, ready to send today. Each one is built to order." }
   ],
   "blocks": [
@@ -71,26 +70,16 @@
       "type": "card",
       "name": "Product card",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Product image" },
-        { "type": "text", "id": "badge", "label": "Badge label" },
-        { "type": "select", "id": "badge_style", "label": "Badge style", "options": [{"value":"cream","label":"Cream"},{"value":"rose","label":"Rose"}], "default": "cream" },
-        { "type": "text", "id": "name", "label": "Product name" },
-        { "type": "text", "id": "price", "label": "Price line" },
-        { "type": "textarea", "id": "description", "label": "Description" },
-        { "type": "url", "id": "link", "label": "Link" }
+        { "type": "image_picker", "id": "image", "label": "Product image", "info": "Recommended 800x1000 (4:5 portrait)." },
+        { "type": "text", "id": "badge", "label": "Badge label", "info": "Optional, e.g. Bestseller, New, Mother's Day, Sympathy" },
+        { "type": "select", "id": "badge_style", "label": "Badge color", "options": [{"value":"cream","label":"Cream"},{"value":"rose","label":"Rose"}], "default": "cream" },
+        { "type": "text", "id": "name", "label": "Product name", "default": "Pink Garden Roses" },
+        { "type": "text", "id": "price", "label": "Price line", "default": "$69" },
+        { "type": "textarea", "id": "description", "label": "Short description", "default": "Hand-tied. Walked to your door." },
+        { "type": "url", "id": "link", "label": "Product link" }
       ]
     }
   ],
-  "presets": [
-    {
-      "name": "Primavera Products",
-      "blocks": [
-        { "type": "card", "settings": { "badge": "Bestseller", "badge_style": "rose", "name": "Pink Garden Roses", "price": "$69", "description": "Garden roses, ranunculus, eucalyptus. Hand-tied with raffia." } },
-        { "type": "card", "settings": { "badge": "Mother's Day", "name": "Para Mami", "price": "$85", "description": "Blush roses and pink peonies, kraft-wrapped, bilingual card." } },
-        { "type": "card", "settings": { "badge": "Sympathy", "name": "Sympathy Standing Spray", "price": "$175", "description": "White roses, lilies, carnations on easel. Direct to any funeral home." } },
-        { "type": "card", "settings": { "badge": "New", "name": "Designer's Choice", "price": "$65 to $115", "description": "Whatever was best at market this morning, arranged for you." } }
-      ]
-    }
-  ]
+  "presets": [{ "name": "Featured products (Primavera)", "category": "Primavera" }]
 }
 {% endschema %}

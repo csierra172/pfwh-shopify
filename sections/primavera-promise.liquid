@@ -1,55 +1,78 @@
 {% comment %}
-  Primavera, Promise band (sage-green strip with 4 numbered cards).
-  Cards are blocks. User can add/remove/reorder.
+  Primavera Promise band. 4-pillar sage strip. Renders blocks if any are
+  defined, falls back to hardcoded 4 cards otherwise. Never empty.
 {% endcomment %}
 
 <section class="pv-promise pv-section">
-  {% for block in section.blocks %}
-    <div class="pv-promise-card" {{ block.shopify_attributes }}>
-      <div class="pv-num">{{ block.settings.num | default: '' }}</div>
-      <div class="pv-title">{{ block.settings.title }}</div>
-      <div class="pv-desc">{{ block.settings.description }}</div>
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div class="pv-promise-card" {{ block.shopify_attributes }}>
+        <div class="pv-num">{{ block.settings.num | default: '' }}</div>
+        <div class="pv-title">{{ block.settings.title | default: 'Promise headline.' }}</div>
+        <div class="pv-desc">{{ block.settings.description | default: 'Promise description.' }}</div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="pv-promise-card">
+      <div class="pv-num">01</div>
+      <div class="pv-title">Real florist. Real shop. Real hands.</div>
+      <div class="pv-desc">Not a wire service routing your order three states away. Every bouquet is built at the bench at 463 Fort Washington Ave.</div>
     </div>
-  {% endfor %}
+    <div class="pv-promise-card">
+      <div class="pv-num">02</div>
+      <div class="pv-title">A photo before it leaves the shop.</div>
+      <div class="pv-desc">We text a quick photo of your actual bouquet, not a stock image, before it heads out. If it's not right, we remake it.</div>
+    </div>
+    <div class="pv-promise-card">
+      <div class="pv-num">03</div>
+      <div class="pv-title">Cut this morning. Built today.</div>
+      <div class="pv-desc">Our buyer is on the A train to the 28th Street market before sunrise. Stems land at the shop by 9, in your hands by 5.</div>
+    </div>
+    <div class="pv-promise-card">
+      <div class="pv-num">04</div>
+      <div class="pv-title">Family-owned. Two decades. One block.</div>
+      <div class="pv-desc">Bilingual, family-run on the corner of 187th since 2004. Walk in, call, or order online. By your second order we'll know your name.</div>
+    </div>
+  {% endif %}
 </section>
 
 {% stylesheet %}
-  .pv-section { --sage:#a8b59a; --sage-deep:#7a8a6f; --sage-soft:#c8d2bc; --cream:#f5efe2; --line:#e2dac7; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
+  .pv-section { --sage-deep:#7a8a6f; --sage-soft:#c8d2bc; --cream:#f5efe2; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
   .pv-promise { background: var(--sage-deep); color: var(--cream); padding: 56px 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; font-family: var(--pv-sans); }
   .pv-promise-card .pv-num { font-size: 12px; letter-spacing: 0.14em; color: var(--sage-soft); font-weight: 600; }
   .pv-promise-card .pv-title { font-family: var(--pv-serif); font-size: 22px; line-height: 1.2; margin: 10px 0 8px; }
   .pv-promise-card .pv-desc { font-size: 14px; line-height: 1.55; color: rgba(245,239,226,.85); }
-  @media (max-width: 960px) {
-    .pv-promise { grid-template-columns: 1fr 1fr; gap: 28px; padding: 40px 24px; }
-  }
-  @media (max-width: 540px) {
-    .pv-promise { grid-template-columns: 1fr; gap: 24px; }
-  }
+  @media (max-width: 960px) { .pv-promise { grid-template-columns: 1fr 1fr; gap: 28px; padding: 40px 24px; } }
+  @media (max-width: 540px) { .pv-promise { grid-template-columns: 1fr; gap: 24px; } }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "Primavera Promise",
+  "name": "Promise band (Primavera)",
   "tag": "section",
   "class": "primavera-promise-section",
-  "max_blocks": 6,
+  "max_blocks": 8,
+  "settings": [
+    { "type": "paragraph", "content": "Sage-green band of 4 promise cards. Add or remove cards via the block list below. If you remove all blocks, the section falls back to a default 4-card layout." }
+  ],
   "blocks": [
     {
       "type": "card",
       "name": "Promise card",
       "settings": [
-        { "type": "text", "id": "num", "label": "Number (e.g. 01)" },
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "textarea", "id": "description", "label": "Description" }
+        { "type": "text", "id": "num", "label": "Number prefix", "info": "e.g. 01, 02, 03 — small label above the title", "default": "01" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Promise headline." },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Short supporting sentence." }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Primavera Promise",
+      "name": "Promise band (Primavera)",
+      "category": "Primavera",
       "blocks": [
         { "type": "card", "settings": { "num": "01", "title": "Real florist. Real shop. Real hands.", "description": "Not a wire service routing your order three states away. Every bouquet is built at the bench at 463 Fort Washington Ave." } },
-        { "type": "card", "settings": { "num": "02", "title": "A photo before it leaves the shop.", "description": "We text a quick photo of your actual bouquet, not a stock image, before it heads out the door. If it's not right, we remake it." } },
+        { "type": "card", "settings": { "num": "02", "title": "A photo before it leaves the shop.", "description": "We text a quick photo of your actual bouquet, not a stock image, before it heads out. If it's not right, we remake it." } },
         { "type": "card", "settings": { "num": "03", "title": "Cut this morning. Built today.", "description": "Our buyer is on the A train to the 28th Street market before sunrise. Stems land at the shop by 9, in your hands by 5." } },
         { "type": "card", "settings": { "num": "04", "title": "Family-owned. Two decades. One block.", "description": "Bilingual, family-run on the corner of 187th since 2004. Walk in, call, or order online. By your second order we'll know your name." } }
       ]

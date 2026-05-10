@@ -1,32 +1,29 @@
 {% comment %}
-  Primavera, Hero section.
-  Editable: eyebrow, h1 richtext, lede, two CTAs, meta strip (3 items),
-  hero image, hero badge.
+  Primavera Hero. Renders content from settings, falls back to hardcoded
+  defaults if any field is blank. Section never renders empty.
 {% endcomment %}
 
 <section class="pv-hero pv-section">
   <div class="pv-hero-text">
-    {% if section.settings.eyebrow != blank %}
-      <span class="pv-eyebrow">{{ section.settings.eyebrow }}</span>
-    {% endif %}
+    <span class="pv-eyebrow">{{ section.settings.eyebrow | default: '★ 4.9 on Google · Hablamos español' }}</span>
     {% if section.settings.headline != blank %}
       {{ section.settings.headline }}
+    {% else %}
+      <h1>Your <em>real, local</em> Washington Heights florist.</h1>
     {% endif %}
-    {% if section.settings.lede != blank %}
-      <p class="pv-lede">{{ section.settings.lede }}</p>
-    {% endif %}
+    <p class="pv-lede">{{ section.settings.lede | default: 'Hand-tied on Fort Washington since 2004. Walked to your door same day. We text you a photo before it leaves the shop.' }}</p>
     <div class="pv-hero-ctas">
-      {% if section.settings.cta_primary_label != blank %}
-        <a class="pv-btn pv-btn-primary" href="{{ section.settings.cta_primary_link | default: '/collections/all' }}">{{ section.settings.cta_primary_label }}</a>
-      {% endif %}
+      <a class="pv-btn pv-btn-primary" href="{{ section.settings.cta_primary_link | default: '/collections/all' }}">{{ section.settings.cta_primary_label | default: 'Send flowers today →' }}</a>
       {% if section.settings.cta_secondary_label != blank %}
-        <a class="pv-btn pv-btn-ghost" href="{{ section.settings.cta_secondary_link | default: '/' }}">{{ section.settings.cta_secondary_label }}</a>
+        <a class="pv-btn pv-btn-ghost" href="{{ section.settings.cta_secondary_link | default: '/collections/bestsellers' }}">{{ section.settings.cta_secondary_label }}</a>
+      {% else %}
+        <a class="pv-btn pv-btn-ghost" href="/collections/bestsellers">Shop bestsellers</a>
       {% endif %}
     </div>
-    {% if section.settings.review_line != blank %}
-      <a class="pv-review-line" href="{{ section.settings.review_link | default: '#' }}" rel="noopener">{{ section.settings.review_line }}</a>
+    {% if section.settings.show_review_line != false %}
+      <a class="pv-review-line" href="{{ section.settings.review_link | default: 'https://www.google.com/search?q=Primavera+Flowers+NYC+Reviews' }}" target="_blank" rel="noopener"><span class="stars">★★★★★</span>{{ section.settings.review_line | default: '4.9 on Google · 200+ verified reviews' }}</a>
     {% endif %}
-    {% if section.settings.show_meta_strip %}
+    {% if section.settings.show_meta_strip != false %}
       <div class="pv-hero-meta">
         <div>
           <div class="pv-label">{{ section.settings.meta1_label | default: 'Same-day cutoff' }}</div>
@@ -49,13 +46,11 @@
     {% else %}
       <img src="{{ 'hero-roses.png' | asset_url }}" alt="Pink garden roses bouquet hand-tied at Primavera Flowers" loading="eager" fetchpriority="high">
     {% endif %}
-    {% if section.settings.tag_name != blank %}
+    {% if section.settings.show_hero_tag != false %}
       <div class="pv-hero-tag">
         <div class="pv-label">{{ section.settings.tag_label | default: 'This week' }}</div>
-        <div class="pv-name">{{ section.settings.tag_name }}</div>
-        {% if section.settings.tag_price != blank %}
-          <div class="pv-price">{{ section.settings.tag_price }}</div>
-        {% endif %}
+        <div class="pv-name">{{ section.settings.tag_name | default: 'Pink Garden Roses' }}</div>
+        <div class="pv-price">{{ section.settings.tag_price | default: 'From $69 · same-day delivery' }}</div>
       </div>
     {% endif %}
   </div>
@@ -70,16 +65,15 @@
   .pv-hero-text .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 20px; display: inline-block; }
   .pv-hero h1 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(40px,5vw,68px); line-height: 1.05; color: var(--ink); margin: 0 0 22px; max-width: 540px; }
   .pv-hero h1 em { font-style: italic; color: var(--sage-deep); font-weight: 400; }
-  .pv-hero .pv-lede { font-size: 18px; line-height: 1.6; color: var(--ink-2); max-width: 480px; margin: 0 0 30px; }
-  .pv-hero-ctas { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 36px; }
+  .pv-hero .pv-lede { font-size: 18px; line-height: 1.6; color: var(--ink-2); max-width: 480px; margin: 0 0 28px; }
+  .pv-hero-ctas { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
   .pv-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 6px; font-size: 15px; font-weight: 600; transition: all .15s; border: none; cursor: pointer; text-decoration: none; }
   .pv-btn-primary { background: var(--sage-deep); color: var(--cream); }
   .pv-btn-primary:hover { background: var(--ink); }
   .pv-btn-ghost { color: var(--sage-deep); border: 1.5px solid var(--sage-deep); padding: 12px 24px; background: transparent; }
   .pv-btn-ghost:hover { background: var(--sage); color: var(--cream); border-color: var(--sage); }
-  .pv-review-line { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; letter-spacing: 0.06em; color: var(--ink-2); margin-bottom: 28px; text-decoration: none; }
-  .pv-review-line::before { content: "★★★★★"; font-size: 14px; color: #f5b454; letter-spacing: 1px; margin-right: 4px; }
-  .pv-review-line:hover { color: var(--sage-deep); }
+  .pv-review-line { font-size: 13px; color: var(--ink-2); font-weight: 500; margin-bottom: 24px; display: inline-block; }
+  .pv-review-line .stars { color: #f5b454; letter-spacing: 1px; margin-right: 6px; }
   .pv-hero-meta { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); padding-top: 20px; gap: 20px; }
   .pv-hero-meta .pv-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-bottom: 6px; }
   .pv-hero-meta .pv-val { font-family: var(--pv-serif); font-size: 22px; color: var(--ink); line-height: 1.1; }
@@ -103,40 +97,49 @@
 
 {% schema %}
 {
-  "name": "Primavera Hero",
+  "name": "Hero (Primavera)",
   "tag": "section",
   "class": "primavera-hero-section",
   "settings": [
+    { "type": "paragraph", "content": "Top-of-page hero. Has bulletproof defaults: if you clear any field, the section still renders with sensible fallback content." },
+
     { "type": "header", "content": "Eyebrow + headline" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow (small uppercase line above H1)", "default": "★ 4.9 on Google · Hablamos español" },
-    { "type": "richtext", "id": "headline", "label": "Headline (use h1)", "default": "<h1>Your <em>real, local</em> Washington Heights florist.</h1>" },
-    { "type": "textarea", "id": "lede", "label": "Lede paragraph", "default": "Hand-tied on Fort Washington since 2004. Walked to your door same day. We text you a photo before it leaves the shop." },
-    { "type": "header", "content": "CTAs" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "info": "Small uppercase line above the headline. Leave blank to use default.", "default": "★ 4.9 on Google · Hablamos español" },
+    { "type": "richtext", "id": "headline", "label": "Headline (h1)", "info": "Use <em> for italic accent words.", "default": "<h1>Your <em>real, local</em> Washington Heights florist.</h1>" },
+    { "type": "textarea", "id": "lede", "label": "Lede paragraph", "info": "1-2 sentences. Keep it short on mobile.", "default": "Hand-tied on Fort Washington since 2004. Walked to your door same day. We text you a photo before it leaves the shop." },
+
+    { "type": "header", "content": "CTAs (buttons)" },
     { "type": "text", "id": "cta_primary_label", "label": "Primary CTA label", "default": "Send flowers today →" },
-    { "type": "url", "id": "cta_primary_link", "label": "Primary CTA link" },
+    { "type": "url", "id": "cta_primary_link", "label": "Primary CTA link", "info": "Recommend /collections/all or /collections/bestsellers" },
     { "type": "text", "id": "cta_secondary_label", "label": "Secondary CTA label", "default": "Shop bestsellers" },
     { "type": "url", "id": "cta_secondary_link", "label": "Secondary CTA link" },
+
     { "type": "header", "content": "Review line (under CTAs)" },
+    { "type": "checkbox", "id": "show_review_line", "label": "Show review line", "default": true },
     { "type": "text", "id": "review_line", "label": "Review line text", "default": "4.9 on Google · 200+ verified reviews" },
-    { "type": "url", "id": "review_link", "label": "Review line link", "default": "https://www.google.com/search?q=Primavera+Flowers+NYC+Reviews" },
-    { "type": "header", "content": "Meta strip (3 columns)" },
+    { "type": "url", "id": "review_link", "label": "Review line link" },
+
+    { "type": "header", "content": "Meta strip (3 columns under hero text)" },
     { "type": "checkbox", "id": "show_meta_strip", "label": "Show meta strip", "default": true },
-    { "type": "text", "id": "meta1_label", "label": "Meta 1 label", "default": "Same-day cutoff" },
-    { "type": "text", "id": "meta1_value", "label": "Meta 1 value", "default": "2:00 PM" },
-    { "type": "text", "id": "meta1_sub", "label": "Meta 1 sub", "default": "Mon to Sat" },
-    { "type": "text", "id": "meta2_label", "label": "Meta 2 label", "default": "Delivery zone" },
-    { "type": "text", "id": "meta2_value", "label": "Meta 2 value", "default": "10033" },
-    { "type": "text", "id": "meta2_sub", "label": "Meta 2 sub", "default": "10032 / 10034 / 10040" },
-    { "type": "text", "id": "meta3_label", "label": "Meta 3 label", "default": "Bouquets from" },
-    { "type": "text", "id": "meta3_value", "label": "Meta 3 value", "default": "$59" },
-    { "type": "text", "id": "meta3_sub", "label": "Meta 3 sub", "default": "Hand-tied seasonal" },
-    { "type": "header", "content": "Hero image" },
-    { "type": "image_picker", "id": "hero_image", "label": "Hero image (defaults to hero-roses.png)" },
-    { "type": "header", "content": "Hero tag (overlay card on image)" },
-    { "type": "text", "id": "tag_label", "label": "Tag label", "default": "This week" },
-    { "type": "text", "id": "tag_name", "label": "Tag product name", "default": "Pink Garden Roses" },
-    { "type": "text", "id": "tag_price", "label": "Tag price line", "default": "From $69 · same-day delivery" }
+    { "type": "text", "id": "meta1_label", "label": "Column 1 label", "default": "Same-day cutoff" },
+    { "type": "text", "id": "meta1_value", "label": "Column 1 value", "default": "2:00 PM" },
+    { "type": "text", "id": "meta1_sub", "label": "Column 1 sub-line", "default": "Mon to Sat" },
+    { "type": "text", "id": "meta2_label", "label": "Column 2 label", "default": "Delivery zone" },
+    { "type": "text", "id": "meta2_value", "label": "Column 2 value", "default": "10033" },
+    { "type": "text", "id": "meta2_sub", "label": "Column 2 sub-line", "default": "10032 / 10034 / 10040" },
+    { "type": "text", "id": "meta3_label", "label": "Column 3 label", "default": "Bouquets from" },
+    { "type": "text", "id": "meta3_value", "label": "Column 3 value", "default": "$59" },
+    { "type": "text", "id": "meta3_sub", "label": "Column 3 sub-line", "default": "Hand-tied seasonal" },
+
+    { "type": "header", "content": "Hero image (right side)" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image", "info": "Upload to override. Defaults to assets/hero-roses.png." },
+
+    { "type": "header", "content": "Hero badge (overlay tag on image)" },
+    { "type": "checkbox", "id": "show_hero_tag", "label": "Show hero badge", "default": true },
+    { "type": "text", "id": "tag_label", "label": "Badge eyebrow", "default": "This week" },
+    { "type": "text", "id": "tag_name", "label": "Badge product name", "default": "Pink Garden Roses" },
+    { "type": "text", "id": "tag_price", "label": "Badge price line", "default": "From $69 · same-day delivery" }
   ],
-  "presets": [{ "name": "Primavera Hero" }]
+  "presets": [{ "name": "Hero (Primavera)", "category": "Primavera" }]
 }
 {% endschema %}

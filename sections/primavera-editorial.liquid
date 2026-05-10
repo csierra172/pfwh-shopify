@@ -1,25 +1,26 @@
 {% comment %}
-  Primavera, Editorial section (image + long-form copy with signature).
+  Primavera Editorial. Image + long-form copy + signature.
 {% endcomment %}
 
 <section class="pv-editorial pv-section">
   <div class="pv-editorial-img">
-    {% if section.settings.image != blank %}
-      {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.image.alt | default: 'Primavera Flowers shop on Fort Washington Avenue' }}
-    {% else %}
-      <img src="{{ 'storefront.png' | asset_url }}" alt="The Primavera Flowers shop on Fort Washington Avenue" loading="lazy">
-    {% endif %}
+    {% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.image.alt | default: 'Primavera Flowers shop on Fort Washington Avenue' }}{% else %}<img src="{{ 'storefront.png' | asset_url }}" alt="The Primavera Flowers shop on Fort Washington Avenue" loading="lazy">{% endif %}
   </div>
   <div class="pv-editorial-text">
-    {% if section.settings.kicker != blank %}<div class="pv-kicker">{{ section.settings.kicker }}</div>{% endif %}
-    {% if section.settings.headline != blank %}{{ section.settings.headline }}{% endif %}
-    {% if section.settings.body != blank %}<div class="pv-body">{{ section.settings.body }}</div>{% endif %}
-    {% if section.settings.signature != blank %}
-      <div class="pv-signature">
-        {{ section.settings.signature }}
-        {% if section.settings.signature_sub != blank %}<small>{{ section.settings.signature_sub }}</small>{% endif %}
-      </div>
-    {% endif %}
+    <div class="pv-kicker">{{ section.settings.kicker | default: 'The shop on Fort Washington' }}</div>
+    {% if section.settings.headline != blank %}{{ section.settings.headline }}{% else %}<h2>"Your local flower shop, for moments that matter most."</h2>{% endif %}
+    <div class="pv-body">
+      {% if section.settings.body != blank %}
+        {{ section.settings.body }}
+      {% else %}
+        <p>Family-owned. Two decades. One block. Primavera has been on Fort Washington Avenue since 2004. Bilingual, family-run, built for the neighborhood. We take the A train down to the 28th Street Market most mornings and pick the day's stems ourselves.</p>
+        <p>The website is new. The shop is the same one that's been on the corner of 187th all along. Walk in for a single rose, call when you need a standing spray for Ortiz, or order online and we'll bring it by foot. Hablamos español. Te conocemos por nombre.</p>
+      {% endif %}
+    </div>
+    <div class="pv-signature">
+      {{ section.settings.signature | default: 'Familia Guzmán' }}
+      <small>{{ section.settings.signature_sub | default: 'Owners · Florists · Neighbors in Washington Heights since 2004' }}</small>
+    </div>
   </div>
 </section>
 
@@ -45,17 +46,18 @@
 
 {% schema %}
 {
-  "name": "Primavera Editorial",
+  "name": "Editorial (Primavera)",
   "tag": "section",
   "class": "primavera-editorial-section",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Section image (defaults to storefront.png)" },
-    { "type": "text", "id": "kicker", "label": "Kicker (small uppercase line)", "default": "The shop on Fort Washington" },
-    { "type": "richtext", "id": "headline", "label": "Headline (use h2)", "default": "<h2>\"Your local flower shop, for moments that matter most.\"</h2>" },
-    { "type": "richtext", "id": "body", "label": "Body (richtext)", "default": "<p>Family-owned. Two decades. One block. Primavera has been on Fort Washington Avenue since 2004. Bilingual, family-run, built for the neighborhood. We take the A train down to the 28th Street Market most mornings and pick the day's stems ourselves.</p><p>The website is new. The shop is the same one that's been on the corner of 187th all along. Walk in for a single rose, call when you need a standing spray for Ortiz, or order online and we'll bring it by foot. Hablamos español. Te conocemos por nombre.</p>" },
+    { "type": "paragraph", "content": "Long-form editorial section with the family story and signature. Place near the bottom of the homepage." },
+    { "type": "image_picker", "id": "image", "label": "Section image", "info": "Defaults to assets/storefront.png. Use a wide horizontal photo of the shop or owners." },
+    { "type": "text", "id": "kicker", "label": "Kicker (small uppercase)", "default": "The shop on Fort Washington" },
+    { "type": "richtext", "id": "headline", "label": "Headline (h2, can be a pull-quote in straight quotes)", "default": "<h2>\"Your local flower shop, for moments that matter most.\"</h2>" },
+    { "type": "richtext", "id": "body", "label": "Body (richtext)", "info": "Wrap each paragraph in <p> tags." },
     { "type": "text", "id": "signature", "label": "Signature line", "default": "Familia Guzmán" },
-    { "type": "text", "id": "signature_sub", "label": "Signature sub line", "default": "Owners · Florists · Neighbors in Washington Heights since 2004" }
+    { "type": "text", "id": "signature_sub", "label": "Signature sub-line", "default": "Owners · Florists · Neighbors in Washington Heights since 2004" }
   ],
-  "presets": [{ "name": "Primavera Editorial" }]
+  "presets": [{ "name": "Editorial (Primavera)", "category": "Primavera" }]
 }
 {% endschema %}

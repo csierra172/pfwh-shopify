@@ -1,18 +1,14 @@
 {% comment %}
-  Primavera, Subscription teaser card. Links to /pages/subscriptions.
+  Primavera Subscriptions teaser. CTA card linking to /pages/subscriptions.
 {% endcomment %}
 
 <section class="pv-subs-teaser pv-section">
   <div class="pv-subs-teaser-card">
-    <div class="pv-subs-teaser-text">
-      {% if section.settings.eyebrow != blank %}<span class="pv-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
-      {% if section.settings.headline != blank %}{{ section.settings.headline }}{% endif %}
-      {% if section.settings.body != blank %}<p>{{ section.settings.body }}</p>{% endif %}
-      <div class="pv-subs-teaser-ctas">
-        {% if section.settings.cta_label != blank %}
-          <a class="pv-btn pv-btn-primary" href="{{ section.settings.cta_link | default: '/pages/subscriptions' }}">{{ section.settings.cta_label }}</a>
-        {% endif %}
-      </div>
+    <span class="pv-eyebrow">{{ section.settings.eyebrow | default: 'Flowers as part of everyday life · Subscriptions' }}</span>
+    {% if section.settings.headline != blank %}{{ section.settings.headline }}{% else %}<h2>Fresh flowers, <em>every Friday</em>.</h2>{% endif %}
+    <p>{{ section.settings.body | default: 'A standing order from your neighborhood florist on Fort Washington. Three tiers (Casa, Familia, Estudio) starting at $60. Free hand-delivery across Washington Heights, Hudson Heights, and Inwood. First delivery comes with a free glass vase. Pause or skip any week.' }}</p>
+    <div class="pv-subs-teaser-ctas">
+      <a class="pv-btn pv-btn-primary" href="{{ section.settings.cta_link | default: '/pages/subscriptions' }}">{{ section.settings.cta_label | default: 'Start your subscription →' }}</a>
     </div>
   </div>
 </section>
@@ -21,7 +17,7 @@
   .pv-section { --sage-deep:#7a8a6f; --cream:#f5efe2; --paper:#faf6ec; --ink:#2a2620; --ink-2:#5a544c; --line:#e2dac7; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
   .pv-subs-teaser { padding: 80px 40px; background: var(--paper); font-family: var(--pv-sans); color: var(--ink); }
   .pv-subs-teaser-card { max-width: 820px; margin: 0 auto; background: var(--cream); border: 1px solid var(--line); border-radius: 8px; padding: 56px 48px; text-align: center; }
-  .pv-subs-teaser-card .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; display: inline-block; }
+  .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; display: inline-block; }
   .pv-subs-teaser-card h2 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(28px,4vw,46px); line-height: 1.1; color: var(--ink); margin: 12px 0 18px; }
   .pv-subs-teaser-card h2 em { font-style: italic; color: var(--sage-deep); }
   .pv-subs-teaser-card p { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 560px; margin: 0 auto 28px; }
@@ -37,16 +33,17 @@
 
 {% schema %}
 {
-  "name": "Primavera Subscriptions Teaser",
+  "name": "Subscriptions teaser (Primavera)",
   "tag": "section",
   "class": "primavera-subs-teaser-section",
   "settings": [
+    { "type": "paragraph", "content": "Centered subscription teaser card. Sends visitors to /pages/subscriptions for the full PDP." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Flowers as part of everyday life · Subscriptions" },
-    { "type": "richtext", "id": "headline", "label": "Headline (use h2)", "default": "<h2>Fresh flowers, <em>every Friday</em>.</h2>" },
+    { "type": "richtext", "id": "headline", "label": "Headline (h2)", "default": "<h2>Fresh flowers, <em>every Friday</em>.</h2>" },
     { "type": "textarea", "id": "body", "label": "Body paragraph", "default": "A standing order from your neighborhood florist on Fort Washington. Three tiers (Casa, Familia, Estudio) starting at $60. Free hand-delivery across Washington Heights, Hudson Heights, and Inwood. First delivery comes with a free glass vase. Pause or skip any week." },
     { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Start your subscription →" },
-    { "type": "url", "id": "cta_link", "label": "CTA link" }
+    { "type": "url", "id": "cta_link", "label": "CTA link", "info": "Recommend /pages/subscriptions" }
   ],
-  "presets": [{ "name": "Primavera Subscriptions Teaser" }]
+  "presets": [{ "name": "Subscriptions teaser (Primavera)", "category": "Primavera" }]
 }
 {% endschema %}
