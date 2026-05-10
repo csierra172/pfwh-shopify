@@ -8,7 +8,7 @@
         "heading": {
           "type": "text",
           "settings": {
-            "text": "<h1>Same-day delivery in Washington Heights</h1>",
+            "text": "<h1>Same-day. Same block. Walked to your door.</h1>",
             "type_preset": "h1",
             "alignment": "center",
             "font": "var(--font-heading--family)",

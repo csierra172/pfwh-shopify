@@ -22,7 +22,7 @@
             "headline": {
               "type": "text",
               "settings": {
-                "text": "<h1>The neighborhood florist of Washington Heights, since 2004.</h1>",
+                "text": "<h1>Family-owned. Two decades. One block.</h1>",
                 "type_preset": "h1",
                 "font": "var(--font-heading--family)",
                 "case": "none",
@@ -64,7 +64,7 @@
         "h": {
           "type": "text",
           "settings": {
-            "text": "<h2>Designed in the Heights. Hand-delivered in the Heights. Photo-confirmed.</h2>",
+            "text": "<h2>A real shop. Real hands. Real neighbors.</h2>",
             "type_preset": "h2",
             "font": "var(--font-heading--family)",
             "case": "none"
@@ -73,7 +73,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p>Primavera is the family florist on the corner of 187th and Fort Washington Avenue — the same shop that's been here since 2004. Every arrangement is built by a designer at the bench, photographed before it leaves, and hand-walked or driven to your door across Washington Heights, Hudson Heights, and Inwood. We're bilingual. We know the doormen on Pinehurst. We've sent flowers to every funeral home and every school auditorium in the neighborhood. When you order from Primavera, you're talking to the people making your flowers — not a 1-800 wire service routing your order three states away.</p>",
+            "text": "<p>Primavera is the family florist on the corner of 187th and Fort Washington — the same shop that's been here since 2004. Every arrangement is built at the bench, photographed before it leaves, and hand-walked or driven across Washington Heights, Hudson Heights, and Inwood. We're bilingual. We know the doormen on Pinehurst. We've sent flowers to every funeral home and every school auditorium in the neighborhood. When you order from Primavera, you're talking to the people making your flowers — not a 1-800 middleman routing your order three states away. Real florist. Real shop. Real hands. Hablamos español.</p>",
             "type_preset": "paragraph"
           }
         }

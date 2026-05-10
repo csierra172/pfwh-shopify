@@ -22,7 +22,7 @@
             "headline": {
               "type": "text",
               "settings": {
-                "text": "<h1>Quiet care, when it matters most.</h1>",
+                "text": "<h1>Quiet care. Real florist. Real hands.</h1>",
                 "type_preset": "h1",
                 "font": "var(--font-heading--family)",
                 "case": "none",
@@ -33,7 +33,7 @@
             "sub": {
               "type": "text",
               "settings": {
-                "text": "<p>Standing sprays, casket sprays, wreaths, and home arrangements — designed at our Fort Washington Avenue shop and delivered the same day to every funeral home in Washington Heights, Inwood, Marble Hill, and the South Bronx.</p>",
+                "text": "<p>Standing sprays, casket sprays, wreaths, and home arrangements — designed at our Fort Washington Avenue shop, never a wire-service swap. Delivered the same day to every funeral home in Washington Heights, Inwood, Marble Hill, and the South Bronx. Llámanos en español al (917) 770-1684.</p>",
                 "type_preset": "paragraph",
                 "alignment": "center",
                 "max_width": "narrow"
