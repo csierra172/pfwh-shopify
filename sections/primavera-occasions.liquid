@@ -1,0 +1,82 @@
+{% comment %}
+  Primavera, Occasions tile grid (5 tiles by default).
+  Tiles are blocks. User can add/remove/reorder.
+{% endcomment %}
+
+<section class="pv-occasions-wrap pv-section">
+  <div class="pv-sec-head">
+    {% if section.settings.headline != blank %}{{ section.settings.headline }}{% endif %}
+    {% if section.settings.intro != blank %}<div class="pv-right"><p>{{ section.settings.intro }}</p></div>{% endif %}
+  </div>
+  <div class="pv-occasions" style="grid-template-columns: repeat({{ section.blocks.size | default: 5 }}, 1fr);">
+    {% for block in section.blocks %}
+      <a class="pv-occasion" href="{{ block.settings.link | default: '/collections/all' }}" {{ block.shopify_attributes }}>
+        <div class="pv-num">{{ block.settings.num }}</div>
+        <div class="pv-name">{{ block.settings.name }}</div>
+        <div class="pv-copy">{{ block.settings.copy }}</div>
+        <div class="pv-arrow-link">{{ block.settings.cta_text | default: 'Shop now →' }}</div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .pv-section { --sage:#a8b59a; --sage-deep:#7a8a6f; --cream:#f5efe2; --paper:#faf6ec; --ink:#2a2620; --ink-2:#5a544c; --ink-3:#8a847c; --rose-deep:#b8705d; --line:#e2dac7; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
+  .pv-occasions-wrap { padding: 80px 40px 0; font-family: var(--pv-sans); color: var(--ink); }
+  .pv-sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; margin-bottom: 48px; padding: 0 40px; max-width: 100%; }
+  .pv-sec-head h2 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(32px,4vw,52px); line-height: 1.1; color: var(--ink); margin: 0; }
+  .pv-sec-head h2 em { font-style: italic; color: var(--sage-deep); }
+  .pv-sec-head .pv-right p { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 460px; margin: 0; }
+  .pv-occasions { display: grid; gap: 1px; background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 32px; }
+  .pv-occasion { background: var(--cream); padding: 48px 24px 32px; transition: background .25s; cursor: pointer; display: flex; flex-direction: column; gap: 28px; min-height: 280px; text-decoration: none; color: inherit; }
+  .pv-occasion:hover { background: var(--paper); }
+  .pv-occasion .pv-num { font-size: 11px; letter-spacing: 0.14em; color: var(--ink-3); font-weight: 600; }
+  .pv-occasion .pv-name { font-family: var(--pv-serif); font-size: 28px; line-height: 1.1; color: var(--ink); }
+  .pv-occasion .pv-name em { font-style: italic; color: var(--sage-deep); }
+  .pv-occasion .pv-copy { font-size: 14px; color: var(--ink-2); margin-top: -16px; line-height: 1.5; }
+  .pv-occasion .pv-arrow-link { margin-top: auto; font-size: 13px; color: var(--sage-deep); font-weight: 600; }
+  .pv-occasion:hover .pv-arrow-link { color: var(--rose-deep); }
+  @media (max-width: 960px) {
+    .pv-occasions-wrap { padding: 56px 0 0; }
+    .pv-sec-head { grid-template-columns: 1fr; gap: 16px; padding: 0 24px; }
+    .pv-occasions { grid-template-columns: 1fr 1fr !important; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Primavera Occasions",
+  "tag": "section",
+  "class": "primavera-occasions-section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "richtext", "id": "headline", "label": "Headline (use h2)", "default": "<h2>For the <em>moments</em>, not the flowers.</h2>" },
+    { "type": "textarea", "id": "intro", "label": "Intro paragraph", "default": "For the birthdays. For the apologies. For the just-because Tuesdays. Pick the moment, our designers build to the feeling. Ramos para cada momento." }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Occasion tile",
+      "settings": [
+        { "type": "text", "id": "num", "label": "Number (e.g. /01)" },
+        { "type": "richtext", "id": "name", "label": "Name (h-tag, supports em)" },
+        { "type": "textarea", "id": "copy", "label": "Description" },
+        { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Shop now →" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Primavera Occasions",
+      "blocks": [
+        { "type": "tile", "settings": { "num": "/01", "name": "Just <em>because</em>", "copy": "For the Tuesday gesture. For the neighbor across the hall.", "cta_text": "From $48 →" } },
+        { "type": "tile", "settings": { "num": "/02", "name": "<em>Birthday</em>", "copy": "Bright stems. Soft palette. Add a candle or balloon at checkout.", "cta_text": "From $69 →" } },
+        { "type": "tile", "settings": { "num": "/03", "name": "<em>Anniversary</em>", "copy": "Garden roses. Peonies. A proper ribbon. Same-day, same block.", "cta_text": "From $89 →" } },
+        { "type": "tile", "settings": { "num": "/04", "name": "<em>Sympathy</em>", "copy": "Direct to Ortiz, Schwartz Brothers, and every funeral home in upper Manhattan.", "cta_text": "From $165 →" } },
+        { "type": "tile", "settings": { "num": "/05", "name": "<em>Quinceañera</em>", "copy": "Centerpieces, corsages, the church arch. Custom-built. Quote within 24 hours.", "cta_text": "Get a quote →" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

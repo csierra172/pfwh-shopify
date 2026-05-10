@@ -1,0 +1,61 @@
+{% comment %}
+  Primavera, Editorial section (image + long-form copy with signature).
+{% endcomment %}
+
+<section class="pv-editorial pv-section">
+  <div class="pv-editorial-img">
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.image.alt | default: 'Primavera Flowers shop on Fort Washington Avenue' }}
+    {% else %}
+      <img src="{{ 'storefront.png' | asset_url }}" alt="The Primavera Flowers shop on Fort Washington Avenue" loading="lazy">
+    {% endif %}
+  </div>
+  <div class="pv-editorial-text">
+    {% if section.settings.kicker != blank %}<div class="pv-kicker">{{ section.settings.kicker }}</div>{% endif %}
+    {% if section.settings.headline != blank %}{{ section.settings.headline }}{% endif %}
+    {% if section.settings.body != blank %}<div class="pv-body">{{ section.settings.body }}</div>{% endif %}
+    {% if section.settings.signature != blank %}
+      <div class="pv-signature">
+        {{ section.settings.signature }}
+        {% if section.settings.signature_sub != blank %}<small>{{ section.settings.signature_sub }}</small>{% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .pv-section { --sage-deep:#7a8a6f; --cream:#f5efe2; --ink:#2a2620; --ink-2:#5a544c; --ink-3:#8a847c; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
+  .pv-editorial { display: grid; grid-template-columns: 1fr 1fr; background: var(--cream); font-family: var(--pv-sans); color: var(--ink); }
+  .pv-editorial-img { min-height: 600px; overflow: hidden; }
+  .pv-editorial-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pv-editorial-text { padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; }
+  .pv-kicker { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 18px; }
+  .pv-editorial-text h2 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(28px,3.5vw,42px); line-height: 1.2; color: var(--ink); max-width: 540px; margin: 0; }
+  .pv-body { margin-top: 28px; max-width: 480px; font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+  .pv-body p { margin: 0 0 14px; }
+  .pv-body p:last-child { margin-bottom: 0; }
+  .pv-signature { font-family: var(--pv-serif); font-size: 22px; color: var(--ink); margin-top: 32px; }
+  .pv-signature small { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); display: block; margin-top: 4px; font-weight: 600; font-family: var(--pv-sans); }
+  @media (max-width: 960px) {
+    .pv-editorial { grid-template-columns: 1fr; }
+    .pv-editorial-img { min-height: 360px; }
+    .pv-editorial-text { padding: 48px 24px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Primavera Editorial",
+  "tag": "section",
+  "class": "primavera-editorial-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Section image (defaults to storefront.png)" },
+    { "type": "text", "id": "kicker", "label": "Kicker (small uppercase line)", "default": "The shop on Fort Washington" },
+    { "type": "richtext", "id": "headline", "label": "Headline (use h2)", "default": "<h2>\"Your local flower shop, for moments that matter most.\"</h2>" },
+    { "type": "richtext", "id": "body", "label": "Body (richtext)", "default": "<p>Family-owned. Two decades. One block. Primavera has been on Fort Washington Avenue since 2004. Bilingual, family-run, built for the neighborhood. We take the A train down to the 28th Street Market most mornings and pick the day's stems ourselves.</p><p>The website is new. The shop is the same one that's been on the corner of 187th all along. Walk in for a single rose, call when you need a standing spray for Ortiz, or order online and we'll bring it by foot. Hablamos español. Te conocemos por nombre.</p>" },
+    { "type": "text", "id": "signature", "label": "Signature line", "default": "Familia Guzmán" },
+    { "type": "text", "id": "signature_sub", "label": "Signature sub line", "default": "Owners · Florists · Neighbors in Washington Heights since 2004" }
+  ],
+  "presets": [{ "name": "Primavera Editorial" }]
+}
+{% endschema %}

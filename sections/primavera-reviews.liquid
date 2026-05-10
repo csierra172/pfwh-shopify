@@ -1,0 +1,101 @@
+{% comment %}
+  Primavera, Reviews block (3 review cards).
+  Cards are blocks with stars, text, name, source line.
+{% endcomment %}
+
+<section class="pv-reviews pv-section">
+  <div class="pv-reviews-head">
+    <div>
+      {% if section.settings.eyebrow != blank %}<span class="pv-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
+      {% if section.settings.headline != blank %}{{ section.settings.headline }}{% endif %}
+    </div>
+    <div class="pv-reviews-rating">
+      <div class="pv-stars">★★★★★</div>
+      <div class="pv-rating-text">{{ section.settings.rating_text | default: '4.9 on Google · 200+ verified reviews' }}</div>
+    </div>
+  </div>
+  <div class="pv-reviews-grid">
+    {% for block in section.blocks %}
+      <div class="pv-review" {{ block.shopify_attributes }}>
+        <div class="pv-review-stars">★★★★★</div>
+        <p class="pv-review-text">{{ block.settings.quote }}</p>
+        <div class="pv-review-author">
+          <div class="pv-review-avatar">{{ block.settings.name | slice: 0, 1 }}</div>
+          <div>
+            <div class="pv-review-name">{{ block.settings.name }}</div>
+            <div class="pv-review-date">{{ block.settings.source }}</div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% if section.settings.cta_label != blank %}
+    <div class="pv-reviews-cta">
+      <a href="{{ section.settings.cta_link | default: '#' }}" target="_blank" rel="noopener">{{ section.settings.cta_label }}</a>
+    </div>
+  {% endif %}
+</section>
+
+{% stylesheet %}
+  .pv-section { --sage-deep:#7a8a6f; --cream:#f5efe2; --paper:#faf6ec; --ink:#2a2620; --ink-2:#5a544c; --ink-3:#8a847c; --rose-deep:#b8705d; --line:#e2dac7; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
+  .pv-reviews { background: var(--cream); border-top: 1px solid var(--line); padding: 80px 40px; font-family: var(--pv-sans); color: var(--ink); }
+  .pv-reviews-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 40px; gap: 32px; flex-wrap: wrap; }
+  .pv-reviews-head .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; display: block; margin-bottom: 12px; }
+  .pv-reviews-head h2 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(30px,4vw,50px); line-height: 1.1; color: var(--ink); margin: 0; }
+  .pv-reviews-head h2 em { font-style: italic; color: var(--sage-deep); }
+  .pv-reviews-rating { display: flex; align-items: center; gap: 12px; }
+  .pv-reviews-rating .pv-stars { font-size: 18px; color: #f5b454; letter-spacing: 1px; }
+  .pv-reviews-rating .pv-rating-text { font-size: 14px; color: var(--ink-2); font-weight: 600; }
+  .pv-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .pv-review { background: var(--paper); padding: 28px 26px; border-radius: 8px; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; }
+  .pv-review-stars { font-size: 14px; color: #f5b454; letter-spacing: 1px; }
+  .pv-review-text { font-size: 15px; color: var(--ink); line-height: 1.55; margin: 0; }
+  .pv-review-author { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); }
+  .pv-review-avatar { width: 36px; height: 36px; border-radius: 50%; background: #a8b59a; color: var(--cream); display: grid; place-content: center; font-weight: 600; font-size: 13px; }
+  .pv-review-name { font-size: 13px; color: var(--ink-2); font-weight: 600; }
+  .pv-review-date { font-size: 12px; color: var(--ink-3); }
+  .pv-reviews-cta { text-align: center; margin-top: 40px; }
+  .pv-reviews-cta a { color: var(--sage-deep); font-weight: 600; font-size: 14px; border-bottom: 1.5px solid var(--sage-deep); padding-bottom: 2px; text-decoration: none; }
+  .pv-reviews-cta a:hover { color: var(--rose-deep); border-color: var(--rose-deep); }
+  @media (max-width: 960px) {
+    .pv-reviews { padding: 56px 24px; }
+    .pv-reviews-grid { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Primavera Reviews",
+  "tag": "section",
+  "class": "primavera-reviews-section",
+  "max_blocks": 9,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "From our neighbors" },
+    { "type": "richtext", "id": "headline", "label": "Headline (use h2)", "default": "<h2>200+ reviews from across the <em>Heights</em>.</h2>" },
+    { "type": "text", "id": "rating_text", "label": "Rating text (next to stars)", "default": "4.9 on Google · 200+ verified reviews" },
+    { "type": "text", "id": "cta_label", "label": "Footer CTA label", "default": "Read all reviews on Google →" },
+    { "type": "url", "id": "cta_link", "label": "Footer CTA link" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote text" },
+        { "type": "text", "id": "name", "label": "Reviewer name" },
+        { "type": "text", "id": "source", "label": "Source line (e.g. 'Google review · 3 weeks ago')" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Primavera Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "quote": "\"My friends make the most beautiful floral arrangements in Washington Heights. They have been my go-to for every holiday.\"", "name": "Diana L.", "source": "Verified neighbor · @dianalopnyc" } },
+        { "type": "review", "settings": { "quote": "\"Ordered last minute for my mom's birthday. Got a photo of the arrangement before delivery. Gorgeous, and at her door an hour later. Real local florist.\"", "name": "Marcus G.", "source": "Google review · 3 weeks ago" } },
+        { "type": "review", "settings": { "quote": "\"Best florist in the Heights. They speak Spanish, they know my mom's name, and they stayed late so I could pick up flowers for a vigil. Family.\"", "name": "Rosa M.", "source": "Google review · 1 month ago" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

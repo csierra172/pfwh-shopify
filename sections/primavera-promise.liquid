@@ -1,0 +1,59 @@
+{% comment %}
+  Primavera, Promise band (sage-green strip with 4 numbered cards).
+  Cards are blocks. User can add/remove/reorder.
+{% endcomment %}
+
+<section class="pv-promise pv-section">
+  {% for block in section.blocks %}
+    <div class="pv-promise-card" {{ block.shopify_attributes }}>
+      <div class="pv-num">{{ block.settings.num | default: '' }}</div>
+      <div class="pv-title">{{ block.settings.title }}</div>
+      <div class="pv-desc">{{ block.settings.description }}</div>
+    </div>
+  {% endfor %}
+</section>
+
+{% stylesheet %}
+  .pv-section { --sage:#a8b59a; --sage-deep:#7a8a6f; --sage-soft:#c8d2bc; --cream:#f5efe2; --line:#e2dac7; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
+  .pv-promise { background: var(--sage-deep); color: var(--cream); padding: 56px 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; font-family: var(--pv-sans); }
+  .pv-promise-card .pv-num { font-size: 12px; letter-spacing: 0.14em; color: var(--sage-soft); font-weight: 600; }
+  .pv-promise-card .pv-title { font-family: var(--pv-serif); font-size: 22px; line-height: 1.2; margin: 10px 0 8px; }
+  .pv-promise-card .pv-desc { font-size: 14px; line-height: 1.55; color: rgba(245,239,226,.85); }
+  @media (max-width: 960px) {
+    .pv-promise { grid-template-columns: 1fr 1fr; gap: 28px; padding: 40px 24px; }
+  }
+  @media (max-width: 540px) {
+    .pv-promise { grid-template-columns: 1fr; gap: 24px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Primavera Promise",
+  "tag": "section",
+  "class": "primavera-promise-section",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Promise card",
+      "settings": [
+        { "type": "text", "id": "num", "label": "Number (e.g. 01)" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "description", "label": "Description" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Primavera Promise",
+      "blocks": [
+        { "type": "card", "settings": { "num": "01", "title": "Real florist. Real shop. Real hands.", "description": "Not a wire service routing your order three states away. Every bouquet is built at the bench at 463 Fort Washington Ave." } },
+        { "type": "card", "settings": { "num": "02", "title": "A photo before it leaves the shop.", "description": "We text a quick photo of your actual bouquet, not a stock image, before it heads out the door. If it's not right, we remake it." } },
+        { "type": "card", "settings": { "num": "03", "title": "Cut this morning. Built today.", "description": "Our buyer is on the A train to the 28th Street market before sunrise. Stems land at the shop by 9, in your hands by 5." } },
+        { "type": "card", "settings": { "num": "04", "title": "Family-owned. Two decades. One block.", "description": "Bilingual, family-run on the corner of 187th since 2004. Walk in, call, or order online. By your second order we'll know your name." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

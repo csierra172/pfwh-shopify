@@ -1,10 +1,149 @@
 {
   "sections": {
-    "primavera_landing": {
-      "type": "primavera-landing"
+    "hero": {
+      "type": "primavera-hero",
+      "settings": {
+        "eyebrow": "★ 4.9 on Google · Hablamos español",
+        "headline": "<h1>Your <em>real, local</em> Washington Heights florist.</h1>",
+        "lede": "Hand-tied on Fort Washington since 2004. Walked to your door same day. We text you a photo before it leaves the shop.",
+        "cta_primary_label": "Send flowers today →",
+        "cta_secondary_label": "For Mami, this Sunday",
+        "show_meta_strip": true
+      }
+    },
+    "promise": {
+      "type": "primavera-promise",
+      "blocks": {
+        "p1": { "type": "card", "settings": { "num": "01", "title": "Real florist. Real shop. Real hands.", "description": "Not a wire service routing your order three states away. Every bouquet is built at the bench at 463 Fort Washington Ave." } },
+        "p2": { "type": "card", "settings": { "num": "02", "title": "A photo before it leaves the shop.", "description": "We text a quick photo of your actual bouquet, not a stock image, before it heads out the door. If it's not right, we remake it." } },
+        "p3": { "type": "card", "settings": { "num": "03", "title": "Cut this morning. Built today.", "description": "Our buyer is on the A train to the 28th Street market before sunrise. Stems land at the shop by 9, in your hands by 5." } },
+        "p4": { "type": "card", "settings": { "num": "04", "title": "Family-owned. Two decades. One block.", "description": "Bilingual, family-run on the corner of 187th since 2004. Walk in, call, or order online. By your second order we'll know your name." } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"]
+    },
+    "madres": {
+      "type": "primavera-madres",
+      "settings": {
+        "ribbon": "Mother's Day · Día de las Madres · Sunday May 10",
+        "headline": "<h2>Para Mami,<br>con todo nuestro <em>cariño</em>.</h2>",
+        "body_es": "Flores frescas entregadas hoy en todo Washington Heights. Toda la 10032, 10033, 10034 y 10040 antes de las cinco.",
+        "body_en": "Hand-tied bouquets built for the day, with a Spanish or English card in your handwriting (or ours). Order before 2 PM Saturday and we'll walk it over to Mami's apartment Sunday morning.",
+        "show_countdown": true,
+        "target_iso": "2027-05-09T09:00:00-04:00",
+        "cta_label": "Shop Mother's Day →",
+        "cta_link": "/products/dia-de-las-madres-special"
+      }
+    },
+    "occasions": {
+      "type": "primavera-occasions",
+      "settings": {
+        "headline": "<h2>For the <em>moments</em>, not the flowers.</h2>",
+        "intro": "For the birthdays. For the apologies. For the just-because Tuesdays. Pick the moment, our designers build to the feeling. Ramos para cada momento."
+      },
+      "blocks": {
+        "o1": { "type": "tile", "settings": { "num": "/01", "name": "Just <em>because</em>", "copy": "For the Tuesday gesture. For the neighbor across the hall.", "cta_text": "From $48 →", "link": "/collections/just-because" } },
+        "o2": { "type": "tile", "settings": { "num": "/02", "name": "<em>Birthday</em>", "copy": "Bright stems. Soft palette. Add a candle or balloon at checkout.", "cta_text": "From $69 →", "link": "/collections/birthday" } },
+        "o3": { "type": "tile", "settings": { "num": "/03", "name": "<em>Anniversary</em>", "copy": "Garden roses. Peonies. A proper ribbon. Same-day, same block.", "cta_text": "From $89 →", "link": "/collections/anniversary" } },
+        "o4": { "type": "tile", "settings": { "num": "/04", "name": "<em>Sympathy</em>", "copy": "Direct to Ortiz, Schwartz Brothers, and every funeral home in upper Manhattan.", "cta_text": "From $165 →", "link": "/collections/sympathy" } },
+        "o5": { "type": "tile", "settings": { "num": "/05", "name": "<em>Quinceañera</em>", "copy": "Centerpieces, corsages, the church arch. Custom-built. Quote within 24 hours.", "cta_text": "Get a quote →", "link": "/pages/quinceanera" } }
+      },
+      "block_order": ["o1", "o2", "o3", "o4", "o5"]
+    },
+    "products": {
+      "type": "primavera-products",
+      "settings": {
+        "headline": "<h2>This week, <em>fresh in</em>.</h2>",
+        "intro": "From the bench this week, ready to send today. Each one is built to order."
+      },
+      "blocks": {
+        "pr1": { "type": "card", "settings": { "badge": "Bestseller", "badge_style": "rose", "name": "Pink Garden Roses", "price": "$69", "description": "Garden roses, ranunculus, eucalyptus. Hand-tied with raffia.", "link": "/products/pink-garden-roses" } },
+        "pr2": { "type": "card", "settings": { "badge": "Mother's Day", "name": "Para Mami", "price": "$85", "description": "Blush roses and pink peonies, kraft-wrapped, bilingual card.", "link": "/products/dia-de-las-madres-special" } },
+        "pr3": { "type": "card", "settings": { "badge": "Sympathy", "name": "Sympathy Standing Spray", "price": "$175", "description": "White roses, lilies, carnations on easel. Direct to any funeral home.", "link": "/products/sympathy-standing-spray" } },
+        "pr4": { "type": "card", "settings": { "badge": "New", "name": "Designer's Choice", "price": "$65 to $115", "description": "Whatever was best at market this morning, arranged for you.", "link": "/products/designers-choice-wrapped-bouquet" } }
+      },
+      "block_order": ["pr1", "pr2", "pr3", "pr4"]
+    },
+    "photo_promise": {
+      "type": "primavera-photo-promise",
+      "settings": {
+        "eyebrow": "The Primavera promise",
+        "headline": "<h2>What you see is what they <em>get</em>.</h2>",
+        "body": "Every order gets a quick text or email of your actual bouquet, not a stock photo, the moment it's wrapped. If something looks off, we remake it. No bait and switch. No wire-service swaps. No \"closest available.\" Just the bouquet on your screen, in your neighbor's hands."
+      },
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": "Same-day", "label": "Across the Heights by 5 PM" } },
+        "s2": { "type": "stat", "settings": { "value": "2 PM", "label": "Cutoff Mon to Sat" } },
+        "s3": { "type": "stat", "settings": { "value": "Since 2004", "label": "Family-run on Fort Washington" } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "reviews": {
+      "type": "primavera-reviews",
+      "settings": {
+        "eyebrow": "From our neighbors",
+        "headline": "<h2>200+ reviews from across the <em>Heights</em>.</h2>",
+        "rating_text": "4.9 on Google · 200+ verified reviews",
+        "cta_label": "Read all reviews on Google →",
+        "cta_link": "https://www.google.com/search?q=Primavera+Flowers+NYC+Reviews"
+      },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "quote": "\"My friends make the most beautiful floral arrangements in Washington Heights. They have been my go-to for every holiday.\"", "name": "Diana L.", "source": "Verified neighbor · @dianalopnyc" } },
+        "r2": { "type": "review", "settings": { "quote": "\"Ordered last minute for my mom's birthday. Got a photo of the arrangement before delivery. Gorgeous, and at her door an hour later. Real local florist.\"", "name": "Marcus G.", "source": "Google review · 3 weeks ago" } },
+        "r3": { "type": "review", "settings": { "quote": "\"Best florist in the Heights. They speak Spanish, they know my mom's name, and they stayed late so I could pick up flowers for a vigil. Family.\"", "name": "Rosa M.", "source": "Google review · 1 month ago" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
+    },
+    "coverage": {
+      "type": "primavera-coverage",
+      "settings": {
+        "eyebrow": "Built for the Heights",
+        "headline": "<h2>A florist that <em>walks</em> to your door.</h2>",
+        "body": "We hand-deliver across Washington Heights, Hudson Heights, Inwood, Marble Hill, and the Cloisters. Most orders go on foot from the shop on Fort Washington. Outside our zone? We ship same-day across upper Manhattan and the Bronx."
+      },
+      "blocks": {
+        "z1": { "type": "zip", "settings": { "label": "10032", "active": true } },
+        "z2": { "type": "zip", "settings": { "label": "10033", "active": true } },
+        "z3": { "type": "zip", "settings": { "label": "10034", "active": true } },
+        "z4": { "type": "zip", "settings": { "label": "10040", "active": true } },
+        "z5": { "type": "zip", "settings": { "label": "10031", "active": true } },
+        "z6": { "type": "zip", "settings": { "label": "10039", "active": true } },
+        "z7": { "type": "zip", "settings": { "label": "10463", "active": false } },
+        "z8": { "type": "zip", "settings": { "label": "10468", "active": false } },
+        "z9": { "type": "zip", "settings": { "label": "+ all five boroughs", "active": false } }
+      },
+      "block_order": ["z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8", "z9"]
+    },
+    "subs_teaser": {
+      "type": "primavera-subs-teaser",
+      "settings": {
+        "eyebrow": "Flowers as part of everyday life · Subscriptions",
+        "headline": "<h2>Fresh flowers, <em>every Friday</em>.</h2>",
+        "body": "A standing order from your neighborhood florist on Fort Washington. Three tiers (Casa, Familia, Estudio) starting at $60. Free hand-delivery across Washington Heights, Hudson Heights, and Inwood. First delivery comes with a free glass vase. Pause or skip any week.",
+        "cta_label": "Start your subscription →",
+        "cta_link": "/pages/subscriptions"
+      }
+    },
+    "editorial": {
+      "type": "primavera-editorial",
+      "settings": {
+        "kicker": "The shop on Fort Washington",
+        "headline": "<h2>\"Your local flower shop, for moments that matter most.\"</h2>",
+        "body": "<p>Family-owned. Two decades. One block. Primavera has been on Fort Washington Avenue since 2004. Bilingual, family-run, built for the neighborhood. We take the A train down to the 28th Street Market most mornings and pick the day's stems ourselves.</p><p>The website is new. The shop is the same one that's been on the corner of 187th all along. Walk in for a single rose, call when you need a standing spray for Ortiz, or order online and we'll bring it by foot. Hablamos español. Te conocemos por nombre.</p>",
+        "signature": "Familia Guzmán",
+        "signature_sub": "Owners · Florists · Neighbors in Washington Heights since 2004"
+      }
     }
   },
   "order": [
-    "primavera_landing"
+    "hero",
+    "promise",
+    "madres",
+    "occasions",
+    "products",
+    "photo_promise",
+    "reviews",
+    "coverage",
+    "subs_teaser",
+    "editorial"
   ]
 }

@@ -1,0 +1,97 @@
+{% comment %}
+  Primavera, Delivery coverage section (dark band, ZIP tags + Google map).
+  ZIP tags are blocks.
+{% endcomment %}
+
+<section class="pv-coverage pv-section">
+  <div class="pv-coverage-grid">
+    <div>
+      {% if section.settings.eyebrow != blank %}<span class="pv-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
+      {% if section.settings.headline != blank %}<div class="pv-h-wrap">{{ section.settings.headline }}</div>{% endif %}
+      {% if section.settings.body != blank %}<p>{{ section.settings.body }}</p>{% endif %}
+      <div class="pv-zips">
+        {% for block in section.blocks %}
+          <span class="{% if block.settings.active %}pv-active{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="pv-map">
+      <iframe
+        src="{{ section.settings.map_embed_url | default: 'https://maps.google.com/maps?q=Primavera+Flowers+NYC,+463+Fort+Washington+Ave,+New+York,+NY+10033&t=&z=14&ie=UTF8&iwloc=&output=embed' }}"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+        title="Primavera Flowers NYC location"
+      ></iframe>
+      <div class="pv-map-caption">
+        {{ section.settings.map_caption | default: '463 Fort Washington Ave' }}
+        <a href="{{ section.settings.directions_url | default: 'https://www.google.com/maps/dir/?api=1&destination=Primavera+Flowers+NYC,+463+Fort+Washington+Ave,+New+York,+NY+10033' }}" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .pv-section { --sage-deep:#7a8a6f; --sage-soft:#c8d2bc; --cream:#f5efe2; --ink:#2a2620; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
+  .pv-coverage { background: var(--ink); color: var(--cream); padding: 80px 40px; font-family: var(--pv-sans); }
+  .pv-coverage-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  .pv-coverage .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-soft); font-weight: 600; }
+  .pv-coverage .pv-h-wrap { margin-top: 16px; }
+  .pv-coverage h2 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(32px,4.5vw,56px); line-height: 1.05; margin: 0; color: var(--cream); }
+  .pv-coverage h2 em { font-style: italic; color: var(--sage-soft); }
+  .pv-coverage p { color: rgba(245,239,226,.78); margin-top: 20px; max-width: 500px; font-size: 16px; line-height: 1.6; }
+  .pv-zips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .pv-zips span { border: 1px solid rgba(245,239,226,.25); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 500; }
+  .pv-zips span.pv-active { background: var(--sage-deep); border-color: var(--sage-deep); color: var(--cream); }
+  .pv-map { background: #1f1d18; aspect-ratio: 1.05/1; position: relative; overflow: hidden; border: 1px solid rgba(245,239,226,.15); border-radius: 6px; }
+  .pv-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(.15) contrast(1.02); }
+  .pv-map-caption { position: absolute; bottom: 12px; left: 12px; background: rgba(20,22,18,.9); color: var(--cream); padding: 8px 14px; border-radius: 4px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; pointer-events: none; }
+  .pv-map-caption a { color: var(--sage-soft); text-decoration: underline; pointer-events: auto; margin-left: 8px; text-transform: none; letter-spacing: 0.04em; }
+  @media (max-width: 960px) {
+    .pv-coverage { padding: 56px 24px; }
+    .pv-coverage-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Primavera Coverage",
+  "tag": "section",
+  "class": "primavera-coverage-section",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built for the Heights" },
+    { "type": "richtext", "id": "headline", "label": "Headline (use h2)", "default": "<h2>A florist that <em>walks</em> to your door.</h2>" },
+    { "type": "textarea", "id": "body", "label": "Body paragraph", "default": "We hand-deliver across Washington Heights, Hudson Heights, Inwood, Marble Hill, and the Cloisters. Most orders go on foot from the shop on Fort Washington. Outside our zone? We ship same-day across upper Manhattan and the Bronx." },
+    { "type": "url", "id": "map_embed_url", "label": "Google Maps embed URL (output=embed)" },
+    { "type": "text", "id": "map_caption", "label": "Map caption", "default": "463 Fort Washington Ave" },
+    { "type": "url", "id": "directions_url", "label": "Get directions URL" }
+  ],
+  "blocks": [
+    {
+      "type": "zip",
+      "name": "ZIP tag",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "checkbox", "id": "active", "label": "Highlighted (filled tag)", "default": true }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Primavera Coverage",
+      "blocks": [
+        { "type": "zip", "settings": { "label": "10032", "active": true } },
+        { "type": "zip", "settings": { "label": "10033", "active": true } },
+        { "type": "zip", "settings": { "label": "10034", "active": true } },
+        { "type": "zip", "settings": { "label": "10040", "active": true } },
+        { "type": "zip", "settings": { "label": "10031", "active": true } },
+        { "type": "zip", "settings": { "label": "10039", "active": true } },
+        { "type": "zip", "settings": { "label": "10463", "active": false } },
+        { "type": "zip", "settings": { "label": "10468", "active": false } },
+        { "type": "zip", "settings": { "label": "+ all five boroughs", "active": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

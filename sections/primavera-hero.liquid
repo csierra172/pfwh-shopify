@@ -1,0 +1,133 @@
+{% comment %}
+  Primavera, Hero section.
+  Editable: eyebrow, h1 richtext, lede, two CTAs, meta strip (3 items),
+  hero image, hero badge.
+{% endcomment %}
+
+<section class="pv-hero pv-section">
+  <div class="pv-hero-text">
+    {% if section.settings.eyebrow != blank %}
+      <span class="pv-eyebrow">{{ section.settings.eyebrow }}</span>
+    {% endif %}
+    {% if section.settings.headline != blank %}
+      {{ section.settings.headline }}
+    {% endif %}
+    {% if section.settings.lede != blank %}
+      <p class="pv-lede">{{ section.settings.lede }}</p>
+    {% endif %}
+    <div class="pv-hero-ctas">
+      {% if section.settings.cta_primary_label != blank %}
+        <a class="pv-btn pv-btn-primary" href="{{ section.settings.cta_primary_link | default: '/collections/all' }}">{{ section.settings.cta_primary_label }}</a>
+      {% endif %}
+      {% if section.settings.cta_secondary_label != blank %}
+        <a class="pv-btn pv-btn-ghost" href="{{ section.settings.cta_secondary_link | default: '/' }}">{{ section.settings.cta_secondary_label }}</a>
+      {% endif %}
+    </div>
+    {% if section.settings.show_meta_strip %}
+      <div class="pv-hero-meta">
+        <div>
+          <div class="pv-label">{{ section.settings.meta1_label | default: 'Same-day cutoff' }}</div>
+          <div class="pv-val">{{ section.settings.meta1_value | default: '2:00 PM' }}<small>{{ section.settings.meta1_sub | default: 'Mon to Sat' }}</small></div>
+        </div>
+        <div>
+          <div class="pv-label">{{ section.settings.meta2_label | default: 'Delivery zone' }}</div>
+          <div class="pv-val">{{ section.settings.meta2_value | default: '10033' }}<small>{{ section.settings.meta2_sub | default: '10032 / 10034 / 10040' }}</small></div>
+        </div>
+        <div>
+          <div class="pv-label">{{ section.settings.meta3_label | default: 'Bouquets from' }}</div>
+          <div class="pv-val">{{ section.settings.meta3_value | default: '$59' }}<small>{{ section.settings.meta3_sub | default: 'Hand-tied seasonal' }}</small></div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="pv-hero-image">
+    {% if section.settings.hero_image != blank %}
+      {{ section.settings.hero_image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.hero_image.alt | default: 'Primavera Flowers hero' }}
+    {% else %}
+      <img src="{{ 'hero-roses.png' | asset_url }}" alt="Pink garden roses bouquet hand-tied at Primavera Flowers" loading="eager" fetchpriority="high">
+    {% endif %}
+    {% if section.settings.tag_name != blank %}
+      <div class="pv-hero-tag">
+        <div class="pv-label">{{ section.settings.tag_label | default: 'This week' }}</div>
+        <div class="pv-name">{{ section.settings.tag_name }}</div>
+        {% if section.settings.tag_price != blank %}
+          <div class="pv-price">{{ section.settings.tag_price }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .pv-section { --sage:#a8b59a; --sage-deep:#7a8a6f; --sage-soft:#c8d2bc; --cream:#f5efe2; --cream-2:#ece4d2; --paper:#faf6ec; --ink:#2a2620; --ink-2:#5a544c; --ink-3:#8a847c; --rose:#d39283; --rose-deep:#b8705d; --line:#e2dac7; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; font-family:var(--pv-sans); color:var(--ink); }
+  .pv-section *, .pv-section *::before, .pv-section *::after { box-sizing: border-box; }
+  .pv-section a { color: inherit; text-decoration: none; }
+  .pv-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; background: var(--cream); }
+  .pv-hero-text { padding: 72px 56px; display: flex; flex-direction: column; justify-content: center; }
+  .pv-hero-text .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; margin-bottom: 20px; display: inline-block; }
+  .pv-hero h1 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(40px,5vw,68px); line-height: 1.05; color: var(--ink); margin: 0 0 22px; max-width: 540px; }
+  .pv-hero h1 em { font-style: italic; color: var(--sage-deep); font-weight: 400; }
+  .pv-hero .pv-lede { font-size: 18px; line-height: 1.6; color: var(--ink-2); max-width: 480px; margin: 0 0 30px; }
+  .pv-hero-ctas { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 36px; }
+  .pv-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 6px; font-size: 15px; font-weight: 600; transition: all .15s; border: none; cursor: pointer; text-decoration: none; }
+  .pv-btn-primary { background: var(--sage-deep); color: var(--cream); }
+  .pv-btn-primary:hover { background: var(--ink); }
+  .pv-btn-ghost { color: var(--sage-deep); border: 1.5px solid var(--sage-deep); padding: 12px 24px; background: transparent; }
+  .pv-btn-ghost:hover { background: var(--sage); color: var(--cream); border-color: var(--sage); }
+  .pv-hero-meta { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); padding-top: 20px; gap: 20px; }
+  .pv-hero-meta .pv-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-bottom: 6px; }
+  .pv-hero-meta .pv-val { font-family: var(--pv-serif); font-size: 22px; color: var(--ink); line-height: 1.1; }
+  .pv-hero-meta .pv-val small { font-family: var(--pv-sans); font-size: 12px; display: block; color: var(--ink-3); margin-top: 4px; font-weight: 500; }
+  .pv-hero-image { position: relative; overflow: hidden; background: var(--cream-2); }
+  .pv-hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pv-hero-tag { position: absolute; bottom: 24px; left: 24px; background: var(--cream); padding: 14px 18px; max-width: 240px; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+  .pv-hero-tag .pv-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; }
+  .pv-hero-tag .pv-name { font-family: var(--pv-serif); font-size: 20px; color: var(--ink); margin-top: 4px; line-height: 1.2; }
+  .pv-hero-tag .pv-price { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
+  @media (max-width: 960px) {
+    .pv-hero { grid-template-columns: 1fr; min-height: auto; }
+    .pv-hero-text { padding: 40px 24px 32px; }
+    .pv-hero h1 { font-size: clamp(32px,8vw,48px); }
+    .pv-hero .pv-lede { font-size: 16px; }
+    .pv-hero-image { min-height: 360px; }
+    .pv-hero-meta { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .pv-hero-meta .pv-val { font-size: 18px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Primavera Hero",
+  "tag": "section",
+  "class": "primavera-hero-section",
+  "settings": [
+    { "type": "header", "content": "Eyebrow + headline" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (small uppercase line above H1)", "default": "★ 4.9 on Google · Hablamos español" },
+    { "type": "richtext", "id": "headline", "label": "Headline (use h1)", "default": "<h1>Your <em>real, local</em> Washington Heights florist.</h1>" },
+    { "type": "textarea", "id": "lede", "label": "Lede paragraph", "default": "Hand-tied on Fort Washington since 2004. Walked to your door same day. We text you a photo before it leaves the shop." },
+    { "type": "header", "content": "CTAs" },
+    { "type": "text", "id": "cta_primary_label", "label": "Primary CTA label", "default": "Send flowers today →" },
+    { "type": "url", "id": "cta_primary_link", "label": "Primary CTA link" },
+    { "type": "text", "id": "cta_secondary_label", "label": "Secondary CTA label", "default": "For Mami, this Sunday" },
+    { "type": "url", "id": "cta_secondary_link", "label": "Secondary CTA link" },
+    { "type": "header", "content": "Meta strip (3 columns)" },
+    { "type": "checkbox", "id": "show_meta_strip", "label": "Show meta strip", "default": true },
+    { "type": "text", "id": "meta1_label", "label": "Meta 1 label", "default": "Same-day cutoff" },
+    { "type": "text", "id": "meta1_value", "label": "Meta 1 value", "default": "2:00 PM" },
+    { "type": "text", "id": "meta1_sub", "label": "Meta 1 sub", "default": "Mon to Sat" },
+    { "type": "text", "id": "meta2_label", "label": "Meta 2 label", "default": "Delivery zone" },
+    { "type": "text", "id": "meta2_value", "label": "Meta 2 value", "default": "10033" },
+    { "type": "text", "id": "meta2_sub", "label": "Meta 2 sub", "default": "10032 / 10034 / 10040" },
+    { "type": "text", "id": "meta3_label", "label": "Meta 3 label", "default": "Bouquets from" },
+    { "type": "text", "id": "meta3_value", "label": "Meta 3 value", "default": "$59" },
+    { "type": "text", "id": "meta3_sub", "label": "Meta 3 sub", "default": "Hand-tied seasonal" },
+    { "type": "header", "content": "Hero image" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image (defaults to hero-roses.png)" },
+    { "type": "header", "content": "Hero tag (overlay card on image)" },
+    { "type": "text", "id": "tag_label", "label": "Tag label", "default": "This week" },
+    { "type": "text", "id": "tag_name", "label": "Tag product name", "default": "Pink Garden Roses" },
+    { "type": "text", "id": "tag_price", "label": "Tag price line", "default": "From $69 · same-day delivery" }
+  ],
+  "presets": [{ "name": "Primavera Hero" }]
+}
+{% endschema %}
