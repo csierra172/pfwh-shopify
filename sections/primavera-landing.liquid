@@ -151,10 +151,9 @@
   .pl-zips span { border: 1px solid rgba(245, 239, 226, 0.25); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 500; }
   .pl-zips span.pl-active { background: var(--sage-deep); border-color: var(--sage-deep); color: var(--cream); }
   .pl-map { background: #1f1d18; aspect-ratio: 1.05/1; position: relative; overflow: hidden; border: 1px solid rgba(245, 239, 226, 0.15); border-radius: 6px; }
-  .pl-map svg { width: 100%; height: 100%; }
-  .pl-pin { position: absolute; width: 12px; height: 12px; background: var(--rose); border-radius: 50%; box-shadow: 0 0 0 4px rgba(211, 146, 131, 0.25); transform: translate(-50%, -50%); }
-  .pl-pin.pl-shop { background: var(--cream); width: 16px; height: 16px; box-shadow: 0 0 0 6px rgba(245, 239, 226, 0.18); }
-  .pl-pin.pl-shop::after { content: "PRIMAVERA"; position: absolute; left: 24px; top: 0; font-size: 10px; letter-spacing: 0.14em; color: var(--cream); white-space: nowrap; font-weight: 600; }
+  .pl-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(0.15) contrast(1.02); }
+  .pl-map-caption { position: absolute; bottom: 12px; left: 12px; background: rgba(20, 22, 18, 0.9); color: var(--cream); padding: 8px 14px; border-radius: 4px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; pointer-events: none; }
+  .pl-map-caption a { color: var(--sage-soft); text-decoration: underline; pointer-events: auto; margin-left: 8px; text-transform: none; letter-spacing: 0.04em; }
 
   /* ───── Subscriptions teaser (full content lives at /pages/subscriptions) ───── */
   .pl-subs-teaser { background: var(--paper); }
@@ -478,17 +477,17 @@
         </div>
       </div>
       <div class="pl-map">
-        <svg viewBox="0 0 400 380" preserveAspectRatio="none">
-          <path d="M0,30 C40,80 30,160 60,220 C80,280 50,340 0,380 L0,30 Z" fill="rgba(20,35,25,0.55)"></path>
-          <path d="M400,40 C380,100 360,170 380,240 C390,300 400,340 400,380 L400,40 Z" fill="rgba(20,35,25,0.55)"></path>
-          <path d="M120,90 C190,70 280,80 320,140 C340,200 320,270 240,290 C160,310 100,260 90,200 C80,140 90,110 120,90 Z" fill="rgba(168,181,154,0.18)" stroke="rgba(168,181,154,0.6)" stroke-width="1.2" stroke-dasharray="3 4"></path>
-        </svg>
-        <div class="pl-pin pl-shop" style="top: 48%; left: 52%;"></div>
-        <div class="pl-pin" style="top: 30%; left: 38%;"></div>
-        <div class="pl-pin" style="top: 64%; left: 40%;"></div>
-        <div class="pl-pin" style="top: 36%; left: 64%;"></div>
-        <div class="pl-pin" style="top: 70%; left: 60%;"></div>
-        <div class="pl-pin" style="top: 22%; left: 56%;"></div>
+        <iframe
+          src="https://maps.google.com/maps?q=Primavera+Flowers+NYC,+463+Fort+Washington+Ave,+New+York,+NY+10033&t=&z=14&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          title="Primavera Flowers NYC — 463 Fort Washington Ave, Washington Heights"
+        ></iframe>
+        <div class="pl-map-caption">
+          463 Fort Washington Ave
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Primavera+Flowers+NYC,+463+Fort+Washington+Ave,+New+York,+NY+10033" target="_blank" rel="noopener">Get directions</a>
+        </div>
       </div>
     </div>
   </section>
