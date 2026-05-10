@@ -1,0 +1,74 @@
+{% comment %}
+  Primavera, Collection page hero. Replaces the auto-generated Savor
+  "Collection heading" section that was rendering a placeholder
+  background image (blue cartoon) on every collection page.
+  Renders the collection title in brand fonts on a clean cream surface,
+  with optional eyebrow and subtitle.
+{% endcomment %}
+
+<section class="pv-coll-hero pv-section">
+  <div class="pv-coll-inner">
+    {% if section.settings.show_breadcrumb %}
+      <nav class="pv-breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ routes.collections_url }}">Shop</a>
+        <span aria-hidden="true">/</span>
+        <span class="pv-current" aria-current="page">{{ collection.title | escape }}</span>
+      </nav>
+    {% endif %}
+    {% if section.settings.eyebrow != blank %}
+      <span class="pv-eyebrow">{{ section.settings.eyebrow }}</span>
+    {% endif %}
+    <h1 class="pv-coll-title">{{ collection.title | default: 'Shop' | escape }}</h1>
+    {% if collection.description != blank and section.settings.show_description %}
+      <div class="pv-coll-desc">{{ collection.description }}</div>
+    {% elsif section.settings.subtitle != blank %}
+      <p class="pv-coll-desc">{{ section.settings.subtitle }}</p>
+    {% endif %}
+    {% if section.settings.show_cutoff %}
+      <div class="pv-coll-cutoff">
+        Order by <strong>2:00 PM Mon to Sat</strong> for hand-delivery same day across 10032, 10033, 10034, 10040. Free delivery over $85 in zone.
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .pv-section { --sage:#a8b59a; --sage-deep:#7a8a6f; --cream:#f5efe2; --paper:#faf6ec; --ink:#2a2620; --ink-2:#5a544c; --ink-3:#8a847c; --line:#e2dac7; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
+  .pv-coll-hero { background: var(--cream); padding: 64px 40px 40px; border-bottom: 1px solid var(--line); font-family: var(--pv-sans); color: var(--ink); }
+  .pv-coll-inner { max-width: 1200px; margin: 0 auto; }
+  .pv-breadcrumb { font-size: 12px; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 22px; }
+  .pv-breadcrumb a { color: var(--ink-3); text-decoration: none; }
+  .pv-breadcrumb a:hover { color: var(--sage-deep); }
+  .pv-breadcrumb span { margin: 0 8px; color: var(--ink-3); }
+  .pv-breadcrumb .pv-current { color: var(--ink); margin-left: 0; }
+  .pv-coll-hero .pv-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; display: inline-block; margin-bottom: 12px; }
+  .pv-coll-title { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.05; color: var(--ink); margin: 0 0 18px; }
+  .pv-coll-desc { font-size: 17px; line-height: 1.6; color: var(--ink-2); max-width: 640px; margin-bottom: 22px; }
+  .pv-coll-desc p { margin: 0 0 12px; }
+  .pv-coll-desc p:last-child { margin-bottom: 0; }
+  .pv-coll-cutoff { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 14px 20px; max-width: 640px; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+  .pv-coll-cutoff strong { color: var(--ink); font-weight: 700; }
+  @media (max-width: 960px) {
+    .pv-coll-hero { padding: 48px 24px 28px; }
+    .pv-coll-title { font-size: clamp(32px, 8vw, 52px); }
+    .pv-coll-desc { font-size: 15px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Primavera Collection Hero",
+  "tag": "section",
+  "class": "primavera-collection-hero-section",
+  "settings": [
+    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (optional, e.g. 'Hand-tied in Washington Heights')", "default": "Hand-tied in Washington Heights · Same-day delivery" },
+    { "type": "checkbox", "id": "show_description", "label": "Show collection description from admin", "default": true },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle (used when collection has no description)", "default": "Hand-arranged at 463 Fort Washington Ave. Photo before delivery. Walked or driven to your door same day." },
+    { "type": "checkbox", "id": "show_cutoff", "label": "Show 2 PM cutoff strip", "default": true }
+  ],
+  "presets": [{ "name": "Primavera Collection Hero" }]
+}
+{% endschema %}

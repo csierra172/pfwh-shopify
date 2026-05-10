@@ -1,73 +1,13 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
-    "section": {
-      "type": "section",
-      "blocks": {
-        "text_tqQTNE": {
-          "type": "text",
-          "name": "Title",
-          "settings": {
-            "text": "<h1>{{ closest.collection.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 100,
-            "padding-block-end": 0,
-            "padding-inline-start": 40,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_tqQTNE"
-      ],
-      "name": "Collection heading",
+    "hero": {
+      "type": "primavera-collection-hero",
       "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "full-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-5",
-        "background_media": "image",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": true,
-        "overlay_color": "#00000061",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 100,
-        "padding-block-end": 32
+        "show_breadcrumb": true,
+        "eyebrow": "Hand-tied in Washington Heights · Same-day delivery",
+        "show_description": true,
+        "subtitle": "Hand-arranged at 463 Fort Washington Ave. Photo before delivery. Walked or driven to your door same day.",
+        "show_cutoff": true
       }
     },
     "main": {
@@ -85,10 +25,10 @@
             "show_filter_label": false,
             "enable_sorting": true,
             "enable_grid_density": false,
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-4",
-            "padding-block-start": 8,
-            "padding-block-end": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 16,
+            "padding-block-end": 16,
             "padding-inline-start": 40,
             "padding-inline-end": 40,
             "facets_margin_bottom": 0,
@@ -100,9 +40,9 @@
           "type": "_product-card",
           "static": true,
           "settings": {
-            "product_card_gap": 0,
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-2",
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
@@ -113,15 +53,15 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_card_gallery_68C7TN": {
+            "gallery": {
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "square",
+                "image_ratio": "portrait",
                 "border": "solid",
                 "border_width": 0,
                 "border_opacity": 0,
-                "border_radius": 0,
+                "border_radius": 6,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -129,27 +69,27 @@
               },
               "blocks": {}
             },
-            "group_JNegy4": {
+            "info": {
               "type": "_product-card-group",
               "name": "t:names.group",
               "settings": {
                 "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
-                "horizontal_alignment": "space-between",
+                "horizontal_alignment": "flex-start",
                 "vertical_alignment": "flex-start",
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "space-between",
-                "gap": 4,
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 6,
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
                 "custom_height": 100,
-                "inherit_color_scheme": false,
-                "color_scheme": "scheme-2",
+                "inherit_color_scheme": true,
+                "color_scheme": "",
                 "background_media": "none",
                 "video_position": "cover",
                 "background_image_position": "cover",
@@ -161,19 +101,19 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
-                "padding-block-start": 12,
-                "padding-block-end": 12,
-                "padding-inline-start": 12,
-                "padding-inline-end": 12
+                "padding-block-start": 14,
+                "padding-block-end": 14,
+                "padding-inline-start": 6,
+                "padding-inline-end": 6
               },
               "blocks": {
-                "group_i9KeQ7": {
+                "title_row": {
                   "type": "_product-card-group",
                   "name": "t:names.group",
                   "settings": {
                     "open_in_new_tab": false,
                     "content_direction": "row",
-                    "vertical_on_mobile": true,
+                    "vertical_on_mobile": false,
                     "horizontal_alignment": "space-between",
                     "vertical_alignment": "center",
                     "align_baseline": false,
@@ -181,9 +121,9 @@
                     "vertical_alignment_flex_direction_column": "flex-start",
                     "gap": 8,
                     "width": "fill",
-                    "custom_width": 75,
+                    "custom_width": 100,
                     "width_mobile": "fill",
-                    "custom_width_mobile": 75,
+                    "custom_width_mobile": 100,
                     "height": "fit",
                     "custom_height": 100,
                     "inherit_color_scheme": true,
@@ -205,16 +145,16 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "product_title_X4Hxci": {
+                    "title": {
                       "type": "product-title",
                       "name": "t:names.product_title",
                       "settings": {
-                        "width": "fit-content",
+                        "width": "fill",
                         "max_width": "normal",
                         "alignment": "left",
                         "type_preset": "h5",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
+                        "font": "var(--font-heading--family)",
+                        "font_size": "1.125rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
@@ -230,7 +170,7 @@
                       },
                       "blocks": {}
                     },
-                    "price_r3D933": {
+                    "price": {
                       "type": "price",
                       "name": "t:names.product_price",
                       "settings": {
@@ -241,7 +181,7 @@
                         "width": "fit-content",
                         "alignment": "right",
                         "font": "var(--font-body--family)",
-                        "font_size": "1rem",
+                        "font_size": "0.95rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
@@ -254,12 +194,9 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": [
-                    "product_title_X4Hxci",
-                    "price_r3D933"
-                  ]
+                  "block_order": ["title", "price"]
                 },
-                "group_HnURV7": {
+                "subtitle": {
                   "type": "_product-card-group",
                   "name": "t:names.group",
                   "settings": {
@@ -267,15 +204,15 @@
                     "content_direction": "column",
                     "vertical_on_mobile": true,
                     "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
+                    "vertical_alignment": "flex-start",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
                     "vertical_alignment_flex_direction_column": "flex-start",
-                    "gap": 12,
-                    "width": "fit-content",
+                    "gap": 4,
+                    "width": "fill",
                     "custom_width": 100,
                     "width_mobile": "fill",
-                    "custom_width_mobile": 25,
+                    "custom_width_mobile": 100,
                     "height": "fit",
                     "custom_height": 100,
                     "inherit_color_scheme": true,
@@ -297,17 +234,17 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "text_yYkK7E": {
+                    "subtitle_text": {
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
                         "text": "<p>{{ closest.product.metafields.descriptors.subtitle.value }}</p>",
-                        "width": "fit-content",
+                        "width": "fill",
                         "max_width": "none",
                         "alignment": "left",
                         "type_preset": "custom",
-                        "font": "var(--font-primary--family)",
-                        "font_size": "var(--font-size--body-md)",
+                        "font": "var(--font-body--family)",
+                        "font_size": "0.85rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
@@ -324,41 +261,30 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": [
-                    "text_yYkK7E"
-                  ]
+                  "block_order": ["subtitle_text"]
                 }
               },
-              "block_order": [
-                "group_i9KeQ7",
-                "group_HnURV7"
-              ]
+              "block_order": ["title_row", "subtitle"]
             }
           },
-          "block_order": [
-            "product_card_gallery_68C7TN",
-            "group_JNegy4"
-          ]
+          "block_order": ["gallery", "info"]
         }
       },
       "settings": {
         "layout_type": "grid",
         "product_card_size": "large",
         "mobile_product_card_size": "small",
-        "product_grid_width": "full-width",
+        "product_grid_width": "page-width",
         "full_width_on_mobile": true,
-        "columns_gap_horizontal": 1,
-        "columns_gap_vertical": 1,
-        "padding-inline-start": 0,
-        "padding-inline-end": 0,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 32,
+        "padding-inline-start": 40,
+        "padding-inline-end": 40,
         "color_scheme": "",
-        "padding-block-start": 0,
-        "padding-block-end": 1
+        "padding-block-start": 24,
+        "padding-block-end": 64
       }
     }
   },
-  "order": [
-    "section",
-    "main"
-  ]
+  "order": ["hero", "main"]
 }

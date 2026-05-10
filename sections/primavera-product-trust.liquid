@@ -1,0 +1,77 @@
+{% comment %}
+  Primavera, Product trust strip. Renders below the product info on every
+  PDP so each product page gets the brand promise without per-product
+  setup. Photo-before-delivery, hand-delivered-by-us, hablamos-español,
+  pause/skip messaging, plus a cross-sell to subscriptions.
+{% endcomment %}
+
+<section class="pv-product-trust pv-section">
+  <div class="pv-pt-strip">
+    <div class="pv-pt-item">
+      <div class="pv-pt-label">Photo before delivery</div>
+      <div class="pv-pt-sub">You see your bouquet first. Approve or remake.</div>
+    </div>
+    <div class="pv-pt-item">
+      <div class="pv-pt-label">Hand-delivered by us</div>
+      <div class="pv-pt-sub">Our own driver across upper Manhattan. Never a 1-800 wire-service handoff.</div>
+    </div>
+    <div class="pv-pt-item">
+      <div class="pv-pt-label">Free over $85 in zone</div>
+      <div class="pv-pt-sub">Hand-delivery in 10032, 10033, 10034, 10040.</div>
+    </div>
+    <div class="pv-pt-item">
+      <div class="pv-pt-label">Hablamos español</div>
+      <div class="pv-pt-sub">Familia Guzmán. (917) 770-1684.</div>
+    </div>
+  </div>
+
+  <div class="pv-pt-cutoff">
+    Order by <strong>2:00 PM Mon to Sat</strong> for hand-delivery same day across Washington Heights, Hudson Heights, Inwood. Photo of your bouquet emailed before it leaves the shop. If something looks off, we remake it.
+  </div>
+
+  <div class="pv-pt-cross">
+    <div class="pv-pt-cross-text">
+      <span class="pv-pt-eyebrow">Want this every Friday?</span>
+      <h2>Subscribe and save the trip.</h2>
+      <p>Three tiers (Casa, Familia, Estudio) starting at $60. Free glass vase with first delivery. Free hand-delivery across the Heights. Pause or skip from your phone any week.</p>
+      <a class="pv-pt-btn" href="/pages/subscriptions">See subscription tiers →</a>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .pv-section { --sage:#a8b59a; --sage-deep:#7a8a6f; --cream:#f5efe2; --paper:#faf6ec; --ink:#2a2620; --ink-2:#5a544c; --ink-3:#8a847c; --line:#e2dac7; --pv-serif:"DM Serif Display","Times New Roman",serif; --pv-sans:"Inter",system-ui,-apple-system,sans-serif; }
+  .pv-product-trust { background: var(--cream); border-top: 1px solid var(--line); font-family: var(--pv-sans); color: var(--ink); }
+  .pv-pt-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 36px 40px; background: var(--paper); border-bottom: 1px solid var(--line); max-width: 100%; }
+  .pv-pt-item { text-align: center; }
+  .pv-pt-label { font-family: var(--pv-serif); font-size: 18px; line-height: 1.2; color: var(--ink); margin-bottom: 4px; }
+  .pv-pt-sub { font-size: 13px; color: var(--ink-3); line-height: 1.4; }
+  .pv-pt-cutoff { padding: 28px 40px; max-width: 900px; margin: 0 auto; font-size: 15px; line-height: 1.6; color: var(--ink-2); text-align: center; border-bottom: 1px solid var(--line); }
+  .pv-pt-cutoff strong { color: var(--ink); font-weight: 700; }
+  .pv-pt-cross { padding: 56px 40px; max-width: 760px; margin: 0 auto; text-align: center; }
+  .pv-pt-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-deep); font-weight: 600; display: inline-block; margin-bottom: 12px; }
+  .pv-pt-cross h2 { font-family: var(--pv-serif); font-weight: 400; font-size: clamp(28px, 4vw, 40px); line-height: 1.1; color: var(--ink); margin: 0 0 14px; }
+  .pv-pt-cross p { color: var(--ink-2); line-height: 1.6; max-width: 560px; margin: 0 auto 22px; font-size: 16px; }
+  .pv-pt-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 6px; font-size: 15px; font-weight: 600; background: var(--sage-deep); color: var(--cream); text-decoration: none; }
+  .pv-pt-btn:hover { background: var(--ink); }
+  @media (max-width: 960px) {
+    .pv-pt-strip { grid-template-columns: 1fr 1fr; padding: 28px 24px; }
+    .pv-pt-cutoff { padding: 22px 24px; font-size: 14px; }
+    .pv-pt-cross { padding: 40px 24px; }
+  }
+  @media (max-width: 540px) {
+    .pv-pt-strip { grid-template-columns: 1fr; gap: 18px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Primavera Product Trust",
+  "tag": "section",
+  "class": "primavera-product-trust-section",
+  "settings": [
+    { "type": "paragraph", "content": "Brand promise + cutoff + subscription cross-sell. Renders below the product info on every PDP so each product gets the same trust signals without per-product setup." }
+  ],
+  "presets": [{ "name": "Primavera Product Trust" }]
+}
+{% endschema %}

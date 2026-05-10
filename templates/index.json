@@ -37,7 +37,7 @@
         "show_countdown": true,
         "target_iso": "2027-05-09T09:00:00-04:00",
         "cta_label": "Shop Mother's Day →",
-        "cta_link": "/products/dia-de-las-madres-special"
+        "cta_link": "/products/dia-de-las-madres"
       }
     },
     "occasions": {
@@ -62,10 +62,10 @@
         "intro": "From the bench this week, ready to send today. Each one is built to order."
       },
       "blocks": {
-        "pr1": { "type": "card", "settings": { "badge": "Bestseller", "badge_style": "rose", "name": "Pink Garden Roses", "price": "$69", "description": "Garden roses, ranunculus, eucalyptus. Hand-tied with raffia.", "link": "/products/pink-garden-roses" } },
-        "pr2": { "type": "card", "settings": { "badge": "Mother's Day", "name": "Para Mami", "price": "$85", "description": "Blush roses and pink peonies, kraft-wrapped, bilingual card.", "link": "/products/dia-de-las-madres-special" } },
-        "pr3": { "type": "card", "settings": { "badge": "Sympathy", "name": "Sympathy Standing Spray", "price": "$175", "description": "White roses, lilies, carnations on easel. Direct to any funeral home.", "link": "/products/sympathy-standing-spray" } },
-        "pr4": { "type": "card", "settings": { "badge": "New", "name": "Designer's Choice", "price": "$65 to $115", "description": "Whatever was best at market this morning, arranged for you.", "link": "/products/designers-choice-wrapped-bouquet" } }
+        "pr1": { "type": "card", "settings": { "badge": "Bestseller", "badge_style": "rose", "name": "Pink Garden Roses", "price": "$69", "description": "Garden roses, ranunculus, eucalyptus. Hand-tied with raffia.", "link": "/products/pink-roses" } },
+        "pr2": { "type": "card", "settings": { "badge": "Mother's Day", "name": "Para Mami", "price": "$85", "description": "Blush roses and pink peonies, kraft-wrapped, bilingual card.", "link": "/products/dia-de-las-madres" } },
+        "pr3": { "type": "card", "settings": { "badge": "Sympathy", "name": "Sympathy Standing Spray", "price": "$175", "description": "White roses, lilies, carnations on easel. Direct to any funeral home.", "link": "/products/sympathy-spray" } },
+        "pr4": { "type": "card", "settings": { "badge": "New", "name": "Designer's Choice", "price": "$65 to $115", "description": "Whatever was best at market this morning, arranged for you.", "link": "/products/designers-choice" } }
       },
       "block_order": ["pr1", "pr2", "pr3", "pr4"]
     },

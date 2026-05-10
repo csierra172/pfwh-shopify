@@ -489,10 +489,15 @@
         "padding-block-start": 1,
         "padding-block-end": 1
       }
+    },
+    "primavera_product_trust": {
+      "type": "primavera-product-trust",
+      "settings": {}
     }
   },
   "order": [
     "main",
+    "primavera_product_trust",
     "product_recommendations_iA6pyd"
   ]
 }

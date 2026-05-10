@@ -7,7 +7,7 @@
         "headline": "<h1>Flores para <em>Mami</em>, entregadas el mismo día.</h1>",
         "lede": "El 10 de mayo, Mami abre la puerta y ahí están sus flores. Hechas a mano en la 187 con Fort Washington. Llevadas a su puerta por nuestro propio chofer. Tarjeta bilingüe escrita a mano. Pide antes de las 2 PM del sábado para entrega el domingo en la mañana.",
         "cta_primary_label": "Comprar para Mami →",
-        "cta_primary_link": "/products/dia-de-las-madres-special",
+        "cta_primary_link": "/products/dia-de-las-madres",
         "cta_secondary_label": "See in English",
         "cta_secondary_link": "/",
         "show_trust_strip": true,
@@ -17,7 +17,7 @@
         "final_headline": "<h2>Para <em>Mami</em>, este domingo.</h2>",
         "final_lede": "Pide antes de las 2 PM del sábado. Le entregamos a su puerta el domingo en la mañana, con una tarjeta en tu letra (o la nuestra).",
         "final_cta_label": "Comprar Día de las Madres →",
-        "final_cta_link": "/products/dia-de-las-madres-special"
+        "final_cta_link": "/products/dia-de-las-madres"
       }
     }
   },
