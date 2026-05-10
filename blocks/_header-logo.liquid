@@ -79,10 +79,9 @@
     {%- else -%}
       {%- comment -%} Theme-asset fallback when no logo image has been uploaded in admin. {%- endcomment -%}
       <img
-        src="{{ 'primavera-logo.svg' | asset_url }}"
+        src="{{ 'logo-primavera.svg' | asset_url }}"
         class="header-logo__image header-logo__image--asset-fallback"
         alt="{{ alt_text_fallback }}"
-        height="{{ settings.logo_height }}"
         loading="eager"
         decoding="async"
       >
@@ -163,15 +162,15 @@
 
   .header-logo__image--asset-fallback {
     object-fit: contain;
-    height: 36px;
+    height: 52px;
     width: auto;
     display: block;
-    background: var(--sage-deep, #7a8a6f);
-    border-radius: 50%;
-    padding: 4px;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
 
     @media screen and (max-width: 749px) {
-      height: 32px;
+      height: 44px;
     }
   }
 
