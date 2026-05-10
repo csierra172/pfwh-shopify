@@ -27,18 +27,30 @@
   Output all logo variants, use CSS to hide/show the appropriate one
   based on the .header[transparent] selector
 {% endcomment %}
+{%- liquid
+  assign desktop_align = block_settings.desktop_alignment | default: 'flex-start'
+  assign mobile_align = block_settings.mobile_alignment | default: 'center'
+  assign max_w_desktop = block_settings.max_width_desktop | default: 240
+  assign max_w_mobile = block_settings.max_width_mobile | default: 180
+-%}
 <a
   {% if template.name == 'index' and block_settings.hide_logo_on_home_page %}
     data-hidden-on-home-page
   {% endif %}
   href="{{ routes.root_url }}"
   class="size-style spacing-style header-logo"
+  data-desktop-align="{{ desktop_align }}"
+  data-mobile-align="{{ mobile_align }}"
   style="
     {% render 'size-style', settings: block_settings %}
     {% render 'spacing-style', settings: block_settings %}
     --font-family: var(--font-body--family);
     --font-style: var(--font-body--style);
     --font-weight: 600;
+    --header-logo-justify-desktop: {{ desktop_align }};
+    --header-logo-justify-mobile: {{ mobile_align }};
+    --header-logo-max-width-desktop: {{ max_w_desktop }}px;
+    --header-logo-max-width-mobile: {{ max_w_mobile }}px;
   "
   {{ block.shopify_attributes }}
 >
@@ -103,9 +115,15 @@
     font-weight: var(--font-weight);
     font-style: var(--font-style);
     color: var(--color-foreground);
-    justify-content: center;
+    justify-content: var(--header-logo-justify-mobile, center);
     align-items: center;
     text-decoration: none;
+    max-width: var(--header-logo-max-width-mobile, 180px);
+
+    @media screen and (min-width: 750px) {
+      justify-content: var(--header-logo-justify-desktop, flex-start);
+      max-width: var(--header-logo-max-width-desktop, 240px);
+    }
 
     &[data-hidden-on-home-page] {
       display: none;
@@ -174,7 +192,53 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "t:content.edit_logo_in_theme_settings"
+      "content": "Upload your logo file under Theme settings → Logo. Set logo size with the desktop and mobile height sliders in those same settings."
+    },
+    {
+      "type": "header",
+      "content": "Logo position"
+    },
+    {
+      "type": "select",
+      "id": "desktop_alignment",
+      "label": "Desktop alignment (within header column)",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Mobile alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "max_width_desktop",
+      "label": "Max width (desktop)",
+      "min": 80,
+      "max": 480,
+      "step": 10,
+      "unit": "px",
+      "default": 240
+    },
+    {
+      "type": "range",
+      "id": "max_width_mobile",
+      "label": "Max width (mobile)",
+      "min": 60,
+      "max": 320,
+      "step": 10,
+      "unit": "px",
+      "default": 180
     },
     {
       "type": "header",
